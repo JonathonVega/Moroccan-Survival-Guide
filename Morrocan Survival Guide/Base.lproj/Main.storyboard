@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XQy-w0-qd0">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Moroccan Survival Guide-->
+        <scene sceneID="n6N-YS-vXn">
+            <objects>
+                <tableViewController id="sGu-AQ-gjY" customClass="SectionTableViewController" customModule="Moroccan_Survival_Guide" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" id="a41-dk-bzU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionCell" rowHeight="47" id="yr4-Vt-KOr" customClass="SectionsTableViewCell" customModule="Moroccan_Survival_Guide" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="414" height="47"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yr4-Vt-KOr" id="9cC-Uz-ZIu">
+                                    <frame key="frameInset" width="414" height="46.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kz-7i-0IV">
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6kz-7i-0IV" firstAttribute="top" secondItem="9cC-Uz-ZIu" secondAttribute="topMargin" constant="2" id="2gM-zb-FTd"/>
+                                        <constraint firstItem="6kz-7i-0IV" firstAttribute="centerY" secondItem="9cC-Uz-ZIu" secondAttribute="centerY" id="U8H-t8-IEJ"/>
+                                        <constraint firstItem="6kz-7i-0IV" firstAttribute="leading" secondItem="9cC-Uz-ZIu" secondAttribute="leadingMargin" id="fHg-Ss-kKh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6kz-7i-0IV" secondAttribute="bottom" constant="3" id="swq-IM-k5M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="topic" destination="6kz-7i-0IV" id="mVO-Wk-WC0"/>
+                                    <segue destination="GyN-Mo-dac" kind="show" identifier="translations" id="4Sv-JB-UQB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sGu-AQ-gjY" id="NPS-cw-WVp"/>
+                            <outlet property="delegate" destination="sGu-AQ-gjY" id="2Ev-Zu-XTl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Moroccan Survival Guide" id="W10-ke-X7t"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYo-fi-vCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="-289"/>
+        </scene>
+        <!--Details Table View Controller-->
+        <scene sceneID="Gfu-ua-NkW">
+            <objects>
+                <tableViewController id="GyN-Mo-dac" customClass="DetailsTableViewController" customModule="Moroccan_Survival_Guide" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="a8C-P8-omQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" id="dR1-1s-EF7" customClass="DetailsTableViewCell" customModule="Moroccan_Survival_Guide" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dR1-1s-EF7" id="boQ-Ve-5Bx">
+                                    <frame key="frameInset" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English Translation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rz0-ux-oUw">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moroccan Translation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7D-NM-fML">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.6557962437" green="0.63244843029999998" blue="0.64203703099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="t7D-NM-fML" firstAttribute="top" secondItem="Rz0-ux-oUw" secondAttribute="bottom" constant="1" id="EAx-cY-dXn"/>
+                                        <constraint firstItem="t7D-NM-fML" firstAttribute="leading" secondItem="boQ-Ve-5Bx" secondAttribute="leadingMargin" id="OVz-eJ-uai"/>
+                                        <constraint firstItem="Rz0-ux-oUw" firstAttribute="leading" secondItem="boQ-Ve-5Bx" secondAttribute="leadingMargin" id="RpR-NF-hf6"/>
+                                        <constraint firstItem="Rz0-ux-oUw" firstAttribute="leading" secondItem="boQ-Ve-5Bx" secondAttribute="leadingMargin" constant="8" id="eor-Zk-PUw"/>
+                                        <constraint firstItem="Rz0-ux-oUw" firstAttribute="top" secondItem="boQ-Ve-5Bx" secondAttribute="topMargin" constant="-8" id="xkd-lk-M8T"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="t7D-NM-fML" secondAttribute="bottom" constant="-8" id="ynQ-ij-Sxe"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="eor-Zk-PUw"/>
+                                            <exclude reference="ynQ-ij-Sxe"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="arTranslation" destination="t7D-NM-fML" id="wIR-8i-HW2"/>
+                                    <outlet property="enTranslation" destination="Rz0-ux-oUw" id="1uX-BR-ecq"/>
+                                    <segue destination="jar-dt-gx4" kind="show" identifier="toDetail" id="kIc-xV-oAP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GyN-Mo-dac" id="uOD-NK-pZZ"/>
+                            <outlet property="delegate" destination="GyN-Mo-dac" id="aGb-g3-z9W"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbg-IU-Wey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2210" y="-289"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="bhr-Xv-lyr">
+            <objects>
+                <viewController id="jar-dt-gx4" customClass="DetailViewController" customModule="Moroccan_Survival_Guide" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a97-wH-iez"/>
+                        <viewControllerLayoutGuide type="bottom" id="uh6-Nh-M5A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W7A-Rk-H8H">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-Zh-c6N"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95720880681818177" green="0.95720880681818177" blue="0.95720880681818177" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="qoa-Zh-c6N" secondAttribute="trailing" constant="-20" id="OVb-iw-HOW"/>
+                            <constraint firstItem="qoa-Zh-c6N" firstAttribute="top" secondItem="a97-wH-iez" secondAttribute="bottom" id="bKL-gT-1RV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="qoa-Zh-c6N" secondAttribute="leading" constant="20" id="mBu-dc-yUj"/>
+                            <constraint firstItem="uh6-Nh-M5A" firstAttribute="top" secondItem="qoa-Zh-c6N" secondAttribute="bottom" id="tsQ-sK-khX"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="scrollView" destination="qoa-Zh-c6N" id="Gu3-zw-dxV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6UO-TD-xUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3004" y="-289"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DxY-eF-b3X">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XQy-w0-qd0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XAP-tf-09P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sGu-AQ-gjY" kind="relationship" relationship="rootViewController" id="LqD-qa-SVX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Zf-uV-5Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="637" y="-289"/>
+        </scene>
+    </scenes>
+</document>
