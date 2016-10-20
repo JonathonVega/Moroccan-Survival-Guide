@@ -472,7 +472,6 @@
 		9C201D2B1D728E3600C03EDB = {
 			isa = PBXGroup;
 			children = (
-				9C24B2121DB7FA9A001391F7 /* Words & Phrases */,
 				9C201D361D728E3600C03EDB /* Morrocan Survival Guide */,
 			);
 			sourceTree = "<group>";
@@ -498,6 +497,7 @@
 				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
 				9C201D491D728F1600C03EDB /* Supporting Files */,
 				9C201D351D728E3600C03EDB /* Products */,
+				9C24B2121DB7FA9A001391F7 /* Words & Phrases */,
 			);
 			path = "Morrocan Survival Guide";
 			sourceTree = "<group>";
@@ -528,7 +528,8 @@
 				9C24B2C91DB7FA9A001391F7 /* Useful Expressions */,
 				9C24B2DF1DB7FA9A001391F7 /* Useful Questions */,
 			);
-			path = "Words & Phrases";
+			name = "Words & Phrases";
+			path = "../Words & Phrases";
 			sourceTree = "<group>";
 		};
 		9C24B2131DB7FA9A001391F7 /* Cities:Sites */ = {

@@ -24,14 +24,14 @@ class DetailsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wordList[0].count
+        return wordList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailsTableViewCell
         
-        cell.enTranslation.text = wordList[0][(indexPath as NSIndexPath).row]
-        cell.arTranslation.text = wordList[1][(indexPath as NSIndexPath).row]
+        cell.enTranslation.text = wordList[(indexPath as NSIndexPath).row][0]
+        cell.arTranslation.text = wordList[(indexPath as NSIndexPath).row][1]
         return cell
         
     }
@@ -47,7 +47,7 @@ class DetailsTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let targetController = segue.destination as! DetailViewController
                 targetController.detailWordList = wordList
-                targetController.currentWord = wordList[0][(indexPath as NSIndexPath).row]
+                targetController.currentWord = wordList[(indexPath as NSIndexPath).row][0]
             }
             
         }

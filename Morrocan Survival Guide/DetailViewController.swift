@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     
     func setupScrollView() {
         
-        let endNum = detailWordList[0].count - 1
+        let endNum = detailWordList.count - 1
         var totalWidth:CGFloat = 0
         
         for index in 0...endNum {
@@ -63,15 +63,16 @@ class DetailViewController: UIViewController {
         return newView
     }
     
+    // Func for when going directly to the word that was clicked from the DetailsTableView
     func currentTranslation() -> CGPoint{
-        for i in detailWordList[0] {
-            if (i == currentWord) {
-                if let x = detailWordList[0].index(of: currentWord) {
-                    let y = (scrollView.contentSize.width / CGFloat(detailWordList[0].count)) * CGFloat(x)
-                    let curPoint: CGPoint = CGPoint(x: y, y: 0)
-                    return curPoint
-                }
+        var x = 0
+        for i in detailWordList {
+            if (i[0] == currentWord) {
+                let y = (scrollView.contentSize.width / CGFloat(detailWordList.count)) * CGFloat(x)
+                let curPoint: CGPoint = CGPoint(x: y, y: 0)
+                return curPoint
             }
+            x += 1
         }
         return CGPoint(x: 0, y: 0)
     }
@@ -84,7 +85,7 @@ class DetailViewController: UIViewController {
         enWord.frame.size = CGSize(width: 150, height: 40)
         enWord.center = CGPoint(x: currentView.frame.size.width / 2, y: 75)
         enWord.textAlignment = NSTextAlignment.center
-        enWord.text = detailWordList[0][index]
+        enWord.text = detailWordList[index][0]
         enWord.font = UIFont(name: "Helvetica" , size: 30)
         enWord.adjustsFontSizeToFitWidth = true
         currentView.addSubview(enWord)
@@ -96,7 +97,7 @@ class DetailViewController: UIViewController {
         arWord.frame.size = CGSize(width: 150, height: 40)
         arWord.center = CGPoint(x: currentView.frame.size.width / 2, y: 150)
         arWord.textAlignment = NSTextAlignment.center
-        arWord.text = detailWordList[1][index]
+        arWord.text = detailWordList[index][1]
         arWord.font = UIFont(name: "Helvetica" , size: 30)
         arWord.textColor = UIColor(red: 167/255, green: 161/255, blue: 164/255, alpha: 1.0)
         arWord.adjustsFontSizeToFitWidth = true
@@ -123,7 +124,7 @@ class DetailViewController: UIViewController {
     
     func voiceAction(sender: UIButton!) {
         let index = sender.tag
-        let arabicWord = detailWordList[1][index]
+        let arabicWord = detailWordList[index][1]
         let voiceURL: URL
         
         if let path = Bundle.main.path(forResource: getSoundString(arWord: arabicWord), ofType: "m4a"){
