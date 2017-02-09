@@ -46,6 +46,8 @@ class SectionTableViewController: UITableViewController {
                 let targetController = segue.destination as! DetailsTableViewController
                 targetController.tableTitle = section
                 
+                //Test
+                
                 targetController.wordList = Topics.getWords(section)
 
             }
