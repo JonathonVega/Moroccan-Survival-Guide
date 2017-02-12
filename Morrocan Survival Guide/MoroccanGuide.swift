@@ -20,6 +20,12 @@ enum Topics: CustomStringConvertible {
     case shopping
     case usefulQuestions
     case usefulExpressions
+    case travel
+    case medical
+    case party_Festivities
+    case weather
+    case daysOfTheWeek
+    case possessions
     
     var description: String {
         switch self {
@@ -34,10 +40,16 @@ enum Topics: CustomStringConvertible {
         case .shopping: return "Shopping"
         case .usefulQuestions: return "Useful Questions"
         case .usefulExpressions: return "Useful Expressions"
+        case .travel: return "Travel"
+        case .medical: return "Medical"
+        case .party_Festivities: return "Party/Festivities"
+        case .weather: return "Weather"
+        case .daysOfTheWeek: return "Days of the Week"
+        case .possessions: return "Possessions"
         }
     }
     
-    static var count: Int { return Topics.usefulExpressions.hashValue + 1}
+    static var count: Int { return Topics.possessions.hashValue + 1}
     
     static func getStringFromEnum(_ int: Int) -> String {
         switch int {
@@ -52,6 +64,12 @@ enum Topics: CustomStringConvertible {
         case 8: return shopping.description
         case 9: return usefulQuestions.description
         case 10: return usefulExpressions.description
+        case 11: return travel.description
+        case 12: return medical.description
+        case 13: return party_Festivities.description
+        case 14: return weather.description
+        case 15: return daysOfTheWeek.description
+        case 16: return possessions.description
         default: return "Hi"
         }
     }
@@ -284,6 +302,95 @@ extension Topics {
                                          ["Friendship", "3achran"],
                                          ["Friend", "3achir"],
                                          ["Go", "9alla3"]]
+            
+        case .travel: return [["Travel", "Safr"],
+                                  ["Suitcase", "Baliza"],
+                                  ["Bag", "Shanta"],
+                                  ["Custom", "Diwane"],
+                                  ["Airport", "Matar"],
+                                  ["Airplane", "Tyara"],
+                                  ["Arrivals", "Wsol"],
+                                  ["Departures", "Moghadirat"],
+                                  ["Clock", "Sa3a"],
+                                  ["Hour", "Sa3a"],
+                                  ["Delay", "Ta2jil"],
+                                  ["Seat(Airplane)", "Blasa"],
+                                  ["Ticket", "Billet"],
+                                  ["Reservation", "Reservation"],
+                                  ["Passport", "Passeporte"],
+                                  ["Far", "B3id"],
+                                  ["Close", "9rib"],
+                                  ["Toll", "L'khlas"],
+                                  ["Gas", "Mazot"],
+                                  ["Gas station", "Mahta dl mazot"],
+                                  ["Road", "tri9"]]
+            
+        case .medical: return [["Hospital", "Sbitar"],
+                               ["Ambulance", "Isa3f"],
+                               ["Medicine", "Dwa"],
+                               ["Doctor", "Tbib"],
+                               ["Hurt", "Drr"],
+                               ["My head hurts", "Drrni rassi"],
+                               ["Room", "Biit"],
+                               ["My feet hurt", "Drroni rjiliya"],
+                               ["Prescription", "Wsfa dl dwa"],
+                               ["Dizzy", "Daykh"],
+                               ["Nurse", "Mamarrida"],
+                               ["Heal", "Bra"],
+                               ["Fever", "Homma"],
+                               ["Cold", "Rwa7"],
+                               ["Get better!", "Allah ychafik"]]
+            
+        case .party_Festivities: return [["Party", "Hafla"],
+                                         ["Bar", "Bar"],
+                                         ["Dance", "ShTa7"],
+                                         ["To have fun", "Fowwj"],
+                                         ["Hungover(adj)", "Mtammn"],
+                                         ["Alcohol", "Shrab"],
+                                         ["Stage", "MnSa"]]
+            
+        case .weather: return [["Clouds", "S7aab"],
+                               ["Weather", "L'jow"],
+                               ["Hot", "Skhoon"],
+                               ["Cold", "Brd"],
+                               ["Rain", "Shta2"],
+                               ["Snow", "Tlj"],
+                               ["Nice(weatherwise)", "Zwiin"],
+                               ["Sunny", "Kayn l'chms"],
+                               ["Wind", "Rii7"],
+                               ["Fog", "Dabab"],
+                               ["Thunder", "Ra3d"],
+                               ["Summer", "Sayf"],
+                               ["Winter", "Shta2"],
+                               ["Fall", "L'kharif"],
+                               ["Spring", "L'rbii3"],
+                               ["Temperature", "Daraja"]]
+            
+        case .daysOfTheWeek: return [["Days", "Eyamat"],
+                                     ["Week", "Semana"],
+                                     ["Sunday", "L'7ad"],
+                                     ["Monday", "L'itniin"],
+                                     ["Tuesday", "L'tlata"],
+                                     ["Wednesday", "L'arab3"],
+                                     ["Thursday", "L'khamiis"],
+                                     ["Friday", "Joma3"],
+                                     ["Saturday", "Ssbt"],
+                                     ["Morning", "Sba7"],
+                                     ["Noon", "Zhuhr"],
+                                     ["Afternoon/Eve", "L'a3chiya"],
+                                     ["Night", "Lil"],
+                                     ["Early", "Bkri"],
+                                     ["Late", "Ma3ttl"]]
+            
+        case .possessions: return [["Of, Possess", "Diel"],
+                                   ["Mine", "Dieli"],
+                                   ["Yours", "Dielk"],
+                                   ["His", "Dielo"],
+                                   ["Hers", "Dielha"],
+                                   ["You alls", "Dielkoum"],
+                                   ["Ours", "Dielna"],
+                                   ["Theirs", "Dielhom"],
+                                   ["Of(plural form)", "Dieol"]]
         }
     }
     
@@ -300,6 +407,12 @@ extension Topics {
             case "Shopping": return Topics.shopping.words
             case "Useful Questions": return Topics.usefulQuestions.words
             case "Useful Expressions": return Topics.usefulExpressions.words
+            case "Travel": return Topics.travel.words
+            case "Medical": return Topics.medical.words
+            case "Party/Festivities": return Topics.party_Festivities.words
+            case "Weather": return Topics.weather.words
+            case "Days of the Week": return Topics.daysOfTheWeek.words
+            case "Possessions": return Topics.possessions.words
             default: return [[""],[""]]
         }
     }
