@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var detailWordList = [[String]]()
-    let viewDetails = [UIView]()
     var currentWord: String = ""
     var player: AVAudioPlayer?
     
@@ -29,47 +28,58 @@ class DetailViewController: UIViewController {
         
         scrollView.isPagingEnabled = true
         setupScrollView()
-        scrollView.setContentOffset(currentTranslation(), animated: false)
+        scrollView.setContentOffset(selectedCard(), animated: false)
     }
     
     // MARK: - Views Setup
     
     func setupScrollView() {
         
-        let endNum = detailWordList.count - 1
+        let numberOfTerms = detailWordList.count - 1
         var totalWidth:CGFloat = 0
         
-        for index in 0...endNum {
+        for index in 0...numberOfTerms {
 
-            let newView = setupSubview(totalWidth)
+            let newView = setupSubview(totalWidth, termNumber: index)
             
             addEnglishTrans(index, currentView: newView)
             addArabicTrans(index, currentView: newView)
             addVoiceButton(arabicIndex: index, currentView: newView)
             scrollView.addSubview(newView)
+            
             totalWidth += scrollView.bounds.size.width
         }
         scrollView.contentSize = CGSize(width: totalWidth, height: scrollView.bounds.size.height)
     }
     
-    func setupSubview(_ totalWidth: CGFloat) -> UIView {
-        let newView = UIView()
-        newView.frame.size.width = scrollView.frame.size.width - 60
-        newView.frame.size.height = scrollView.frame.size.height - 100
-        newView.center = CGPoint(x: scrollView.frame.size.width / 2 + totalWidth, y: scrollView.frame.size.height / 2);
-
-        newView.backgroundColor = UIColor.white
-        newView.layer.shadowOpacity = 0.5
-        return newView
+    
+    
+    
+    func setupSubview(_ totalWidth: CGFloat, termNumber: Int) -> UIView {
+        let termCard = UIView()
+        termCard.frame.size.width = scrollView.frame.size.width - 100
+        termCard.frame.size.height = scrollView.frame.size.height - 130
+        
+        if totalWidth != 0.0 {
+            termCard.center = CGPoint(x: (scrollView.frame.size.width / 2 + totalWidth), y: scrollView.frame.size.height / 2)
+        } else {
+            termCard.center = CGPoint(x: (scrollView.frame.size.width / 2 + totalWidth) , y: scrollView.frame.size.height / 2)
+        }
+        termCard.backgroundColor = UIColor.white
+        termCard.layer.shadowOpacity = 0.5
+        return termCard
     }
     
+    
+    
     // Func for when going directly to the word that was clicked from the DetailsTableView
-    func currentTranslation() -> CGPoint{
+    func selectedCard() -> CGPoint{
         var x = 0
         for i in detailWordList {
             if (i[0] == currentWord) {
-                let y = (scrollView.contentSize.width / CGFloat(detailWordList.count)) * CGFloat(x)
-                let curPoint: CGPoint = CGPoint(x: y, y: 0)
+                let cardPositionOnSuperview = ((scrollView.contentSize.width / CGFloat(detailWordList.count)) * CGFloat(x))
+                
+                let curPoint: CGPoint = CGPoint(x: cardPositionOnSuperview, y: 0)
                 return curPoint
             }
             x += 1
@@ -130,8 +140,10 @@ class DetailViewController: UIViewController {
         if let path = Bundle.main.path(forResource: getSoundString(arWord: arabicWord), ofType: "m4a"){
             voiceURL = URL(fileURLWithPath: path)
         } else {
-            let path = Bundle.main.path(forResource: "Silence", ofType: "m4a")!
-            voiceURL = URL(fileURLWithPath: path)
+            voiceURL = URL(fileURLWithPath: Bundle.main.path(forResource: "Silence", ofType: "m4a")!)
+            
+            //let path = Bundle.main.path(forResource: "Silence", ofType: "m4a")!
+            //voiceURL = URL(fileURLWithPath: urlx)
         }
         
         do {

@@ -115,7 +115,7 @@ extension Topics {
                              ["Floor", "Ard"],
                              ["Wall", "HayT"],
                              ["Kitchen", "Cuzina"],
-                             ["Bathroom", "Banyo/L\'ammam"],
+                             ["Bathroom", "Banyo/L\'hammam"],
                              ["Shower", "Douche"],
                              ["Refrigerator", "Tllaja"],
                              ["Table", "Tabla"],
@@ -323,7 +323,7 @@ extension Topics {
                                   ["Toll", "L'khlas"],
                                   ["Gas", "Mazot"],
                                   ["Gas station", "Mahta dl mazot"],
-                                  ["Road", "tri9"]]
+                                  ["Road", "Tri9"]]
             
         case .medical: return [["Hospital", "Sbitar"],
                                ["Ambulance", "Isa3f"],
@@ -332,14 +332,14 @@ extension Topics {
                                ["Hurt", "Drr"],
                                ["My head hurts", "Drrni rassi"],
                                ["Room", "Biit"],
-                               ["My feet hurt", "Drroni rjiliya"],
+                               ["My feet hurt", "Drroni rjliya"],
                                ["Prescription", "Wsfa dl dwa"],
                                ["Dizzy", "Daykh"],
                                ["Nurse", "Mamarrida"],
                                ["Heal", "Bra"],
                                ["Fever", "Homma"],
                                ["Cold", "Rwa7"],
-                               ["Get better!", "Allah ychafik"]]
+                               ["Get better!", "Allah ychafik!"]]
             
         case .party_Festivities: return [["Party", "Hafla"],
                                          ["Bar", "Bar"],

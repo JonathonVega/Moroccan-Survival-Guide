@@ -16,6 +16,88 @@
 		9C201D4F1D73B60C00C03EDB /* SectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C201D4E1D73B60C00C03EDB /* SectionsTableViewCell.swift */; };
 		9C201D511D73BF1300C03EDB /* MoroccanGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */; };
 		9C201D531D74AA1B00C03EDB /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C201D521D74AA1B00C03EDB /* DetailsTableViewCell.swift */; };
+		9C210E191E57AD2C00E9D3CE /* 9rib.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E051E57AD2C00E9D3CE /* 9rib.m4a */; };
+		9C210E1A1E57AD2C00E9D3CE /* B3id.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E061E57AD2C00E9D3CE /* B3id.m4a */; };
+		9C210E1B1E57AD2C00E9D3CE /* Baliza.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E071E57AD2C00E9D3CE /* Baliza.m4a */; };
+		9C210E1C1E57AD2C00E9D3CE /* Billet.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E081E57AD2C00E9D3CE /* Billet.m4a */; };
+		9C210E1D1E57AD2C00E9D3CE /* Blasa.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E091E57AD2C00E9D3CE /* Blasa.m4a */; };
+		9C210E1E1E57AD2C00E9D3CE /* Diwane.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E0A1E57AD2C00E9D3CE /* Diwane.m4a */; };
+		9C210E1F1E57AD2C00E9D3CE /* L'khlas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E0B1E57AD2C00E9D3CE /* L'khlas.m4a */; };
+		9C210E201E57AD2C00E9D3CE /* Mahta dl mazot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E0C1E57AD2C00E9D3CE /* Mahta dl mazot.m4a */; };
+		9C210E211E57AD2C00E9D3CE /* Matar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E0D1E57AD2C00E9D3CE /* Matar.m4a */; };
+		9C210E221E57AD2C00E9D3CE /* Mazot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E0E1E57AD2C00E9D3CE /* Mazot.m4a */; };
+		9C210E231E57AD2C00E9D3CE /* Moghadirat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E0F1E57AD2C00E9D3CE /* Moghadirat.m4a */; };
+		9C210E241E57AD2C00E9D3CE /* Passeporte.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E101E57AD2C00E9D3CE /* Passeporte.m4a */; };
+		9C210E251E57AD2C00E9D3CE /* Reservation.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E111E57AD2C00E9D3CE /* Reservation.m4a */; };
+		9C210E261E57AD2C00E9D3CE /* Sa3a.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E121E57AD2C00E9D3CE /* Sa3a.m4a */; };
+		9C210E271E57AD2C00E9D3CE /* Safr.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E131E57AD2C00E9D3CE /* Safr.m4a */; };
+		9C210E281E57AD2C00E9D3CE /* Shanta.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E141E57AD2C00E9D3CE /* Shanta.m4a */; };
+		9C210E291E57AD2C00E9D3CE /* Ta2jil.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E151E57AD2C00E9D3CE /* Ta2jil.m4a */; };
+		9C210E2A1E57AD2C00E9D3CE /* Tri9.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E161E57AD2C00E9D3CE /* Tri9.m4a */; };
+		9C210E2B1E57AD2C00E9D3CE /* Tyara.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E171E57AD2C00E9D3CE /* Tyara.m4a */; };
+		9C210E2C1E57AD2C00E9D3CE /* Wsol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E181E57AD2C00E9D3CE /* Wsol.m4a */; };
+		9C210E3D1E57AD7700E9D3CE /* Allah ychafik!.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E2E1E57AD7700E9D3CE /* Allah ychafik!.m4a */; };
+		9C210E3E1E57AD7700E9D3CE /* Biit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E2F1E57AD7700E9D3CE /* Biit.m4a */; };
+		9C210E3F1E57AD7700E9D3CE /* Bra.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E301E57AD7700E9D3CE /* Bra.m4a */; };
+		9C210E401E57AD7700E9D3CE /* Daykh.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E311E57AD7700E9D3CE /* Daykh.m4a */; };
+		9C210E411E57AD7700E9D3CE /* Drr.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E321E57AD7700E9D3CE /* Drr.m4a */; };
+		9C210E421E57AD7700E9D3CE /* Drrni rassi.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E331E57AD7700E9D3CE /* Drrni rassi.m4a */; };
+		9C210E431E57AD7700E9D3CE /* Drroni rjliya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E341E57AD7700E9D3CE /* Drroni rjliya.m4a */; };
+		9C210E441E57AD7700E9D3CE /* Dwa.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E351E57AD7700E9D3CE /* Dwa.m4a */; };
+		9C210E451E57AD7700E9D3CE /* Fermliya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E361E57AD7700E9D3CE /* Fermliya.m4a */; };
+		9C210E461E57AD7700E9D3CE /* Homma.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E371E57AD7700E9D3CE /* Homma.m4a */; };
+		9C210E471E57AD7700E9D3CE /* Isa3f.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E381E57AD7700E9D3CE /* Isa3f.m4a */; };
+		9C210E481E57AD7700E9D3CE /* Rwa7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E391E57AD7700E9D3CE /* Rwa7.m4a */; };
+		9C210E491E57AD7700E9D3CE /* Sbitar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E3A1E57AD7700E9D3CE /* Sbitar.m4a */; };
+		9C210E4A1E57AD7700E9D3CE /* Tbib.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E3B1E57AD7700E9D3CE /* Tbib.m4a */; };
+		9C210E4B1E57AD7700E9D3CE /* Wsfa dl dwa.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E3C1E57AD7700E9D3CE /* Wsfa dl dwa.m4a */; };
+		9C210E551E57ADAA00E9D3CE /* 7shd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E4D1E57ADAA00E9D3CE /* 7shd.m4a */; };
+		9C210E561E57ADAA00E9D3CE /* Bar.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E4E1E57ADAA00E9D3CE /* Bar.m4a */; };
+		9C210E571E57ADAA00E9D3CE /* Fowwj.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E4F1E57ADAA00E9D3CE /* Fowwj.m4a */; };
+		9C210E581E57ADAA00E9D3CE /* Hafla.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E501E57ADAA00E9D3CE /* Hafla.m4a */; };
+		9C210E591E57ADAA00E9D3CE /* MnSa.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E511E57ADAA00E9D3CE /* MnSa.m4a */; };
+		9C210E5A1E57ADAA00E9D3CE /* Mtammn.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E521E57ADAA00E9D3CE /* Mtammn.m4a */; };
+		9C210E5B1E57ADAA00E9D3CE /* Shrab.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E531E57ADAA00E9D3CE /* Shrab.m4a */; };
+		9C210E5C1E57ADAA00E9D3CE /* ShTa7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E541E57ADAA00E9D3CE /* ShTa7.m4a */; };
+		9C210E6D1E57ADDD00E9D3CE /* Brd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E5E1E57ADDD00E9D3CE /* Brd.m4a */; };
+		9C210E6E1E57ADDD00E9D3CE /* Dabab.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E5F1E57ADDD00E9D3CE /* Dabab.m4a */; };
+		9C210E6F1E57ADDD00E9D3CE /* Daraja.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E601E57ADDD00E9D3CE /* Daraja.m4a */; };
+		9C210E701E57ADDD00E9D3CE /* Kayn l'chms.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E611E57ADDD00E9D3CE /* Kayn l'chms.m4a */; };
+		9C210E711E57ADDD00E9D3CE /* L'jow.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E621E57ADDD00E9D3CE /* L'jow.m4a */; };
+		9C210E721E57ADDD00E9D3CE /* L'kharif.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E631E57ADDD00E9D3CE /* L'kharif.m4a */; };
+		9C210E731E57ADDD00E9D3CE /* L'rbii3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E641E57ADDD00E9D3CE /* L'rbii3.m4a */; };
+		9C210E741E57ADDD00E9D3CE /* Ra3d.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E651E57ADDD00E9D3CE /* Ra3d.m4a */; };
+		9C210E751E57ADDD00E9D3CE /* Rii7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E661E57ADDD00E9D3CE /* Rii7.m4a */; };
+		9C210E761E57ADDD00E9D3CE /* S7aab.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E671E57ADDD00E9D3CE /* S7aab.m4a */; };
+		9C210E771E57ADDD00E9D3CE /* Sayf.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E681E57ADDD00E9D3CE /* Sayf.m4a */; };
+		9C210E781E57ADDD00E9D3CE /* Shta2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E691E57ADDD00E9D3CE /* Shta2.m4a */; };
+		9C210E791E57ADDD00E9D3CE /* Skhoon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E6A1E57ADDD00E9D3CE /* Skhoon.m4a */; };
+		9C210E7A1E57ADDD00E9D3CE /* Tlj.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E6B1E57ADDD00E9D3CE /* Tlj.m4a */; };
+		9C210E7B1E57ADDD00E9D3CE /* Zwiin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E6C1E57ADDD00E9D3CE /* Zwiin.m4a */; };
+		9C210E8C1E57ADEE00E9D3CE /* Bkri.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E7D1E57ADEE00E9D3CE /* Bkri.m4a */; };
+		9C210E8D1E57ADEE00E9D3CE /* Eyamat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E7E1E57ADEE00E9D3CE /* Eyamat.m4a */; };
+		9C210E8E1E57ADEE00E9D3CE /* Joma3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E7F1E57ADEE00E9D3CE /* Joma3.m4a */; };
+		9C210E8F1E57ADEE00E9D3CE /* L'7ad.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E801E57ADEE00E9D3CE /* L'7ad.m4a */; };
+		9C210E901E57ADEE00E9D3CE /* L'a3chiya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E811E57ADEE00E9D3CE /* L'a3chiya.m4a */; };
+		9C210E911E57ADEE00E9D3CE /* L'arab3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E821E57ADEE00E9D3CE /* L'arab3.m4a */; };
+		9C210E921E57ADEE00E9D3CE /* L'itniin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E831E57ADEE00E9D3CE /* L'itniin.m4a */; };
+		9C210E931E57ADEE00E9D3CE /* L'khamiis.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E841E57ADEE00E9D3CE /* L'khamiis.m4a */; };
+		9C210E941E57ADEE00E9D3CE /* L'tlata.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E851E57ADEE00E9D3CE /* L'tlata.m4a */; };
+		9C210E951E57ADEE00E9D3CE /* Lil.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E861E57ADEE00E9D3CE /* Lil.m4a */; };
+		9C210E961E57ADEE00E9D3CE /* Ma3ttl.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E871E57ADEE00E9D3CE /* Ma3ttl.m4a */; };
+		9C210E971E57ADEE00E9D3CE /* Sba7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E881E57ADEE00E9D3CE /* Sba7.m4a */; };
+		9C210E981E57ADEE00E9D3CE /* Semana.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E891E57ADEE00E9D3CE /* Semana.m4a */; };
+		9C210E991E57ADEE00E9D3CE /* Ssbt.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E8A1E57ADEE00E9D3CE /* Ssbt.m4a */; };
+		9C210E9A1E57ADEF00E9D3CE /* Zhuhr.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E8B1E57ADEE00E9D3CE /* Zhuhr.m4a */; };
+		9C210EA51E57AE2500E9D3CE /* Diel.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E9C1E57AE2500E9D3CE /* Diel.m4a */; };
+		9C210EA61E57AE2500E9D3CE /* Dielha.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E9D1E57AE2500E9D3CE /* Dielha.m4a */; };
+		9C210EA71E57AE2500E9D3CE /* Dielhom.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E9E1E57AE2500E9D3CE /* Dielhom.m4a */; };
+		9C210EA81E57AE2500E9D3CE /* Dieli.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210E9F1E57AE2500E9D3CE /* Dieli.m4a */; };
+		9C210EA91E57AE2500E9D3CE /* Dielk.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210EA01E57AE2500E9D3CE /* Dielk.m4a */; };
+		9C210EAA1E57AE2500E9D3CE /* Dielkoum.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210EA11E57AE2500E9D3CE /* Dielkoum.m4a */; };
+		9C210EAB1E57AE2500E9D3CE /* Dielna.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210EA21E57AE2500E9D3CE /* Dielna.m4a */; };
+		9C210EAC1E57AE2500E9D3CE /* Dielo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210EA31E57AE2500E9D3CE /* Dielo.m4a */; };
+		9C210EAD1E57AE2500E9D3CE /* Dieol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C210EA41E57AE2500E9D3CE /* Dieol.m4a */; };
 		9C24B2F21DB7FA9A001391F7 /* 9ariya.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2141DB7FA9A001391F7 /* 9ariya.m4a */; };
 		9C24B2F31DB7FA9A001391F7 /* Atlasi.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2151DB7FA9A001391F7 /* Atlasi.m4a */; };
 		9C24B2F41DB7FA9A001391F7 /* Blda.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2161DB7FA9A001391F7 /* Blda.m4a */; };
@@ -243,6 +325,88 @@
 		9C201D4E1D73B60C00C03EDB /* SectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsTableViewCell.swift; sourceTree = "<group>"; };
 		9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoroccanGuide.swift; sourceTree = "<group>"; };
 		9C201D521D74AA1B00C03EDB /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		9C210E051E57AD2C00E9D3CE /* 9rib.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9rib.m4a; sourceTree = "<group>"; };
+		9C210E061E57AD2C00E9D3CE /* B3id.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = B3id.m4a; sourceTree = "<group>"; };
+		9C210E071E57AD2C00E9D3CE /* Baliza.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Baliza.m4a; sourceTree = "<group>"; };
+		9C210E081E57AD2C00E9D3CE /* Billet.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Billet.m4a; sourceTree = "<group>"; };
+		9C210E091E57AD2C00E9D3CE /* Blasa.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Blasa.m4a; sourceTree = "<group>"; };
+		9C210E0A1E57AD2C00E9D3CE /* Diwane.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Diwane.m4a; sourceTree = "<group>"; };
+		9C210E0B1E57AD2C00E9D3CE /* L'khlas.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'khlas.m4a"; sourceTree = "<group>"; };
+		9C210E0C1E57AD2C00E9D3CE /* Mahta dl mazot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mahta dl mazot.m4a"; sourceTree = "<group>"; };
+		9C210E0D1E57AD2C00E9D3CE /* Matar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Matar.m4a; sourceTree = "<group>"; };
+		9C210E0E1E57AD2C00E9D3CE /* Mazot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mazot.m4a; sourceTree = "<group>"; };
+		9C210E0F1E57AD2C00E9D3CE /* Moghadirat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Moghadirat.m4a; sourceTree = "<group>"; };
+		9C210E101E57AD2C00E9D3CE /* Passeporte.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Passeporte.m4a; sourceTree = "<group>"; };
+		9C210E111E57AD2C00E9D3CE /* Reservation.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Reservation.m4a; sourceTree = "<group>"; };
+		9C210E121E57AD2C00E9D3CE /* Sa3a.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sa3a.m4a; sourceTree = "<group>"; };
+		9C210E131E57AD2C00E9D3CE /* Safr.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Safr.m4a; sourceTree = "<group>"; };
+		9C210E141E57AD2C00E9D3CE /* Shanta.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shanta.m4a; sourceTree = "<group>"; };
+		9C210E151E57AD2C00E9D3CE /* Ta2jil.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ta2jil.m4a; sourceTree = "<group>"; };
+		9C210E161E57AD2C00E9D3CE /* Tri9.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tri9.m4a; sourceTree = "<group>"; };
+		9C210E171E57AD2C00E9D3CE /* Tyara.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tyara.m4a; sourceTree = "<group>"; };
+		9C210E181E57AD2C00E9D3CE /* Wsol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wsol.m4a; sourceTree = "<group>"; };
+		9C210E2E1E57AD7700E9D3CE /* Allah ychafik!.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allah ychafik!.m4a"; sourceTree = "<group>"; };
+		9C210E2F1E57AD7700E9D3CE /* Biit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Biit.m4a; sourceTree = "<group>"; };
+		9C210E301E57AD7700E9D3CE /* Bra.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bra.m4a; sourceTree = "<group>"; };
+		9C210E311E57AD7700E9D3CE /* Daykh.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Daykh.m4a; sourceTree = "<group>"; };
+		9C210E321E57AD7700E9D3CE /* Drr.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Drr.m4a; sourceTree = "<group>"; };
+		9C210E331E57AD7700E9D3CE /* Drrni rassi.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Drrni rassi.m4a"; sourceTree = "<group>"; };
+		9C210E341E57AD7700E9D3CE /* Drroni rjliya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Drroni rjliya.m4a"; sourceTree = "<group>"; };
+		9C210E351E57AD7700E9D3CE /* Dwa.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dwa.m4a; sourceTree = "<group>"; };
+		9C210E361E57AD7700E9D3CE /* Fermliya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fermliya.m4a; sourceTree = "<group>"; };
+		9C210E371E57AD7700E9D3CE /* Homma.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Homma.m4a; sourceTree = "<group>"; };
+		9C210E381E57AD7700E9D3CE /* Isa3f.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Isa3f.m4a; sourceTree = "<group>"; };
+		9C210E391E57AD7700E9D3CE /* Rwa7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rwa7.m4a; sourceTree = "<group>"; };
+		9C210E3A1E57AD7700E9D3CE /* Sbitar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sbitar.m4a; sourceTree = "<group>"; };
+		9C210E3B1E57AD7700E9D3CE /* Tbib.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tbib.m4a; sourceTree = "<group>"; };
+		9C210E3C1E57AD7700E9D3CE /* Wsfa dl dwa.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Wsfa dl dwa.m4a"; sourceTree = "<group>"; };
+		9C210E4D1E57ADAA00E9D3CE /* 7shd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 7shd.m4a; sourceTree = "<group>"; };
+		9C210E4E1E57ADAA00E9D3CE /* Bar.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bar.m4a; sourceTree = "<group>"; };
+		9C210E4F1E57ADAA00E9D3CE /* Fowwj.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fowwj.m4a; sourceTree = "<group>"; };
+		9C210E501E57ADAA00E9D3CE /* Hafla.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hafla.m4a; sourceTree = "<group>"; };
+		9C210E511E57ADAA00E9D3CE /* MnSa.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = MnSa.m4a; sourceTree = "<group>"; };
+		9C210E521E57ADAA00E9D3CE /* Mtammn.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mtammn.m4a; sourceTree = "<group>"; };
+		9C210E531E57ADAA00E9D3CE /* Shrab.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shrab.m4a; sourceTree = "<group>"; };
+		9C210E541E57ADAA00E9D3CE /* ShTa7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShTa7.m4a; sourceTree = "<group>"; };
+		9C210E5E1E57ADDD00E9D3CE /* Brd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brd.m4a; sourceTree = "<group>"; };
+		9C210E5F1E57ADDD00E9D3CE /* Dabab.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dabab.m4a; sourceTree = "<group>"; };
+		9C210E601E57ADDD00E9D3CE /* Daraja.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Daraja.m4a; sourceTree = "<group>"; };
+		9C210E611E57ADDD00E9D3CE /* Kayn l'chms.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kayn l'chms.m4a"; sourceTree = "<group>"; };
+		9C210E621E57ADDD00E9D3CE /* L'jow.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'jow.m4a"; sourceTree = "<group>"; };
+		9C210E631E57ADDD00E9D3CE /* L'kharif.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'kharif.m4a"; sourceTree = "<group>"; };
+		9C210E641E57ADDD00E9D3CE /* L'rbii3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'rbii3.m4a"; sourceTree = "<group>"; };
+		9C210E651E57ADDD00E9D3CE /* Ra3d.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ra3d.m4a; sourceTree = "<group>"; };
+		9C210E661E57ADDD00E9D3CE /* Rii7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rii7.m4a; sourceTree = "<group>"; };
+		9C210E671E57ADDD00E9D3CE /* S7aab.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = S7aab.m4a; sourceTree = "<group>"; };
+		9C210E681E57ADDD00E9D3CE /* Sayf.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sayf.m4a; sourceTree = "<group>"; };
+		9C210E691E57ADDD00E9D3CE /* Shta2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shta2.m4a; sourceTree = "<group>"; };
+		9C210E6A1E57ADDD00E9D3CE /* Skhoon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Skhoon.m4a; sourceTree = "<group>"; };
+		9C210E6B1E57ADDD00E9D3CE /* Tlj.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tlj.m4a; sourceTree = "<group>"; };
+		9C210E6C1E57ADDD00E9D3CE /* Zwiin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zwiin.m4a; sourceTree = "<group>"; };
+		9C210E7D1E57ADEE00E9D3CE /* Bkri.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bkri.m4a; sourceTree = "<group>"; };
+		9C210E7E1E57ADEE00E9D3CE /* Eyamat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Eyamat.m4a; sourceTree = "<group>"; };
+		9C210E7F1E57ADEE00E9D3CE /* Joma3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Joma3.m4a; sourceTree = "<group>"; };
+		9C210E801E57ADEE00E9D3CE /* L'7ad.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'7ad.m4a"; sourceTree = "<group>"; };
+		9C210E811E57ADEE00E9D3CE /* L'a3chiya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'a3chiya.m4a"; sourceTree = "<group>"; };
+		9C210E821E57ADEE00E9D3CE /* L'arab3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'arab3.m4a"; sourceTree = "<group>"; };
+		9C210E831E57ADEE00E9D3CE /* L'itniin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'itniin.m4a"; sourceTree = "<group>"; };
+		9C210E841E57ADEE00E9D3CE /* L'khamiis.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'khamiis.m4a"; sourceTree = "<group>"; };
+		9C210E851E57ADEE00E9D3CE /* L'tlata.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "L'tlata.m4a"; sourceTree = "<group>"; };
+		9C210E861E57ADEE00E9D3CE /* Lil.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lil.m4a; sourceTree = "<group>"; };
+		9C210E871E57ADEE00E9D3CE /* Ma3ttl.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ma3ttl.m4a; sourceTree = "<group>"; };
+		9C210E881E57ADEE00E9D3CE /* Sba7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sba7.m4a; sourceTree = "<group>"; };
+		9C210E891E57ADEE00E9D3CE /* Semana.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Semana.m4a; sourceTree = "<group>"; };
+		9C210E8A1E57ADEE00E9D3CE /* Ssbt.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ssbt.m4a; sourceTree = "<group>"; };
+		9C210E8B1E57ADEE00E9D3CE /* Zhuhr.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zhuhr.m4a; sourceTree = "<group>"; };
+		9C210E9C1E57AE2500E9D3CE /* Diel.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Diel.m4a; sourceTree = "<group>"; };
+		9C210E9D1E57AE2500E9D3CE /* Dielha.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dielha.m4a; sourceTree = "<group>"; };
+		9C210E9E1E57AE2500E9D3CE /* Dielhom.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dielhom.m4a; sourceTree = "<group>"; };
+		9C210E9F1E57AE2500E9D3CE /* Dieli.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dieli.m4a; sourceTree = "<group>"; };
+		9C210EA01E57AE2500E9D3CE /* Dielk.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dielk.m4a; sourceTree = "<group>"; };
+		9C210EA11E57AE2500E9D3CE /* Dielkoum.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dielkoum.m4a; sourceTree = "<group>"; };
+		9C210EA21E57AE2500E9D3CE /* Dielna.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dielna.m4a; sourceTree = "<group>"; };
+		9C210EA31E57AE2500E9D3CE /* Dielo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dielo.m4a; sourceTree = "<group>"; };
+		9C210EA41E57AE2500E9D3CE /* Dieol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dieol.m4a; sourceTree = "<group>"; };
 		9C24B2141DB7FA9A001391F7 /* 9ariya.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9ariya.m4a; sourceTree = "<group>"; };
 		9C24B2151DB7FA9A001391F7 /* Atlasi.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Atlasi.m4a; sourceTree = "<group>"; };
 		9C24B2161DB7FA9A001391F7 /* Blda.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Blda.m4a; sourceTree = "<group>"; };
@@ -513,9 +677,139 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9C210E041E57AD2C00E9D3CE /* Travel */ = {
+			isa = PBXGroup;
+			children = (
+				9C210E051E57AD2C00E9D3CE /* 9rib.m4a */,
+				9C210E061E57AD2C00E9D3CE /* B3id.m4a */,
+				9C210E071E57AD2C00E9D3CE /* Baliza.m4a */,
+				9C210E081E57AD2C00E9D3CE /* Billet.m4a */,
+				9C210E091E57AD2C00E9D3CE /* Blasa.m4a */,
+				9C210E0A1E57AD2C00E9D3CE /* Diwane.m4a */,
+				9C210E0B1E57AD2C00E9D3CE /* L'khlas.m4a */,
+				9C210E0C1E57AD2C00E9D3CE /* Mahta dl mazot.m4a */,
+				9C210E0D1E57AD2C00E9D3CE /* Matar.m4a */,
+				9C210E0E1E57AD2C00E9D3CE /* Mazot.m4a */,
+				9C210E0F1E57AD2C00E9D3CE /* Moghadirat.m4a */,
+				9C210E101E57AD2C00E9D3CE /* Passeporte.m4a */,
+				9C210E111E57AD2C00E9D3CE /* Reservation.m4a */,
+				9C210E121E57AD2C00E9D3CE /* Sa3a.m4a */,
+				9C210E131E57AD2C00E9D3CE /* Safr.m4a */,
+				9C210E141E57AD2C00E9D3CE /* Shanta.m4a */,
+				9C210E151E57AD2C00E9D3CE /* Ta2jil.m4a */,
+				9C210E161E57AD2C00E9D3CE /* Tri9.m4a */,
+				9C210E171E57AD2C00E9D3CE /* Tyara.m4a */,
+				9C210E181E57AD2C00E9D3CE /* Wsol.m4a */,
+			);
+			path = Travel;
+			sourceTree = "<group>";
+		};
+		9C210E2D1E57AD7700E9D3CE /* Medical */ = {
+			isa = PBXGroup;
+			children = (
+				9C210E2E1E57AD7700E9D3CE /* Allah ychafik!.m4a */,
+				9C210E2F1E57AD7700E9D3CE /* Biit.m4a */,
+				9C210E301E57AD7700E9D3CE /* Bra.m4a */,
+				9C210E311E57AD7700E9D3CE /* Daykh.m4a */,
+				9C210E321E57AD7700E9D3CE /* Drr.m4a */,
+				9C210E331E57AD7700E9D3CE /* Drrni rassi.m4a */,
+				9C210E341E57AD7700E9D3CE /* Drroni rjliya.m4a */,
+				9C210E351E57AD7700E9D3CE /* Dwa.m4a */,
+				9C210E361E57AD7700E9D3CE /* Fermliya.m4a */,
+				9C210E371E57AD7700E9D3CE /* Homma.m4a */,
+				9C210E381E57AD7700E9D3CE /* Isa3f.m4a */,
+				9C210E391E57AD7700E9D3CE /* Rwa7.m4a */,
+				9C210E3A1E57AD7700E9D3CE /* Sbitar.m4a */,
+				9C210E3B1E57AD7700E9D3CE /* Tbib.m4a */,
+				9C210E3C1E57AD7700E9D3CE /* Wsfa dl dwa.m4a */,
+			);
+			path = Medical;
+			sourceTree = "<group>";
+		};
+		9C210E4C1E57ADAA00E9D3CE /* Party:Festivities */ = {
+			isa = PBXGroup;
+			children = (
+				9C210E4D1E57ADAA00E9D3CE /* 7shd.m4a */,
+				9C210E4E1E57ADAA00E9D3CE /* Bar.m4a */,
+				9C210E4F1E57ADAA00E9D3CE /* Fowwj.m4a */,
+				9C210E501E57ADAA00E9D3CE /* Hafla.m4a */,
+				9C210E511E57ADAA00E9D3CE /* MnSa.m4a */,
+				9C210E521E57ADAA00E9D3CE /* Mtammn.m4a */,
+				9C210E531E57ADAA00E9D3CE /* Shrab.m4a */,
+				9C210E541E57ADAA00E9D3CE /* ShTa7.m4a */,
+			);
+			path = "Party:Festivities";
+			sourceTree = "<group>";
+		};
+		9C210E5D1E57ADDD00E9D3CE /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				9C210E5E1E57ADDD00E9D3CE /* Brd.m4a */,
+				9C210E5F1E57ADDD00E9D3CE /* Dabab.m4a */,
+				9C210E601E57ADDD00E9D3CE /* Daraja.m4a */,
+				9C210E611E57ADDD00E9D3CE /* Kayn l'chms.m4a */,
+				9C210E621E57ADDD00E9D3CE /* L'jow.m4a */,
+				9C210E631E57ADDD00E9D3CE /* L'kharif.m4a */,
+				9C210E641E57ADDD00E9D3CE /* L'rbii3.m4a */,
+				9C210E651E57ADDD00E9D3CE /* Ra3d.m4a */,
+				9C210E661E57ADDD00E9D3CE /* Rii7.m4a */,
+				9C210E671E57ADDD00E9D3CE /* S7aab.m4a */,
+				9C210E681E57ADDD00E9D3CE /* Sayf.m4a */,
+				9C210E691E57ADDD00E9D3CE /* Shta2.m4a */,
+				9C210E6A1E57ADDD00E9D3CE /* Skhoon.m4a */,
+				9C210E6B1E57ADDD00E9D3CE /* Tlj.m4a */,
+				9C210E6C1E57ADDD00E9D3CE /* Zwiin.m4a */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		9C210E7C1E57ADEE00E9D3CE /* Days of the Week */ = {
+			isa = PBXGroup;
+			children = (
+				9C210E7D1E57ADEE00E9D3CE /* Bkri.m4a */,
+				9C210E7E1E57ADEE00E9D3CE /* Eyamat.m4a */,
+				9C210E7F1E57ADEE00E9D3CE /* Joma3.m4a */,
+				9C210E801E57ADEE00E9D3CE /* L'7ad.m4a */,
+				9C210E811E57ADEE00E9D3CE /* L'a3chiya.m4a */,
+				9C210E821E57ADEE00E9D3CE /* L'arab3.m4a */,
+				9C210E831E57ADEE00E9D3CE /* L'itniin.m4a */,
+				9C210E841E57ADEE00E9D3CE /* L'khamiis.m4a */,
+				9C210E851E57ADEE00E9D3CE /* L'tlata.m4a */,
+				9C210E861E57ADEE00E9D3CE /* Lil.m4a */,
+				9C210E871E57ADEE00E9D3CE /* Ma3ttl.m4a */,
+				9C210E881E57ADEE00E9D3CE /* Sba7.m4a */,
+				9C210E891E57ADEE00E9D3CE /* Semana.m4a */,
+				9C210E8A1E57ADEE00E9D3CE /* Ssbt.m4a */,
+				9C210E8B1E57ADEE00E9D3CE /* Zhuhr.m4a */,
+			);
+			path = "Days of the Week";
+			sourceTree = "<group>";
+		};
+		9C210E9B1E57AE2500E9D3CE /* Possessions */ = {
+			isa = PBXGroup;
+			children = (
+				9C210E9C1E57AE2500E9D3CE /* Diel.m4a */,
+				9C210E9D1E57AE2500E9D3CE /* Dielha.m4a */,
+				9C210E9E1E57AE2500E9D3CE /* Dielhom.m4a */,
+				9C210E9F1E57AE2500E9D3CE /* Dieli.m4a */,
+				9C210EA01E57AE2500E9D3CE /* Dielk.m4a */,
+				9C210EA11E57AE2500E9D3CE /* Dielkoum.m4a */,
+				9C210EA21E57AE2500E9D3CE /* Dielna.m4a */,
+				9C210EA31E57AE2500E9D3CE /* Dielo.m4a */,
+				9C210EA41E57AE2500E9D3CE /* Dieol.m4a */,
+			);
+			path = Possessions;
+			sourceTree = "<group>";
+		};
 		9C24B2121DB7FA9A001391F7 /* Words & Phrases */ = {
 			isa = PBXGroup;
 			children = (
+				9C210E9B1E57AE2500E9D3CE /* Possessions */,
+				9C210E7C1E57ADEE00E9D3CE /* Days of the Week */,
+				9C210E5D1E57ADDD00E9D3CE /* Weather */,
+				9C210E4C1E57ADAA00E9D3CE /* Party:Festivities */,
+				9C210E2D1E57AD7700E9D3CE /* Medical */,
+				9C210E041E57AD2C00E9D3CE /* Travel */,
 				9C24B2131DB7FA9A001391F7 /* Cities:Sites */,
 				9C24B2241DB7FA9A001391F7 /* Family */,
 				9C24B2381DB7FA9A001391F7 /* Food */,
@@ -882,6 +1176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C24B3B41DB7FA9B001391F7 /* 3alache.m4a in Resources */,
+				9C210EA61E57AE2500E9D3CE /* Dielha.m4a in Resources */,
 				9C24B3941DB7FA9B001391F7 /* MahTa d L'Tram.m4a in Resources */,
 				9C24B2F51DB7FA9A001391F7 /* Bled.m4a in Resources */,
 				9C24B3031DB7FA9A001391F7 /* 3amma.m4a in Resources */,
@@ -889,11 +1184,14 @@
 				9C24B3241DB7FA9A001391F7 /* Ristorant.m4a in Resources */,
 				9C24B3731DB7FA9B001391F7 /* Ayeh.m4a in Resources */,
 				9C24B3AD1DB7FA9B001391F7 /* La Chokr 3la Wajb.m4a in Resources */,
+				9C210E281E57AD2C00E9D3CE /* Shanta.m4a in Resources */,
 				9C24B35B1DB7FA9B001391F7 /* Milion.m4a in Resources */,
 				9C24B3A41DB7FA9B001391F7 /* Ba3d mnni.m4a in Resources */,
 				9C24B3161DB7FA9A001391F7 /* 9hiwa.m4a in Resources */,
 				9C24B3421DB7FA9B001391F7 /* Robini.m4a in Resources */,
+				9C210E991E57ADEE00E9D3CE /* Ssbt.m4a in Resources */,
 				9C24B3101DB7FA9A001391F7 /* Rajol.m4a in Resources */,
+				9C210E4A1E57AD7700E9D3CE /* Tbib.m4a in Resources */,
 				9C24B3011DB7FA9A001391F7 /* Wad.m4a in Resources */,
 				9C24B3041DB7FA9A001391F7 /* Bba.m4a in Resources */,
 				9C201D421D728E3600C03EDB /* LaunchScreen.storyboard in Resources */,
@@ -903,10 +1201,19 @@
 				9C24B3191DB7FA9A001391F7 /* Forschetta.m4a in Resources */,
 				9C24B3931DB7FA9B001391F7 /* La gare.m4a in Resources */,
 				9C24B2F21DB7FA9A001391F7 /* 9ariya.m4a in Resources */,
+				9C210E491E57AD7700E9D3CE /* Sbitar.m4a in Resources */,
+				9C210E481E57AD7700E9D3CE /* Rwa7.m4a in Resources */,
+				9C210E951E57ADEE00E9D3CE /* Lil.m4a in Resources */,
+				9C210E941E57ADEE00E9D3CE /* L'tlata.m4a in Resources */,
 				9C24B37B1DB7FA9B001391F7 /* Mojawharat.m4a in Resources */,
+				9C210EAB1E57AE2500E9D3CE /* Dielna.m4a in Resources */,
 				9C24B3171DB7FA9A001391F7 /* 9r3 d l'ma2.m4a in Resources */,
+				9C210E901E57ADEE00E9D3CE /* L'a3chiya.m4a in Resources */,
+				9C210E911E57ADEE00E9D3CE /* L'arab3.m4a in Resources */,
 				9C24B3481DB7FA9B001391F7 /* 100 dh.m4a in Resources */,
 				9C24B3911DB7FA9B001391F7 /* l'a3ssas.m4a in Resources */,
+				9C210E8C1E57ADEE00E9D3CE /* Bkri.m4a in Resources */,
+				9C210E961E57ADEE00E9D3CE /* Ma3ttl.m4a in Resources */,
 				9C24B3361DB7FA9A001391F7 /* Bab.m4a in Resources */,
 				9C24B3751DB7FA9B001391F7 /* Djellaba.m4a in Resources */,
 				9C24B37A1DB7FA9B001391F7 /* Medina.m4a in Resources */,
@@ -917,33 +1224,45 @@
 				9C24B3A51DB7FA9B001391F7 /* Barrani.m4a in Resources */,
 				9C24B33E1DB7FA9B001391F7 /* HayT.m4a in Resources */,
 				9C24B3381DB7FA9B001391F7 /* Cuzina.m4a in Resources */,
+				9C210E6D1E57ADDD00E9D3CE /* Brd.m4a in Resources */,
 				9C24B32F1DB7FA9A001391F7 /* Kolshee Bekheer.m4a in Resources */,
 				9C24B3A81DB7FA9B001391F7 /* Drrg a3liya dzalftk.m4a in Resources */,
 				9C24B3891DB7FA9B001391F7 /* Thaman.m4a in Resources */,
 				9C24B3C21DB7FA9B001391F7 /* Kidayr...(name).m4a in Resources */,
+				9C210E591E57ADAA00E9D3CE /* MnSa.m4a in Resources */,
 				9C24B3351DB7FA9A001391F7 /* Ard.m4a in Resources */,
 				9C24B2FE1DB7FA9A001391F7 /* Madina.m4a in Resources */,
 				9C24B3341DB7FA9A001391F7 /* Salamu 3alikum.m4a in Resources */,
+				9C210E3D1E57AD7700E9D3CE /* Allah ychafik!.m4a in Resources */,
 				9C24B38F1DB7FA9B001391F7 /* Dar.m4a in Resources */,
 				9C24B2F31DB7FA9A001391F7 /* Atlasi.m4a in Resources */,
 				9C24B3561DB7FA9B001391F7 /* Khamsa.m4a in Resources */,
+				9C210E211E57AD2C00E9D3CE /* Matar.m4a in Resources */,
 				9C24B32A1DB7FA9A001391F7 /* Tbsil.m4a in Resources */,
 				9C24B3301DB7FA9A001391F7 /* Kolshee Labas.m4a in Resources */,
 				9C24B30B1DB7FA9A001391F7 /* Khateeb.m4a in Resources */,
 				9C24B3211DB7FA9A001391F7 /* Mos.m4a in Resources */,
 				9C24B3201DB7FA9A001391F7 /* Makla.m4a in Resources */,
+				9C210E221E57AD2C00E9D3CE /* Mazot.m4a in Resources */,
+				9C210E261E57AD2C00E9D3CE /* Sa3a.m4a in Resources */,
+				9C210E8F1E57ADEE00E9D3CE /* L'7ad.m4a in Resources */,
 				9C24B39A1DB7FA9B001391F7 /* Ssifara.m4a in Resources */,
 				9C24B32B1DB7FA9A001391F7 /* Ash Khabarak.m4a in Resources */,
+				9C210EA51E57AE2500E9D3CE /* Diel.m4a in Resources */,
 				9C24B3651DB7FA9B001391F7 /* Tlata.m4a in Resources */,
 				9C24B39C1DB7FA9B001391F7 /* Tomobil.m4a in Resources */,
 				9C24B3471DB7FA9B001391F7 /* 10 dh.m4a in Resources */,
 				9C24B3781DB7FA9B001391F7 /* La.m4a in Resources */,
 				9C24B3A01DB7FA9B001391F7 /* 3achran.m4a in Resources */,
 				9C24B3AF1DB7FA9B001391F7 /* Satta.m4a in Resources */,
+				9C210E8D1E57ADEE00E9D3CE /* Eyamat.m4a in Resources */,
 				9C24B3221DB7FA9A001391F7 /* Okla Khafifa.m4a in Resources */,
+				9C210E231E57AD2C00E9D3CE /* Moghadirat.m4a in Resources */,
 				9C24B3C01DB7FA9B001391F7 /* Imta.m4a in Resources */,
+				9C210E201E57AD2C00E9D3CE /* Mahta dl mazot.m4a in Resources */,
 				9C24B3441DB7FA9B001391F7 /* Tabla.m4a in Resources */,
 				9C24B3491DB7FA9B001391F7 /* 1000 dh.m4a in Resources */,
+				9C210E5C1E57ADAA00E9D3CE /* ShTa7.m4a in Resources */,
 				9C24B3371DB7FA9A001391F7 /* Banyo:L'hammam.m4a in Resources */,
 				9C201D3F1D728E3600C03EDB /* Assets.xcassets in Resources */,
 				9C24B3771DB7FA9B001391F7 /* Jabador.m4a in Resources */,
@@ -957,44 +1276,65 @@
 				9C24B35D1DB7FA9B001391F7 /* Sb3a.m4a in Resources */,
 				9C24B37F1DB7FA9B001391F7 /* Sawb ma3aya taman.m4a in Resources */,
 				9C24B3831DB7FA9B001391F7 /* Shwiya.m4a in Resources */,
+				9C210E7B1E57ADDD00E9D3CE /* Zwiin.m4a in Resources */,
+				9C210E781E57ADDD00E9D3CE /* Shta2.m4a in Resources */,
 				9C24B3881DB7FA9B001391F7 /* Taggiya.m4a in Resources */,
 				9C24B2FA1DB7FA9A001391F7 /* Jbal.m4a in Resources */,
+				9C210E421E57AD7700E9D3CE /* Drrni rassi.m4a in Resources */,
 				9C24B3981DB7FA9B001391F7 /* Scuela.m4a in Resources */,
 				9C24B3821DB7FA9B001391F7 /* Sensla.m4a in Resources */,
 				9C24B3451DB7FA9B001391F7 /* Talfaza.m4a in Resources */,
+				9C210E251E57AD2C00E9D3CE /* Reservation.m4a in Resources */,
 				9C24B3681DB7FA9B001391F7 /* Tmaniya.m4a in Resources */,
+				9C210E2C1E57AD2C00E9D3CE /* Wsol.m4a in Resources */,
 				9C24B3961DB7FA9B001391F7 /* Pikala.m4a in Resources */,
+				9C210EAD1E57AE2500E9D3CE /* Dieol.m4a in Resources */,
 				9C24B3551DB7FA9B001391F7 /* Jouj.m4a in Resources */,
+				9C210EA91E57AE2500E9D3CE /* Dielk.m4a in Resources */,
 				9C24B3BA1DB7FA9B001391F7 /* Ch7al f Sa3a.m4a in Resources */,
 				9C24B3761DB7FA9B001391F7 /* Ghali.m4a in Resources */,
 				9C24B3091DB7FA9A001391F7 /* Khaal.m4a in Resources */,
 				9C24B38E1DB7FA9B001391F7 /* Commisaria.m4a in Resources */,
+				9C210E271E57AD2C00E9D3CE /* Safr.m4a in Resources */,
+				9C210E771E57ADDD00E9D3CE /* Sayf.m4a in Resources */,
 				9C24B3A11DB7FA9B001391F7 /* 3omar.m4a in Resources */,
 				9C24B3641DB7FA9B001391F7 /* Thnash.m4a in Resources */,
 				9C24B37D1DB7FA9B001391F7 /* Safi.m4a in Resources */,
 				9C24B3921DB7FA9B001391F7 /* l'Parking.m4a in Resources */,
+				9C210E2A1E57AD2C00E9D3CE /* Tri9.m4a in Resources */,
 				9C24B3B11DB7FA9B001391F7 /* Tkiya.m4a in Resources */,
 				9C24B35F1DB7FA9B001391F7 /* Sba3tash.m4a in Resources */,
 				9C24B35A1DB7FA9B001391F7 /* Miliar.m4a in Resources */,
 				9C24B38B1DB7FA9B001391F7 /* 9ent.m4a in Resources */,
 				9C24B3991DB7FA9B001391F7 /* Souk.m4a in Resources */,
+				9C210E761E57ADDD00E9D3CE /* S7aab.m4a in Resources */,
 				9C24B3431DB7FA9B001391F7 /* Sharjam.m4a in Resources */,
 				9C24B33A1DB7FA9B001391F7 /* Dorjj.m4a in Resources */,
+				9C210E441E57AD7700E9D3CE /* Dwa.m4a in Resources */,
+				9C210E741E57ADDD00E9D3CE /* Ra3d.m4a in Resources */,
+				9C210E6F1E57ADDD00E9D3CE /* Daraja.m4a in Resources */,
 				9C24B3951DB7FA9B001391F7 /* Motor.m4a in Resources */,
+				9C210E411E57AD7700E9D3CE /* Drr.m4a in Resources */,
 				9C24B39B1DB7FA9B001391F7 /* Taksi.m4a in Resources */,
 				9C24B3541DB7FA9B001391F7 /* Arba3tash.m4a in Resources */,
+				9C210EA71E57AE2500E9D3CE /* Dielhom.m4a in Resources */,
+				9C210E581E57ADAA00E9D3CE /* Hafla.m4a in Resources */,
+				9C210EAA1E57AE2500E9D3CE /* Dielkoum.m4a in Resources */,
 				9C24B3BC1DB7FA9B001391F7 /* Chkoon nta?.m4a in Resources */,
+				9C210E1E1E57AD2C00E9D3CE /* Diwane.m4a in Resources */,
 				9C24B36C1DB7FA9B001391F7 /* Tss3oud.m4a in Resources */,
 				9C24B3B91DB7FA9B001391F7 /* Ch7al f omrek.m4a in Resources */,
 				9C24B3581DB7FA9B001391F7 /* Khamstach.m4a in Resources */,
 				9C24B3861DB7FA9B001391F7 /* T9adda.m4a in Resources */,
 				9C24B3001DB7FA9A001391F7 /* Shamal.m4a in Resources */,
+				9C210E711E57ADDD00E9D3CE /* L'jow.m4a in Resources */,
 				9C24B2FF1DB7FA9A001391F7 /* Sahra2.m4a in Resources */,
 				9C24B3571DB7FA9B001391F7 /* Khamsiin.m4a in Resources */,
 				9C24B32C1DB7FA9A001391F7 /* Ash t3awwd:i.m4a in Resources */,
 				9C24B3321DB7FA9A001391F7 /* Labas.m4a in Resources */,
 				9C24B30D1DB7FA9A001391F7 /* Mmi.m4a in Resources */,
 				9C24B3401DB7FA9B001391F7 /* Ponj.m4a in Resources */,
+				9C210E561E57ADAA00E9D3CE /* Bar.m4a in Resources */,
 				9C24B3AB1DB7FA9B001391F7 /* L'9as.m4a in Resources */,
 				9C24B34A1DB7FA9B001391F7 /* 10000 dh.m4a in Resources */,
 				9C24B3B31DB7FA9B001391F7 /* Wesh.m4a in Resources */,
@@ -1007,35 +1347,51 @@
 				9C24B3A91DB7FA9B001391F7 /* F shi shkl.m4a in Resources */,
 				9C24B3051DB7FA9A001391F7 /* Bnt.m4a in Resources */,
 				9C24B3331DB7FA9A001391F7 /* Salam.m4a in Resources */,
+				9C210E401E57AD7700E9D3CE /* Daykh.m4a in Resources */,
 				9C24B3521DB7FA9B001391F7 /* Arb3iin.m4a in Resources */,
+				9C210E6E1E57ADDD00E9D3CE /* Dabab.m4a in Resources */,
 				9C24B3061DB7FA9A001391F7 /* Hafeed.m4a in Resources */,
+				9C210EA81E57AE2500E9D3CE /* Dieli.m4a in Resources */,
+				9C210E931E57ADEE00E9D3CE /* L'khamiis.m4a in Resources */,
 				9C24B35C1DB7FA9B001391F7 /* Mitin.m4a in Resources */,
+				9C210E461E57AD7700E9D3CE /* Homma.m4a in Resources */,
 				9C24B3901DB7FA9B001391F7 /* Hanout.m4a in Resources */,
 				9C24B3BD1DB7FA9B001391F7 /* Feen Ghadiin.m4a in Resources */,
 				9C201D3D1D728E3600C03EDB /* Main.storyboard in Resources */,
 				9C24B31E1DB7FA9A001391F7 /* l'ma2.m4a in Resources */,
 				9C24B33B1DB7FA9B001391F7 /* Douche.m4a in Resources */,
+				9C210E191E57AD2C00E9D3CE /* 9rib.m4a in Resources */,
 				9C24B3661DB7FA9B001391F7 /* Tlatin.m4a in Resources */,
+				9C210E721E57ADDD00E9D3CE /* L'kharif.m4a in Resources */,
+				9C210E241E57AD2C00E9D3CE /* Passeporte.m4a in Resources */,
 				9C24B3AC1DB7FA9B001391F7 /* L'mo3alaja.m4a in Resources */,
 				9C24B36D1DB7FA9B001391F7 /* W7d w a3shriin.m4a in Resources */,
 				9C24B3A61DB7FA9B001391F7 /* Bnadem.m4a in Resources */,
 				9C24B3C11DB7FA9B001391F7 /* Kayn.m4a in Resources */,
+				9C210E5A1E57ADAA00E9D3CE /* Mtammn.m4a in Resources */,
+				9C210E571E57ADAA00E9D3CE /* Fowwj.m4a in Resources */,
 				9C24B3721DB7FA9B001391F7 /* Allah y3awnik.m4a in Resources */,
 				9C24B3701DB7FA9B001391F7 /* 9amija.m4a in Resources */,
 				9C24B3251DB7FA9A001391F7 /* Shrab.m4a in Resources */,
 				9C24B3B81DB7FA9B001391F7 /* Achno katdeer.m4a in Resources */,
+				9C210E1D1E57AD2C00E9D3CE /* Blasa.m4a in Resources */,
 				9C24B3141DB7FA9A001391F7 /* Zawj:rajol.m4a in Resources */,
 				9C24B3151DB7FA9A001391F7 /* 3asir Limon.m4a in Resources */,
 				9C24B3B71DB7FA9B001391F7 /* A3wnni.m4a in Resources */,
+				9C210E971E57ADEE00E9D3CE /* Sba7.m4a in Resources */,
 				9C24B3391DB7FA9B001391F7 /* Do2.m4a in Resources */,
 				9C24B31A1DB7FA9A001391F7 /* Ghalala.m4a in Resources */,
+				9C210E291E57AD2C00E9D3CE /* Ta2jil.m4a in Resources */,
 				9C24B2F81DB7FA9A001391F7 /* Hay.m4a in Resources */,
 				9C24B3601DB7FA9B001391F7 /* Stta.m4a in Resources */,
 				9C24B3021DB7FA9A001391F7 /* 3amm.m4a in Resources */,
 				9C24B30C1DB7FA9A001391F7 /* Kho.m4a in Resources */,
+				9C210E751E57ADDD00E9D3CE /* Rii7.m4a in Resources */,
 				9C24B30E1DB7FA9A001391F7 /* Mra.m4a in Resources */,
+				9C210E451E57AD7700E9D3CE /* Fermliya.m4a in Resources */,
 				9C24B3461DB7FA9B001391F7 /* Tllaja.m4a in Resources */,
 				9C24B31D1DB7FA9A001391F7 /* L'kbbal.m4a in Resources */,
+				9C210E8E1E57ADEE00E9D3CE /* Joma3.m4a in Resources */,
 				9C24B3281DB7FA9A001391F7 /* Sopa.m4a in Resources */,
 				9C24B3591DB7FA9B001391F7 /* Mia.m4a in Resources */,
 				9C24B3791DB7FA9B001391F7 /* Ma mselkash.m4a in Resources */,
@@ -1047,27 +1403,39 @@
 				9C24B34B1DB7FA9B001391F7 /* Dirham (dh).m4a in Resources */,
 				9C24B36B1DB7FA9B001391F7 /* Ts3iin.m4a in Resources */,
 				9C24B3071DB7FA9A001391F7 /* Jdd.m4a in Resources */,
+				9C210E3E1E57AD7700E9D3CE /* Biit.m4a in Resources */,
 				9C24B3501DB7FA9B001391F7 /* A3chra.m4a in Resources */,
 				9C24B3BF1DB7FA9B001391F7 /* Giddach.m4a in Resources */,
+				9C210E551E57ADAA00E9D3CE /* 7shd.m4a in Resources */,
+				9C210E1C1E57AD2C00E9D3CE /* Billet.m4a in Resources */,
 				9C24B39D1DB7FA9B001391F7 /* Tre9.m4a in Resources */,
 				9C24B2FB1DB7FA9A001391F7 /* L'bahr.m4a in Resources */,
 				9C24B3B01DB7FA9B001391F7 /* Tfwija.m4a in Resources */,
+				9C210E701E57ADDD00E9D3CE /* Kayn l'chms.m4a in Resources */,
 				9C24B33F1DB7FA9B001391F7 /* Korsi.m4a in Resources */,
 				9C24B37C1DB7FA9B001391F7 /* Moul hanout.m4a in Resources */,
 				9C24B3181DB7FA9A001391F7 /* Cabaray.m4a in Resources */,
 				9C24B36F1DB7FA9B001391F7 /* 7waije.m4a in Resources */,
+				9C210E731E57ADDD00E9D3CE /* L'rbii3.m4a in Resources */,
+				9C210E1A1E57AD2C00E9D3CE /* B3id.m4a in Resources */,
 				9C24B2FD1DB7FA9A001391F7 /* La Piscine.m4a in Resources */,
 				9C24B3AE1DB7FA9B001391F7 /* Sat.m4a in Resources */,
 				9C24B38C1DB7FA9B001391F7 /* Ba2i3 Motajowwil.m4a in Resources */,
+				9C210E7A1E57ADDD00E9D3CE /* Tlj.m4a in Resources */,
+				9C210E5B1E57ADAA00E9D3CE /* Shrab.m4a in Resources */,
+				9C210E1F1E57AD2C00E9D3CE /* L'khlas.m4a in Resources */,
 				9C24B3971DB7FA9B001391F7 /* Saydalia.m4a in Resources */,
 				9C24B3B21DB7FA9B001391F7 /* Wa feen.m4a in Resources */,
 				9C24B3741DB7FA9B001391F7 /* Belgha.m4a in Resources */,
 				9C24B3AA1DB7FA9B001391F7 /* L'7ouma.m4a in Resources */,
 				9C24B34D1DB7FA9B001391F7 /* Silence.m4a in Resources */,
+				9C210E981E57ADEE00E9D3CE /* Semana.m4a in Resources */,
+				9C210EAC1E57AE2500E9D3CE /* Dielo.m4a in Resources */,
 				9C24B3C41DB7FA9B001391F7 /* Minin nta?.m4a in Resources */,
 				9C24B3631DB7FA9B001391F7 /* Thltash.m4a in Resources */,
 				9C24B3121DB7FA9A001391F7 /* Wld khal:bnt khal.m4a in Resources */,
 				9C24B3261DB7FA9A001391F7 /* Shwaya.m4a in Resources */,
+				9C210E2B1E57AD2C00E9D3CE /* Tyara.m4a in Resources */,
 				9C24B3311DB7FA9A001391F7 /* L'hamdollah.m4a in Resources */,
 				9C24B2F91DB7FA9A001391F7 /* Janoub.m4a in Resources */,
 				9C24B3C51DB7FA9B001391F7 /* Wa9tash.m4a in Resources */,
@@ -1078,23 +1446,31 @@
 				9C24B3081DB7FA9A001391F7 /* Jdda.m4a in Resources */,
 				9C24B2F41DB7FA9A001391F7 /* Blda.m4a in Resources */,
 				9C24B32E1DB7FA9A001391F7 /* Kidayr:a.m4a in Resources */,
+				9C210E3F1E57AD7700E9D3CE /* Bra.m4a in Resources */,
+				9C210E471E57AD7700E9D3CE /* Isa3f.m4a in Resources */,
 				9C24B3BB1DB7FA9B001391F7 /* Chkoon hada?.m4a in Resources */,
 				9C24B36A1DB7FA9B001391F7 /* Ts3atash.m4a in Resources */,
+				9C210E9A1E57ADEF00E9D3CE /* Zhuhr.m4a in Resources */,
 				9C24B3871DB7FA9B001391F7 /* T9ashir.m4a in Resources */,
 				9C24B3811DB7FA9B001391F7 /* Sbirdeela.m4a in Resources */,
 				9C24B3B51DB7FA9B001391F7 /* 3eyt 3ala.m4a in Resources */,
 				9C24B31C1DB7FA9A001391F7 /* Keesan.m4a in Resources */,
+				9C210E791E57ADDD00E9D3CE /* Skhoon.m4a in Resources */,
 				9C24B30A1DB7FA9A001391F7 /* Khala.m4a in Resources */,
 				9C24B31F1DB7FA9A001391F7 /* Ma3l9a.m4a in Resources */,
+				9C210E921E57ADEE00E9D3CE /* L'itniin.m4a in Resources */,
+				9C210E431E57AD7700E9D3CE /* Drroni rjliya.m4a in Resources */,
 				9C24B37E1DB7FA9B001391F7 /* Sandalia.m4a in Resources */,
 				9C24B34C1DB7FA9B001391F7 /* Flous.m4a in Resources */,
 				9C24B3411DB7FA9B001391F7 /* Preez.m4a in Resources */,
 				9C24B3A31DB7FA9B001391F7 /* A3ll9.m4a in Resources */,
+				9C210E1B1E57AD2C00E9D3CE /* Baliza.m4a in Resources */,
 				9C24B38A1DB7FA9B001391F7 /* 3emara.m4a in Resources */,
 				9C24B34E1DB7FA9B001391F7 /* 3ashriin.m4a in Resources */,
 				9C24B3711DB7FA9B001391F7 /* Ach habbat l'khatar.m4a in Resources */,
 				9C24B33D1DB7FA9B001391F7 /* Frash.m4a in Resources */,
 				9C24B2F71DB7FA9A001391F7 /* Ghaba.m4a in Resources */,
+				9C210E4B1E57AD7700E9D3CE /* Wsfa dl dwa.m4a in Resources */,
 				9C24B3B61DB7FA9B001391F7 /* A3fak.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
