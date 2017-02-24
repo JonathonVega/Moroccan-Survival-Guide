@@ -335,7 +335,7 @@ extension Topics {
                                ["My feet hurt", "Drroni rjliya"],
                                ["Prescription", "Wsfa dl dwa"],
                                ["Dizzy", "Daykh"],
-                               ["Nurse", "Mamarrida"],
+                               ["Nurse", "Fermliya"],
                                ["Heal", "Bra"],
                                ["Fever", "Homma"],
                                ["Cold", "Rwa7"],
