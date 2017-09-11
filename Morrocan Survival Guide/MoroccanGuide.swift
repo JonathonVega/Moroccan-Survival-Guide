@@ -26,6 +26,7 @@ enum Topics: CustomStringConvertible {
     case weather
     case daysOfTheWeek
     case possessions
+    case textLanguage
     
     var description: String {
         switch self {
@@ -46,10 +47,11 @@ enum Topics: CustomStringConvertible {
         case .weather: return "Weather"
         case .daysOfTheWeek: return "Days of the Week"
         case .possessions: return "Possessions"
+        case .textLanguage: return "Text Language"
         }
     }
     
-    static var count: Int { return Topics.possessions.hashValue + 1}
+    static var count: Int { return Topics.textLanguage.hashValue + 1}
     
     static func getStringFromEnum(_ int: Int) -> String {
         switch int {
@@ -70,6 +72,7 @@ enum Topics: CustomStringConvertible {
         case 14: return weather.description
         case 15: return daysOfTheWeek.description
         case 16: return possessions.description
+        case 17: return textLanguage.description
         default: return "Hi"
         }
     }
@@ -391,6 +394,13 @@ extension Topics {
                                    ["Ours", "Dielna"],
                                    ["Theirs", "Dielhom"],
                                    ["Of(plural form)", "Dieol"]]
+            
+        case .textLanguage: return [["2", "'a"],
+                                    ["3", "Aa"],
+                                    ["4", "gh"],
+                                    ["5", "Kh"],
+                                    ["7", "H"],
+                                    ["9", "Q"]]
         }
     }
     
@@ -413,6 +423,7 @@ extension Topics {
             case "Weather": return Topics.weather.words
             case "Days of the Week": return Topics.daysOfTheWeek.words
             case "Possessions": return Topics.possessions.words
+            case "Text Language": return Topics.textLanguage.words
             default: return [[""],[""]]
         }
     }

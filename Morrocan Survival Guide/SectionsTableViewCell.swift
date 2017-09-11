@@ -13,5 +13,4 @@ class SectionsTableViewCell: UITableViewCell {
     @IBOutlet weak var topic: UILabel!
     @IBOutlet weak var topicImage: UIImageView!
     
-    
 }

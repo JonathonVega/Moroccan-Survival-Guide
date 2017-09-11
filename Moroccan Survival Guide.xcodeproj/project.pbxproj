@@ -308,10 +308,16 @@
 		9C24B3C31DB7FA9B001391F7 /* Kifache.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2EF1DB7FA9A001391F7 /* Kifache.m4a */; };
 		9C24B3C41DB7FA9B001391F7 /* Minin nta?.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2F01DB7FA9A001391F7 /* Minin nta?.m4a */; };
 		9C24B3C51DB7FA9B001391F7 /* Wa9tash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2F11DB7FA9A001391F7 /* Wa9tash.m4a */; };
+		9C32A9CA1F63A63800DE716B /* ReferencesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */; };
+		9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */; };
+		9C32A9CE1F671F0A00DE716B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */; };
 		9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */; };
+		B4E2B291BED1D1A03E9CB9BA /* Pods_Moroccan_Survival_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB340D804627230C83725B78 /* Pods_Moroccan_Survival_Guide.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115D7B6BFC310E0D5BB0DAAA /* Pods-Moroccan Survival Guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moroccan Survival Guide.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide.release.xcconfig"; sourceTree = "<group>"; };
+		62B0A348D4B7F3F5CDA9C4E5 /* Pods-Moroccan Survival Guide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moroccan Survival Guide.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide.debug.xcconfig"; sourceTree = "<group>"; };
 		9C201D341D728E3600C03EDB /* Moroccan Survival Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moroccan Survival Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C201D371D728E3600C03EDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C201D3C1D728E3600C03EDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -615,7 +621,11 @@
 		9C24B2EF1DB7FA9A001391F7 /* Kifache.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kifache.m4a; sourceTree = "<group>"; };
 		9C24B2F01DB7FA9A001391F7 /* Minin nta?.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Minin nta?.m4a"; sourceTree = "<group>"; };
 		9C24B2F11DB7FA9A001391F7 /* Wa9tash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wa9tash.m4a; sourceTree = "<group>"; };
+		9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesTableVC.swift; sourceTree = "<group>"; };
+		9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceInfoTableVC.swift; sourceTree = "<group>"; };
+		9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DB340D804627230C83725B78 /* Pods_Moroccan_Survival_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moroccan_Survival_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,16 +633,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4E2B291BED1D1A03E9CB9BA /* Pods_Moroccan_Survival_Guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		555A5CD72A8665396AD92633 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB340D804627230C83725B78 /* Pods_Moroccan_Survival_Guide.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C201D2B1D728E3600C03EDB = {
 			isa = PBXGroup;
 			children = (
 				9C201D361D728E3600C03EDB /* Morrocan Survival Guide */,
+				9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */,
+				B50F671EB2EEE23793BA8FFC /* Pods */,
+				555A5CD72A8665396AD92633 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -649,6 +671,8 @@
 			isa = PBXGroup;
 			children = (
 				9C201D3B1D728E3600C03EDB /* Main.storyboard */,
+				9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */,
+				9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */,
 				9C201D4A1D72930200C03EDB /* SectionTableViewController.swift */,
 				9C201D4E1D73B60C00C03EDB /* SectionsTableViewCell.swift */,
 				9C201D4C1D72B3A800C03EDB /* DetailsTableViewController.swift */,
@@ -1109,6 +1133,15 @@
 			path = "Useful Questions";
 			sourceTree = "<group>";
 		};
+		B50F671EB2EEE23793BA8FFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62B0A348D4B7F3F5CDA9C4E5 /* Pods-Moroccan Survival Guide.debug.xcconfig */,
+				115D7B6BFC310E0D5BB0DAAA /* Pods-Moroccan Survival Guide.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1116,9 +1149,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C201D461D728E3600C03EDB /* Build configuration list for PBXNativeTarget "Moroccan Survival Guide" */;
 			buildPhases = (
+				4CDE8656FF5A8C0877BCA18D /* [CP] Check Pods Manifest.lock */,
 				9C201D301D728E3600C03EDB /* Sources */,
 				9C201D311D728E3600C03EDB /* Frameworks */,
 				9C201D321D728E3600C03EDB /* Resources */,
+				ED78E68AC96F1D5C65BB7180 /* [CP] Embed Pods Frameworks */,
+				8B44BC04775934BFC41C6733 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1434,6 +1470,7 @@
 				9C24B35E1DB7FA9B001391F7 /* Sb3iin.m4a in Resources */,
 				9C24B3A21DB7FA9B001391F7 /* 9alla3.m4a in Resources */,
 				9C24B3231DB7FA9A001391F7 /* Okla.m4a in Resources */,
+				9C32A9CE1F671F0A00DE716B /* GoogleService-Info.plist in Resources */,
 				9C24B3531DB7FA9B001391F7 /* Arba3.m4a in Resources */,
 				9C24B3081DB7FA9A001391F7 /* Jdda.m4a in Resources */,
 				9C24B2F41DB7FA9A001391F7 /* Blda.m4a in Resources */,
@@ -1469,11 +1506,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4CDE8656FF5A8C0877BCA18D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B44BC04775934BFC41C6733 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED78E68AC96F1D5C65BB7180 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C201D301D728E3600C03EDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */,
 				9C201D531D74AA1B00C03EDB /* DetailsTableViewCell.swift in Sources */,
 				9C201D4B1D72930200C03EDB /* SectionTableViewController.swift in Sources */,
 				9C201D511D73BF1300C03EDB /* MoroccanGuide.swift in Sources */,
@@ -1481,6 +1567,7 @@
 				9C201D4D1D72B3A800C03EDB /* DetailsTableViewController.swift in Sources */,
 				9C201D381D728E3600C03EDB /* AppDelegate.swift in Sources */,
 				9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */,
+				9C32A9CA1F63A63800DE716B /* ReferencesTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1596,6 +1683,7 @@
 		};
 		9C201D471D728E3600C03EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B0A348D4B7F3F5CDA9C4E5 /* Pods-Moroccan Survival Guide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1611,6 +1699,7 @@
 		};
 		9C201D481D728E3600C03EDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 115D7B6BFC310E0D5BB0DAAA /* Pods-Moroccan Survival Guide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
