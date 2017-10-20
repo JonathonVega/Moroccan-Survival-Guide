@@ -139,7 +139,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="6kz-7i-0IV" firstAttribute="top" secondItem="9cC-Uz-ZIu" secondAttribute="topMargin" constant="2" id="2gM-zb-FTd"/>
-                                        <constraint firstItem="6kz-7i-0IV" firstAttribute="centerY" secondItem="9cC-Uz-ZIu" secondAttribute="centerY" id="U8H-t8-IEJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6kz-7i-0IV" secondAttribute="trailing" constant="228.5" id="CnN-gS-6pt"/>
                                         <constraint firstItem="6kz-7i-0IV" firstAttribute="leading" secondItem="9cC-Uz-ZIu" secondAttribute="leadingMargin" id="fHg-Ss-kKh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="6kz-7i-0IV" secondAttribute="bottom" constant="3" id="swq-IM-k5M"/>
                                     </constraints>
@@ -419,36 +419,36 @@
                                     <segue destination="9Iz-YY-YC4" kind="show" id="FcU-cF-3fx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jna-pc-sKi">
-                                <rect key="frame" x="126" y="534" width="123" height="30"/>
-                                <state key="normal" title="Change Password"/>
-                                <connections>
-                                    <action selector="changeProfilePassword:" destination="I5u-da-Dfg" eventType="touchUpInside" id="MfQ-X3-atf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't appear to be signed in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcP-bn-FfD">
                                 <rect key="frame" x="64" y="323" width="247" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jna-pc-sKi">
+                                <rect key="frame" x="126" y="532" width="123" height="30"/>
+                                <state key="normal" title="Change Password"/>
+                                <connections>
+                                    <action selector="changeProfilePassword:" destination="I5u-da-Dfg" eventType="touchUpInside" id="MfQ-X3-atf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="igq-XQ-z2s" firstAttribute="leading" secondItem="FzB-2i-ptd" secondAttribute="leadingMargin" id="6dw-pW-Ky9"/>
-                            <constraint firstItem="jna-pc-sKi" firstAttribute="top" secondItem="nrm-4g-pBj" secondAttribute="bottom" constant="105" id="Apt-1l-XLl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lhv-B1-2mb" secondAttribute="trailing" constant="108" id="FOp-ey-iIe"/>
-                            <constraint firstItem="jna-pc-sKi" firstAttribute="leading" secondItem="FzB-2i-ptd" secondAttribute="leadingMargin" constant="110" id="HzO-Rq-Ayx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nrm-4g-pBj" secondAttribute="trailing" constant="107" id="QCu-Ly-zw7"/>
+                            <constraint firstItem="tc2-C6-fRR" firstAttribute="top" secondItem="jna-pc-sKi" secondAttribute="bottom" constant="56" id="S4H-Cs-NXb"/>
                             <constraint firstItem="nrm-4g-pBj" firstAttribute="top" secondItem="igq-XQ-z2s" secondAttribute="bottom" constant="121" id="TaU-lm-UdE"/>
                             <constraint firstItem="igq-XQ-z2s" firstAttribute="top" secondItem="lhv-B1-2mb" secondAttribute="bottom" constant="30" id="WwK-as-JnM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jna-pc-sKi" secondAttribute="trailing" constant="110" id="Zk4-xT-pqL"/>
                             <constraint firstItem="nrm-4g-pBj" firstAttribute="leading" secondItem="FzB-2i-ptd" secondAttribute="leadingMargin" constant="106" id="cYz-zi-2K9"/>
                             <constraint firstItem="rcP-bn-FfD" firstAttribute="centerX" secondItem="FzB-2i-ptd" secondAttribute="centerX" id="goC-nn-4hD"/>
                             <constraint firstItem="lhv-B1-2mb" firstAttribute="leading" secondItem="FzB-2i-ptd" secondAttribute="leadingMargin" constant="107" id="hjA-Ym-l1V"/>
-                            <constraint firstItem="tc2-C6-fRR" firstAttribute="top" secondItem="jna-pc-sKi" secondAttribute="bottom" constant="54" id="jrz-np-Zbw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jna-pc-sKi" secondAttribute="trailing" constant="110" id="nra-kz-n2b"/>
+                            <constraint firstItem="jna-pc-sKi" firstAttribute="leading" secondItem="FzB-2i-ptd" secondAttribute="leadingMargin" constant="110" id="pQB-sl-kfs"/>
                             <constraint firstItem="lhv-B1-2mb" firstAttribute="top" secondItem="gfm-wP-MTa" secondAttribute="bottom" constant="35" id="sFF-66-tFc"/>
                             <constraint firstItem="rcP-bn-FfD" firstAttribute="centerY" secondItem="FzB-2i-ptd" secondAttribute="centerY" id="sK0-ts-BQc"/>
+                            <constraint firstItem="jna-pc-sKi" firstAttribute="top" secondItem="nrm-4g-pBj" secondAttribute="bottom" constant="103" id="tNm-D1-5vJ"/>
                             <constraint firstItem="igq-XQ-z2s" firstAttribute="trailing" secondItem="FzB-2i-ptd" secondAttribute="trailingMargin" id="uIY-DB-Vhr"/>
                         </constraints>
                     </view>

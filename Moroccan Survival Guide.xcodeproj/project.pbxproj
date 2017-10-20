@@ -314,10 +314,12 @@
 		9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CF1F6761B500DE716B /* ProfileVC.swift */; };
 		9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9D31F6763B900DE716B /* SignInVC.swift */; };
 		9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */; };
+		B15F7A9B0625602992DDF7D2 /* Pods_Moroccan_Survival_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515F3096677842E651762F83 /* Pods_Moroccan_Survival_Guide.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		115D7B6BFC310E0D5BB0DAAA /* Pods-Moroccan Survival Guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moroccan Survival Guide.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide.release.xcconfig"; sourceTree = "<group>"; };
+		515F3096677842E651762F83 /* Pods_Moroccan_Survival_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moroccan_Survival_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B0A348D4B7F3F5CDA9C4E5 /* Pods-Moroccan Survival Guide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moroccan Survival Guide.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide.debug.xcconfig"; sourceTree = "<group>"; };
 		9C201D341D728E3600C03EDB /* Moroccan Survival Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moroccan Survival Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C201D371D728E3600C03EDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -635,18 +637,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15F7A9B0625602992DDF7D2 /* Pods_Moroccan_Survival_Guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A2C780322C02A8DC07EDCAD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				515F3096677842E651762F83 /* Pods_Moroccan_Survival_Guide.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C201D2B1D728E3600C03EDB = {
 			isa = PBXGroup;
 			children = (
 				9C201D361D728E3600C03EDB /* Morrocan Survival Guide */,
 				9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */,
 				B50F671EB2EEE23793BA8FFC /* Pods */,
+				9A2C780322C02A8DC07EDCAD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -666,6 +678,7 @@
 				9C2252AF1F9A9BBC0029C818 /* ProfileTab */,
 				9C201D3B1D728E3600C03EDB /* Main.storyboard */,
 				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
+				9C201D371D728E3600C03EDB /* AppDelegate.swift */,
 				9C201D491D728F1600C03EDB /* Supporting Files */,
 				9C201D351D728E3600C03EDB /* Products */,
 				9C24B2121DB7FA9A001391F7 /* Words & Phrases */,
@@ -676,7 +689,6 @@
 		9C201D491D728F1600C03EDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9C201D371D728E3600C03EDB /* AppDelegate.swift */,
 				9C201D3E1D728E3600C03EDB /* Assets.xcassets */,
 				9C201D401D728E3600C03EDB /* LaunchScreen.storyboard */,
 				9C201D431D728E3600C03EDB /* Info.plist */,
@@ -1523,13 +1535,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moroccan Survival Guide-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8B44BC04775934BFC41C6733 /* [CP] Copy Pods Resources */ = {
@@ -1553,9 +1568,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

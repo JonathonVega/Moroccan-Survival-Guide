@@ -37,14 +37,14 @@ class SignInVC: UIViewController {
     }
     
     func checkForCurrentUser() {
-        if FIRAuth.auth()?.currentUser != nil {
+        if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "toHome", sender: self)
         }
     }
     @IBAction func signInButtonTapped(_ sender: UIButton) {
         if signInPage == true {
             if let email=emailTextField.text, let password=passwordTextField.text {
-                FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         self.clearTextFields()
                         self.performSegue(withIdentifier: "toHome", sender: self)
@@ -52,17 +52,17 @@ class SignInVC: UIViewController {
                     }
                     else {
                         
-                        if let errCode = FIRAuthErrorCode(rawValue: (error! as NSError).code){
+                        if let errCode = AuthErrorCode(rawValue: (error! as NSError).code){
                             
                             // TODO: Need to fix errors through UI accordingly
                             switch errCode {
-                            case .errorCodeInvalidEmail:
+                            case .invalidEmail:
                                 print("Invalid email")
-                            case .errorCodeWrongPassword:
+                            case .wrongPassword:
                                 print("Password is wrong")
-                            case .errorCodeUserDisabled:
+                            case .userDisabled:
                                 print("User account is disabled")
-                            case .errorCodeUserNotFound:
+                            case .userNotFound:
                                 print("User account cannot be found")
                             default:
                                 print("Wrong in some way!!!")
@@ -75,8 +75,8 @@ class SignInVC: UIViewController {
                 })
             }
         } else {
-            if let email=emailTextField.text, let password=passwordTextField.text, let name=nameTextField.text  {
-                FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+            if let email=emailTextField.text, let password=passwordTextField.text, let _=nameTextField.text  {
+                Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         
                         
@@ -88,13 +88,13 @@ class SignInVC: UIViewController {
                         
                     } else {
                         
-                        if let errCode = FIRAuthErrorCode(rawValue: (error! as NSError).code){
+                        if let errCode = AuthErrorCode(rawValue: (error! as NSError).code){
                             
                             // TODO: Need to fix errors through UI accordingly
                             switch errCode {
-                            case .errorCodeInvalidEmail:
+                            case .invalidEmail:
                                 print("Invalid email")
-                            case .errorCodeEmailAlreadyInUse:
+                            case .emailAlreadyInUse:
                                 print("Email already in use")
                             default:
                                 print("Wrong in some way!!!")
