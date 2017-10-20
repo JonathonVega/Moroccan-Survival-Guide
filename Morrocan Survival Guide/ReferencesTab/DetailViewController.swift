@@ -132,7 +132,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Adding Sound
     
-    func voiceAction(sender: UIButton!) {
+    @objc func voiceAction(sender: UIButton!) {
         let index = sender.tag
         let arabicWord = detailWordList[index][1]
         let voiceURL: URL

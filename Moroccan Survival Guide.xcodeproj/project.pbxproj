@@ -311,8 +311,9 @@
 		9C32A9CA1F63A63800DE716B /* ReferencesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */; };
 		9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */; };
 		9C32A9CE1F671F0A00DE716B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */; };
+		9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CF1F6761B500DE716B /* ProfileVC.swift */; };
+		9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9D31F6763B900DE716B /* SignInVC.swift */; };
 		9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */; };
-		B4E2B291BED1D1A03E9CB9BA /* Pods_Moroccan_Survival_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB340D804627230C83725B78 /* Pods_Moroccan_Survival_Guide.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -624,8 +625,9 @@
 		9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesTableVC.swift; sourceTree = "<group>"; };
 		9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceInfoTableVC.swift; sourceTree = "<group>"; };
 		9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C32A9CF1F6761B500DE716B /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		9C32A9D31F6763B900DE716B /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		DB340D804627230C83725B78 /* Pods_Moroccan_Survival_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moroccan_Survival_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -633,28 +635,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4E2B291BED1D1A03E9CB9BA /* Pods_Moroccan_Survival_Guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		555A5CD72A8665396AD92633 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DB340D804627230C83725B78 /* Pods_Moroccan_Survival_Guide.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9C201D2B1D728E3600C03EDB = {
 			isa = PBXGroup;
 			children = (
 				9C201D361D728E3600C03EDB /* Morrocan Survival Guide */,
 				9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */,
 				B50F671EB2EEE23793BA8FFC /* Pods */,
-				555A5CD72A8665396AD92633 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -670,14 +662,9 @@
 		9C201D361D728E3600C03EDB /* Morrocan Survival Guide */ = {
 			isa = PBXGroup;
 			children = (
+				9C2252AE1F9A9AC40029C818 /* ReferencesTab */,
+				9C2252AF1F9A9BBC0029C818 /* ProfileTab */,
 				9C201D3B1D728E3600C03EDB /* Main.storyboard */,
-				9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */,
-				9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */,
-				9C201D4A1D72930200C03EDB /* SectionTableViewController.swift */,
-				9C201D4E1D73B60C00C03EDB /* SectionsTableViewCell.swift */,
-				9C201D4C1D72B3A800C03EDB /* DetailsTableViewController.swift */,
-				9C201D521D74AA1B00C03EDB /* DetailsTableViewCell.swift */,
-				9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */,
 				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
 				9C201D491D728F1600C03EDB /* Supporting Files */,
 				9C201D351D728E3600C03EDB /* Products */,
@@ -817,6 +804,29 @@
 				9C210EA41E57AE2500E9D3CE /* Dieol.m4a */,
 			);
 			path = Possessions;
+			sourceTree = "<group>";
+		};
+		9C2252AE1F9A9AC40029C818 /* ReferencesTab */ = {
+			isa = PBXGroup;
+			children = (
+				9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */,
+				9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */,
+				9C201D4A1D72930200C03EDB /* SectionTableViewController.swift */,
+				9C201D4E1D73B60C00C03EDB /* SectionsTableViewCell.swift */,
+				9C201D4C1D72B3A800C03EDB /* DetailsTableViewController.swift */,
+				9C201D521D74AA1B00C03EDB /* DetailsTableViewCell.swift */,
+				9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */,
+			);
+			path = ReferencesTab;
+			sourceTree = "<group>";
+		};
+		9C2252AF1F9A9BBC0029C818 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				9C32A9CF1F6761B500DE716B /* ProfileVC.swift */,
+				9C32A9D31F6763B900DE716B /* SignInVC.swift */,
+			);
+			path = ProfileTab;
 			sourceTree = "<group>";
 		};
 		9C24B2121DB7FA9A001391F7 /* Words & Phrases */ = {
@@ -1172,13 +1182,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Jonathon Vega";
 				TargetAttributes = {
 					9C201D331D728E3600C03EDB = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = PUPPU9RL5K;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -1559,9 +1569,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */,
 				9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */,
 				9C201D531D74AA1B00C03EDB /* DetailsTableViewCell.swift in Sources */,
 				9C201D4B1D72930200C03EDB /* SectionTableViewController.swift in Sources */,
+				9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */,
 				9C201D511D73BF1300C03EDB /* MoroccanGuide.swift in Sources */,
 				9C201D4F1D73B60C00C03EDB /* SectionsTableViewCell.swift in Sources */,
 				9C201D4D1D72B3A800C03EDB /* DetailsTableViewController.swift in Sources */,
@@ -1602,14 +1614,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1649,14 +1667,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1693,7 +1717,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jvega.Morrocan-Survival-Guide";
 				PRODUCT_NAME = "Moroccan Survival Guide";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1709,7 +1734,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jvega.Morrocan-Survival-Guide";
 				PRODUCT_NAME = "Moroccan Survival Guide";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
