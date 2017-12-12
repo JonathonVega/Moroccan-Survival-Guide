@@ -519,9 +519,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jna-pc-sKi">
                                 <rect key="frame" x="126" y="532" width="123" height="30"/>
-                                <state key="normal" title="Change Password"/>
+                                <state key="normal" title="Log Out"/>
                                 <connections>
-                                    <action selector="changeProfilePassword:" destination="I5u-da-Dfg" eventType="touchUpInside" id="MfQ-X3-atf"/>
+                                    <action selector="logOut:" destination="I5u-da-Dfg" eventType="touchUpInside" id="ed3-Ya-CNE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -552,11 +552,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="NotSignedInWarningLabel" destination="rcP-bn-FfD" id="JXo-Le-iBM"/>
+                        <outlet property="logOutButton" destination="jna-pc-sKi" id="KYr-Ty-OMt"/>
                         <outlet property="nameLabel" destination="igq-XQ-z2s" id="arc-vx-x5L"/>
+                        <outlet property="notSignedInWarningLabel" destination="rcP-bn-FfD" id="e6L-bx-LfV"/>
                         <outlet property="profileImage" destination="lhv-B1-2mb" id="g2W-Ze-Vxp"/>
                         <outlet property="questionsAskedButton" destination="nrm-4g-pBj" id="BWW-NX-jRs"/>
-                        <outlet property="signInButton" destination="KY1-nA-Qzx" id="iR0-wi-Xbn"/>
+                        <outlet property="signInButton" destination="KY1-nA-Qzx" id="rGu-aL-nAd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYu-9o-Tfs" userLabel="First Responder" sceneMemberID="firstResponder"/>

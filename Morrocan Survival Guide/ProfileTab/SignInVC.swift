@@ -47,7 +47,7 @@ class SignInVC: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         self.clearTextFields()
-                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                         print(user!.uid)
                     }
                     else {
@@ -80,12 +80,11 @@ class SignInVC: UIViewController {
                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         
-                        
                         let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name, "dateCreated":Date().timeIntervalSince1970] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
                         self.ref.child("users").child(user!.uid).setValue(data)
                         
                         print("Is registering")
-                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                         
                     } else {
                         

@@ -13,11 +13,12 @@ import FirebaseStorage
 
 class ProfileVC: UIViewController {
 
-    @IBOutlet weak var NotSignedInWarningLabel: UILabel!
-    @IBOutlet weak var signInButton: UIBarButtonItem!
+    @IBOutlet weak var notSignedInWarningLabel: UILabel!
+    @IBOutlet var signInButton: UIBarButtonItem!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var questionsAskedButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
     
     var ref: DatabaseReference!
     var storage: Storage!
@@ -30,6 +31,10 @@ class ProfileVC: UIViewController {
         storage = Storage.storage()
         checkForCurrentUser()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkForCurrentUser()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,7 +44,19 @@ class ProfileVC: UIViewController {
     func checkForCurrentUser() {
         if Auth.auth().currentUser != nil {
             self.navigationItem.rightBarButtonItem = nil
+            profileImage.isHidden = false
+            nameLabel.isHidden = false
+            questionsAskedButton.isHidden = false
+            logOutButton.isHidden = false
+            notSignedInWarningLabel.isHidden = true
             getProfileImage()
+        } else {
+            self.navigationItem.rightBarButtonItem = self.signInButton
+            profileImage.isHidden = true
+            nameLabel.isHidden = true
+            questionsAskedButton.isHidden = true
+            logOutButton.isHidden = true
+            notSignedInWarningLabel.isHidden = false
         }
     }
     
@@ -77,7 +94,17 @@ class ProfileVC: UIViewController {
     @IBAction func questionsAskedListButton(_ sender: UIButton) {
     }
     
-    @IBAction func changeProfilePassword(_ sender: UIButton) {
+    @IBAction func logOut(_ sender: UIButton) {
+        try! Auth.auth().signOut()
+        if Auth.auth().currentUser?.uid != nil {
+            
+        } else {
+            self.navigationItem.rightBarButtonItem = self.signInButton
+            profileImage.isHidden = true
+            nameLabel.isHidden = true
+            questionsAskedButton.isHidden = true
+            logOutButton.isHidden = true
+            notSignedInWarningLabel.isHidden = false
+        }
     }
-
 }
