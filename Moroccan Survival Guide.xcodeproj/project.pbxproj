@@ -314,6 +314,9 @@
 		9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CF1F6761B500DE716B /* ProfileVC.swift */; };
 		9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9D31F6763B900DE716B /* SignInVC.swift */; };
 		9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */; };
+		9CD04ACD1FAD0C4800662BD0 /* ForumTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */; };
+		9CD04ACF1FAD18BF00662BD0 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */; };
+		9CD04AD21FAD241300662BD0 /* ThreadHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */; };
 		B15F7A9B0625602992DDF7D2 /* Pods_Moroccan_Survival_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515F3096677842E651762F83 /* Pods_Moroccan_Survival_Guide.framework */; };
 /* End PBXBuildFile section */
 
@@ -630,6 +633,9 @@
 		9C32A9CF1F6761B500DE716B /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		9C32A9D31F6763B900DE716B /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumTableVC.swift; sourceTree = "<group>"; };
+		9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
+		9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadHeading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,11 +680,12 @@
 		9C201D361D728E3600C03EDB /* Morrocan Survival Guide */ = {
 			isa = PBXGroup;
 			children = (
+				9C201D3B1D728E3600C03EDB /* Main.storyboard */,
+				9C201D371D728E3600C03EDB /* AppDelegate.swift */,
+				9CD04ACB1FAD0C0900662BD0 /* ForumTab */,
 				9C2252AE1F9A9AC40029C818 /* ReferencesTab */,
 				9C2252AF1F9A9BBC0029C818 /* ProfileTab */,
-				9C201D3B1D728E3600C03EDB /* Main.storyboard */,
-				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
-				9C201D371D728E3600C03EDB /* AppDelegate.swift */,
+				9CD04AD01FAD23F900662BD0 /* Model */,
 				9C201D491D728F1600C03EDB /* Supporting Files */,
 				9C201D351D728E3600C03EDB /* Products */,
 				9C24B2121DB7FA9A001391F7 /* Words & Phrases */,
@@ -1155,6 +1162,24 @@
 			path = "Useful Questions";
 			sourceTree = "<group>";
 		};
+		9CD04ACB1FAD0C0900662BD0 /* ForumTab */ = {
+			isa = PBXGroup;
+			children = (
+				9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */,
+				9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */,
+			);
+			path = ForumTab;
+			sourceTree = "<group>";
+		};
+		9CD04AD01FAD23F900662BD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
+				9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B50F671EB2EEE23793BA8FFC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1602,6 +1627,9 @@
 				9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */,
 				9C201D511D73BF1300C03EDB /* MoroccanGuide.swift in Sources */,
 				9C201D4F1D73B60C00C03EDB /* SectionsTableViewCell.swift in Sources */,
+				9CD04ACF1FAD18BF00662BD0 /* ThreadTableViewCell.swift in Sources */,
+				9CD04AD21FAD241300662BD0 /* ThreadHeading.swift in Sources */,
+				9CD04ACD1FAD0C4800662BD0 /* ForumTableVC.swift in Sources */,
 				9C201D4D1D72B3A800C03EDB /* DetailsTableViewController.swift in Sources */,
 				9C201D381D728E3600C03EDB /* AppDelegate.swift in Sources */,
 				9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignInVC: UIViewController {
 
@@ -22,13 +23,16 @@ class SignInVC: UIViewController {
     
     var signInPage = true
     
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
+        
         nameLabel.isHidden = true
         nameTextField.isHidden = true
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,18 +40,14 @@ class SignInVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func checkForCurrentUser() {
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "toHome", sender: self)
-        }
-    }
     @IBAction func signInButtonTapped(_ sender: UIButton) {
+        // Signing In
         if signInPage == true {
             if let email=emailTextField.text, let password=passwordTextField.text {
                 Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         self.clearTextFields()
-                        self.performSegue(withIdentifier: "toHome", sender: self)
+                        self.dismiss(animated: true, completion: nil)
                         print(user!.uid)
                     }
                     else {
@@ -74,17 +74,18 @@ class SignInVC: UIViewController {
                     }
                 })
             }
+        // Registering a new account
         } else {
-            if let email=emailTextField.text, let password=passwordTextField.text, let _=nameTextField.text  {
+            if let email=emailTextField.text, let password=passwordTextField.text, let name=nameTextField.text  {
                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         
                         
-                        //DBProvider.Instance.saveUser(withID: user!.uid, email: email, password: password, name: name)
+                        let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name, "dateCreated":Date().timeIntervalSince1970] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+                        self.ref.child("users").child(user!.uid).setValue(data)
                         
-                        
+                        print("Is registering")
                         self.dismiss(animated: true, completion: nil)
-                        self.performSegue(withIdentifier: "toHome", sender: self)
                         
                     } else {
                         
