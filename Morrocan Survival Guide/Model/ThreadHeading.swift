@@ -13,10 +13,12 @@ class ThreadHeading {
     var subject: String?
     var description: String?
     var creator: String?
+    var threadID: String?
     
-    init(subject:String, description:String, creator:String) {
+    init(subject:String, description:String, creator:String, threadID:String) {
         self.subject = subject
         self.description = description
         self.creator = creator
+        self.threadID = threadID
     }
 }

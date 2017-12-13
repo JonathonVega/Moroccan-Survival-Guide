@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class ForumTableVC: UITableViewController {
 
+    @IBOutlet weak var createThreadBarButton: UIBarButtonItem!
     var ThreadsArray = [ThreadHeading]()
     
     var ref: DatabaseReference!
@@ -54,7 +55,16 @@ class ForumTableVC: UITableViewController {
         cell.descriptionLabel.adjustsFontSizeToFitWidth = true
         cell.descriptionLabel.numberOfLines = 0
 
+        cell.threadID = Thread.threadID
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "segueToThread", sender: self)
+        
+        let currentCell = tableView.cellForRow(at: indexPath) as! ThreadTableViewCell
+        
     }
     
     /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -64,12 +74,15 @@ class ForumTableVC: UITableViewController {
     
     func checkForCurrentUser() {
         if Auth.auth().currentUser != nil {
-            // TODO: Include design if not signed in
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = self.createThreadBarButton
         }
     }
     
     func getRecentDataFromFirebase() {
-        ref.child("ForumThreads").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("threads").observe(.value) { (snapshot) in
+            self.ThreadsArray.removeAll()
             if ( snapshot.value is NSNull ) {
                 print("not found")
             } else {
@@ -77,17 +90,33 @@ class ForumTableVC: UITableViewController {
                 for child in (snapshot.children) {
                     
                     let snap = child as! DataSnapshot //each child is a snapshot
+                    let threadID = snap.key
+                    print(threadID)
+                    print("Did we get it")
                     let dict = snap.value as! [String: Any] // the value is a dict
                     
-                    let subject = dict["Subject"] as! String
-                    let description = dict["Description"] as! String
-                    let creator = dict["Creator"] as! String
+                    let subject = dict["subject"] as! String
+                    let description = dict["description"] as! String
+                    let creator = dict["creator"] as! String
+
+                    let Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID)
                     
-                    let Thread = ThreadHeading(subject: subject, description: description, creator: creator)
                     self.ThreadsArray.append(Thread)
                 }
             }
             self.tableView.reloadData()
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToThread" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let currentCell = tableView.cellForRow(at: indexPath) as! ThreadTableViewCell
+                let targetController = segue.destination as! ThreadVC
+                targetController.threadID = currentCell.threadID
+            }
+            
         }
     }
     

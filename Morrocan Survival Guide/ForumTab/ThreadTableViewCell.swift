@@ -12,6 +12,7 @@ class ThreadTableViewCell: UITableViewCell {
     
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    var threadID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
