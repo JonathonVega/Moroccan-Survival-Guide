@@ -20,6 +20,10 @@ class ForumTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Auto corrects height of cells
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         
         ref = Database.database().reference()
@@ -49,13 +53,15 @@ class ForumTableVC: UITableViewController {
         
         let Thread = ThreadsArray[indexPath.row]
         cell.subjectLabel.text = Thread.subject
-        cell.subjectLabel.adjustsFontSizeToFitWidth = true
+        cell.subjectLabel.adjustsFontSizeToFitWidth = false
+        cell.subjectLabel.numberOfLines = 0
         
         cell.descriptionLabel.text = Thread.description
-        cell.descriptionLabel.adjustsFontSizeToFitWidth = true
-        cell.descriptionLabel.numberOfLines = 0
+        cell.descriptionLabel.adjustsFontSizeToFitWidth = false
+        cell.descriptionLabel.numberOfLines = 4
 
         cell.threadID = Thread.threadID
+
         
         return cell
     }
@@ -66,11 +72,6 @@ class ForumTableVC: UITableViewController {
         let currentCell = tableView.cellForRow(at: indexPath) as! ThreadTableViewCell
         
     }
-    
-    /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = calculateHeightForString(inString: ThreadsArray[indexPath.row].description!)
-        return height + 70.0
-    }*/
     
     func checkForCurrentUser() {
         if Auth.auth().currentUser != nil {
@@ -119,18 +120,4 @@ class ForumTableVC: UITableViewController {
             
         }
     }
-    
-    /*func calculateHeightForString(inString:String) -> CGFloat {
-        let messageString = inString
-        let attributes : [String : Any] = [NSFontAttributeName : UIFont.systemFont(ofSize: 15.0)]
-        
-        let attributedString : NSAttributedString = NSAttributedString(string: messageString, attributes: attributes)
-        
-        let rect : CGRect = attributedString.boundingRect(with: CGSize(width: 222.0, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
-        
-        let requredSize:CGRect = rect
-        return requredSize.height
-    }*/
-
-
 }
