@@ -69,7 +69,7 @@ class ForumTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "segueToThread", sender: self)
         
-        let currentCell = tableView.cellForRow(at: indexPath) as! ThreadTableViewCell
+        //let currentCell = tableView.cellForRow(at: indexPath) as! ThreadTableViewCell
         
     }
     
@@ -105,7 +105,9 @@ class ForumTableVC: UITableViewController {
                     self.ThreadsArray.append(Thread)
                 }
             }
+            self.ThreadsArray.reverse()
             self.tableView.reloadData()
+            
         }
     }
     

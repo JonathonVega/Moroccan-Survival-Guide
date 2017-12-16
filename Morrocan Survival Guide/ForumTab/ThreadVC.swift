@@ -18,6 +18,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     @IBOutlet weak var dateCreatedLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var threadHeadingView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +31,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: 787)
         scrollView.delegate = self
@@ -39,12 +40,16 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         scrollView.bounces = false
         tableView.bounces = false
         tableView.isScrollEnabled = false
-        print("Does it hit this?")
-        print(threadID)
-        
+        tableView.isHidden = true
         ref = Database.database().reference()
         
         getThreadInformationFromFirebase()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
+        tableView.isHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +68,9 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                 //print("It hits this")
             }
         }
+
+        self.containerViewHeight.constant = self.tableView.frame.minY + self.tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,7 +78,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +86,13 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         
         // Configure the cell...
         
-        self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
+        
+        
+        //self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
+        //print("containerViewHeight \(self.containerViewHeight.constant)")
+        //print("tableView.frame.minY \(self.tableView.frame.minY)")
+        //print("tableView.contentsize.height \(self.tableView.contentSize.height)")
+        //self.tableView.frame.size.height = self.tableView.frame.minY + self.containerView.frame.maxY
         
         return cell
     }
@@ -96,18 +110,30 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                 let subject = dict["subject"] as! String
                 let description = dict["description"] as! String
                 let creator = dict["creator"] as! String
-                let dateCreated = dict["dateCreated"] as! Double
-                
-                // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+                let dateCreated = dict["dateCreated"] as! Double // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
                 
                 self.subjectLabel.text = subject
                 self.descriptionLabel.text = description
-                self.userNameLabel.text = creator
                 self.dateCreatedLabel.text = self.convertIntervalToDateString(interval: dateCreated)
                 
+                
+                self.ref.child("users").child(creator).observeSingleEvent(of: .value, with: { (snap) in
+                    if (snap.value is NSNull) {
+                        print("not found")
+                    } else {
+                        let userDict = snap.value as! [String:Any]
+                        
+                        let creatorName = userDict["name"] as? String
+                        
+                        self.userNameLabel.text = creatorName!
+
+                    }
+                })
             }
             //self.tableView.reloadData()
+            
         })
+        
     }
     
     func convertIntervalToDateString(interval:Double) -> String{

@@ -316,6 +316,8 @@
 		9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */; };
 		9CCC7B801FE08C47009BD7D1 /* CreateThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B7F1FE08C47009BD7D1 /* CreateThreadVC.swift */; };
 		9CCC7B821FE0B6BC009BD7D1 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */; };
+		9CCC7B851FE4A267009BD7D1 /* ResponseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B841FE4A267009BD7D1 /* ResponseTableViewCell.swift */; };
+		9CCC7B871FE4AB31009BD7D1 /* CreateResponseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B861FE4AB31009BD7D1 /* CreateResponseVC.swift */; };
 		9CD04ACD1FAD0C4800662BD0 /* ForumTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */; };
 		9CD04ACF1FAD18BF00662BD0 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */; };
 		9CD04AD21FAD241300662BD0 /* ThreadHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */; };
@@ -637,6 +639,8 @@
 		9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9CCC7B7F1FE08C47009BD7D1 /* CreateThreadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateThreadVC.swift; sourceTree = "<group>"; };
 		9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadVC.swift; sourceTree = "<group>"; };
+		9CCC7B841FE4A267009BD7D1 /* ResponseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTableViewCell.swift; sourceTree = "<group>"; };
+		9CCC7B861FE4AB31009BD7D1 /* CreateResponseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateResponseVC.swift; sourceTree = "<group>"; };
 		9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumTableVC.swift; sourceTree = "<group>"; };
 		9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
 		9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadHeading.swift; sourceTree = "<group>"; };
@@ -1166,13 +1170,22 @@
 			path = "Useful Questions";
 			sourceTree = "<group>";
 		};
+		9CCC7B831FE4A227009BD7D1 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */,
+				9CCC7B841FE4A267009BD7D1 /* ResponseTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		9CD04ACB1FAD0C0900662BD0 /* ForumTab */ = {
 			isa = PBXGroup;
 			children = (
 				9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */,
-				9CD04ACE1FAD18BF00662BD0 /* ThreadTableViewCell.swift */,
 				9CCC7B7F1FE08C47009BD7D1 /* CreateThreadVC.swift */,
 				9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */,
+				9CCC7B861FE4AB31009BD7D1 /* CreateResponseVC.swift */,
 			);
 			path = ForumTab;
 			sourceTree = "<group>";
@@ -1180,6 +1193,7 @@
 		9CD04AD01FAD23F900662BD0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CCC7B831FE4A227009BD7D1 /* TableViewCells */,
 				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
 				9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */,
 			);
@@ -1628,12 +1642,14 @@
 			files = (
 				9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */,
 				9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */,
+				9CCC7B851FE4A267009BD7D1 /* ResponseTableViewCell.swift in Sources */,
 				9C201D531D74AA1B00C03EDB /* DetailsTableViewCell.swift in Sources */,
 				9C201D4B1D72930200C03EDB /* SectionTableViewController.swift in Sources */,
 				9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */,
 				9C201D511D73BF1300C03EDB /* MoroccanGuide.swift in Sources */,
 				9C201D4F1D73B60C00C03EDB /* SectionsTableViewCell.swift in Sources */,
 				9CCC7B801FE08C47009BD7D1 /* CreateThreadVC.swift in Sources */,
+				9CCC7B871FE4AB31009BD7D1 /* CreateResponseVC.swift in Sources */,
 				9CD04ACF1FAD18BF00662BD0 /* ThreadTableViewCell.swift in Sources */,
 				9CD04AD21FAD241300662BD0 /* ThreadHeading.swift in Sources */,
 				9CCC7B821FE0B6BC009BD7D1 /* ThreadVC.swift in Sources */,
