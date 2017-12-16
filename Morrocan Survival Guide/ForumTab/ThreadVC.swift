@@ -12,6 +12,7 @@ import FirebaseDatabase
 class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var threadID: String?
+    var responseID: String?
 
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -23,6 +24,11 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
+    
+    var responseTableView: UITableView?
+    
+    var responseArray = [Response]()
+    //var commentArray: [Comment]()
     
     let screenHeight = UIScreen.main.bounds.height//UIScreen.main.Screen().bounds.height
     let scrollViewContentHeight = 900 as CGFloat
@@ -43,13 +49,13 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         tableView.isHidden = true
         ref = Database.database().reference()
         
-        getThreadInformationFromFirebase()
-        
+        getThreadDataFromFirebase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
         tableView.isHidden = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,11 +84,23 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return responseArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        if (tableView == self.tableView){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "response", for: indexPath) as! ReplyTableViewCell
+            
+            let response = responseArray[indexPath.row]
+            cell.userNameLabel.text = response.creatorName
+            cell.responseLabel.text = response.response
+            cell.createDate.text = response.createDate
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "response", for: indexPath) as! ReplyTableViewCell
+            return cell
+        }
+        
         
         // Configure the cell...
         
@@ -94,12 +112,24 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         //print("tableView.contentsize.height \(self.tableView.contentSize.height)")
         //self.tableView.frame.size.height = self.tableView.frame.minY + self.containerView.frame.maxY
         
-        return cell
+
     }
     
-    // MARK: - Firebase Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == self.tableView) {
+            // Create responseTableView
+        }
+    }
+
     
-    func getThreadInformationFromFirebase() {
+    
+    // MARK: - Firebase Methods
+    func getThreadDataFromFirebase() {
+        getThreadHeadingInformationFromFirebase()
+        getResponsesOfThreadFromFirebase()
+    }
+    
+    func getThreadHeadingInformationFromFirebase() {
         ref.child("threads").child(threadID!).observeSingleEvent(of: .value, with: { (snapshot) in
             if ( snapshot.value is NSNull ) {
                 print("not found")
@@ -126,14 +156,75 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                         let creatorName = userDict["name"] as? String
                         
                         self.userNameLabel.text = creatorName!
-
                     }
                 })
             }
-            //self.tableView.reloadData()
-            
         })
+    }
+    
+    func getResponsesOfThreadFromFirebase() {
+        ref.child("threads").child(threadID!).child("responses").observe(.value) { (snapshot) in
+            self.responseArray.removeAll()
+            if ( snapshot.value is NSNull ) {
+                print("not found")
+            } else {
+                
+                for child in (snapshot.children) {
+                    let snap = child as! DataSnapshot //each child is a snapshot
+                    let dict = snap.value as! [String: Any] // the value is a dict
+                    
+                    let responseString = dict["response"] as! String
+                    let userName = dict["userName"] as! String
+                    let createDate = dict["createDate"] as! Double
+                    
+                    let createDateString = self.convertIntervalToDateString(interval: createDate)
+                    
+                    let response = Response(creatorName: userName, response: responseString, createDate: createDateString)
+                    self.responseArray.append(response)
+                }
+            }
+            self.tableView.reloadData()
+        }
         
+    }
+    
+    func getCommentsOfResponseFromFirebase() {
+        ref.child("responses").child(threadID!).observe(.value) { (snapshot) in
+            if ( snapshot.value is NSNull ) {
+                print("not found")
+            } else {
+                
+                let dict = snapshot.value as! [String: Any] // the value is a dict
+                
+                let subject = dict["subject"] as! String
+                let description = dict["description"] as! String
+                let creator = dict["creator"] as! String
+                let dateCreated = dict["dateCreated"] as! Double // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+                
+                self.subjectLabel.text = subject
+                self.descriptionLabel.text = description
+                self.dateCreatedLabel.text = self.convertIntervalToDateString(interval: dateCreated)
+                
+                
+                self.ref.child("users").child(creator).observeSingleEvent(of: .value, with: { (snap) in
+                    if (snap.value is NSNull) {
+                        print("not found")
+                    } else {
+                        let userDict = snap.value as! [String:Any]
+                        
+                        let creatorName = userDict["name"] as? String
+                        
+                        self.userNameLabel.text = creatorName!
+                    }
+                })
+            }
+        }
+    }
+    
+    // MARK: - Button touches
+    
+    @IBAction func touchedReplyButton(_ sender: Any) {
+        performSegue(withIdentifier: "createReplySegue", sender: self)
     }
     
     func convertIntervalToDateString(interval:Double) -> String{
@@ -145,5 +236,17 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         print(formatter.string(from: date))
         return formatter.string(from:date)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createReplySegue" {
+            let targetController = segue.destination as! CreateReplyVC
+            targetController.threadID = self.threadID
+            targetController.isResponse = true
+        }
+    }
+    
+    @IBAction func replyToResponse(_ sender: Any) {
+        performSegue(withIdentifier: "createReplySegue", sender: self)
+    }
+    
 }

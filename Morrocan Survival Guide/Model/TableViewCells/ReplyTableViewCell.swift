@@ -1,5 +1,5 @@
 //
-//  ResponseTableViewCell.swift
+//  ReplyTableViewCell.swift
 //  Moroccan Survival Guide
 //
 //  Created by Jonathon F Vega on 12/15/17.
@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ResponseTableViewCell: UITableViewCell {
+class ReplyTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var createDate: UILabel!
+    @IBOutlet weak var responseLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +26,5 @@ class ResponseTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
 }
