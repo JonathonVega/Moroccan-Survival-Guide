@@ -55,15 +55,13 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         ref = Database.database().reference()
         
         getThreadDataFromFirebase()
-        commentTableView.tableFooterView = UIView.init(frame: CGRect(x: 0, y: 0, width: 375, height: 200))
-        commentTableView.tableFooterView?.backgroundColor = UIColor.gray
+        commentTableView.tableFooterView = UIView.init(frame: CGRect(x: 0, y: 0, width: 375, height: 100))
+        commentTableView.tableFooterView?.backgroundColor = UIColor.brown
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
         commentTableView.isHidden = false
-        
-        //if(UIScreen.main.bounds.height > )
         
     }
 
@@ -90,7 +88,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         if(tableView == self.tableView) {
             count = responseArray.count
         } else if(tableView == self.commentTableView) {
-            count = 1
+            count = 10
         }
         return count!
     }
@@ -105,35 +103,19 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
             cell.createDate.text = response.createDate
             
             commentTableContainerView.frame.origin = CGPoint(x: 0, y: containerView.frame.maxY)
+            //commentTableContainerView.frame.size.height = /*tableView.frame.minY +*/ commentTableView.contentSize.height
+            print(commentTableView.contentSize.height)
+            print(cell.frame.size.height)
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
             
-            //self.tableView.frame.size.height = commentTableView.contentSize.height
-            
-            //containerView.frame.size.height = commentTableView.contentSize.height
-            //commentTableView.frame.size.height = commentTableView.contentSize.height
-            //commentTableContainerView.frame.size.height = commentTableView.contentSize.height
-            print("-------Where is this?")
-            
-            
-            //self.tableView.frame.size.height = commentTableView.contentSize.height
-            //commentTableContainerView.frame.size.height = commentTableView.contentSize.height
-            //commentTableView.frame.size.height = commentTableView.contentSize.height
-            //commentTableView.contentSize.height = commentTableView.contentSize.height
-            //containerView.frame.size.height = commentTableView.contentSize.height
             scrollView.contentSize.height = self.tableView.frame.minY + commentTableView.contentSize.height
-            
-            print(" the comment table content size is \(commentTableView.contentSize.height)")
-            print(commentTableView.frame.origin.y)
-            print("CommenttableContainerView height is \(commentTableContainerView.frame.size.height)")
-            print("The commentTable frame height is \(commentTableView.frame.height)")
-            print("scroll view height is \(scrollView.frame.size.height)")
-            print("ContainerView height is \(containerView.frame.size.height)")
-            print("The table view height is \(self.tableView.frame.size.height)")
-            print("The table view contentsize y is \(self.tableView.contentSize.height)")
+            //commentTableContainerView.frame.size.height = commentTableView.frame.minY +
+            commentTableView.frame.size.height = commentTableView.contentSize.height
+            scrollView.setContentOffset(CGPoint.zero, animated: true)
             
             return cell
         }
@@ -142,9 +124,12 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == self.tableView) {
             // Create responseTableView
+            
             responseID = responseArray[indexPath.row].key
             showCommentTableView()
             print("BUG??")
+            print(commentTableView.contentSize.height)
+
             
             
         }
@@ -286,13 +271,14 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         commentTableView?.dataSource = self
         print(commentTableContainerView.frame.origin.y)
         print(commentTableView.frame.origin.y)
+        
         //commentTableView.setContentOffset(x, animated: true)
         UIView.animate(withDuration: 0.5) {
             self.moveUp(view: self.commentTableContainerView)
         }
         self.tableView.isHidden = true
         
-        //scrollView.setContentOffset(CGPoint.zero, animated: true)
+       
         
         //print(commentTableView.frame.origin.y)
         //print(commentTableContainerView.frame.origin.y)
