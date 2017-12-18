@@ -21,6 +21,7 @@ class ForumTableVC: UITableViewController {
         super.viewDidLoad()
 
         // Auto corrects height of cells
+        setColors()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
@@ -121,5 +122,9 @@ class ForumTableVC: UITableViewController {
             }
             
         }
+    }
+    
+    func setColors() {
+        navigationController?.navigationBar.barTintColor = UIColor(red:178/255, green:135/255, blue:54/255, alpha:1.0)
     }
 }

@@ -25,7 +25,9 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
-    var responseTableView: UITableView?
+    @IBOutlet weak var commentTableContainerView: UIView!
+    @IBOutlet weak var commentTableView: UITableView!
+    //var commentTableView: UITableView?
     
     var responseArray = [Response]()
     //var commentArray: [Comment]()
@@ -46,25 +48,28 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         scrollView.bounces = false
         tableView.bounces = false
         tableView.isScrollEnabled = false
-        tableView.isHidden = true
+        commentTableView.isScrollEnabled = false
+        commentTableView.isHidden = true
+        commentTableView.isUserInteractionEnabled = false
+        
         ref = Database.database().reference()
         
         getThreadDataFromFirebase()
+        commentTableView.tableFooterView = UIView.init(frame: CGRect(x: 0, y: 0, width: 375, height: 200))
+        commentTableView.tableFooterView?.backgroundColor = UIColor.gray
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
-        tableView.isHidden = false
+        commentTableView.isHidden = false
+        
+        //if(UIScreen.main.bounds.height > )
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func setupThreadHeading() {
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -74,9 +79,6 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                 //print("It hits this")
             }
         }
-
-        self.containerViewHeight.constant = self.tableView.frame.minY + self.tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,7 +86,13 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return responseArray.count
+        var count: Int?
+        if(tableView == self.tableView) {
+            count = responseArray.count
+        } else if(tableView == self.commentTableView) {
+            count = 1
+        }
+        return count!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,35 +103,56 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
             cell.userNameLabel.text = response.creatorName
             cell.responseLabel.text = response.response
             cell.createDate.text = response.createDate
+            
+            commentTableContainerView.frame.origin = CGPoint(x: 0, y: containerView.frame.maxY)
+            
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "response", for: indexPath) as! ReplyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
+            
+            //self.tableView.frame.size.height = commentTableView.contentSize.height
+            
+            //containerView.frame.size.height = commentTableView.contentSize.height
+            //commentTableView.frame.size.height = commentTableView.contentSize.height
+            //commentTableContainerView.frame.size.height = commentTableView.contentSize.height
+            print("-------Where is this?")
+            
+            
+            //self.tableView.frame.size.height = commentTableView.contentSize.height
+            //commentTableContainerView.frame.size.height = commentTableView.contentSize.height
+            //commentTableView.frame.size.height = commentTableView.contentSize.height
+            //commentTableView.contentSize.height = commentTableView.contentSize.height
+            //containerView.frame.size.height = commentTableView.contentSize.height
+            scrollView.contentSize.height = self.tableView.frame.minY + commentTableView.contentSize.height
+            
+            print(" the comment table content size is \(commentTableView.contentSize.height)")
+            print(commentTableView.frame.origin.y)
+            print("CommenttableContainerView height is \(commentTableContainerView.frame.size.height)")
+            print("The commentTable frame height is \(commentTableView.frame.height)")
+            print("scroll view height is \(scrollView.frame.size.height)")
+            print("ContainerView height is \(containerView.frame.size.height)")
+            print("The table view height is \(self.tableView.frame.size.height)")
+            print("The table view contentsize y is \(self.tableView.contentSize.height)")
+            
             return cell
         }
-        
-        
-        // Configure the cell...
-        
-        
-        
-        //self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
-        //print("containerViewHeight \(self.containerViewHeight.constant)")
-        //print("tableView.frame.minY \(self.tableView.frame.minY)")
-        //print("tableView.contentsize.height \(self.tableView.contentSize.height)")
-        //self.tableView.frame.size.height = self.tableView.frame.minY + self.containerView.frame.maxY
-        
-
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == self.tableView) {
             // Create responseTableView
+            responseID = responseArray[indexPath.row].key
+            showCommentTableView()
+            print("BUG??")
+            
+            
         }
     }
-
     
     
     // MARK: - Firebase Methods
+    
     func getThreadDataFromFirebase() {
         getThreadHeadingInformationFromFirebase()
         getResponsesOfThreadFromFirebase()
@@ -168,24 +197,23 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
             if ( snapshot.value is NSNull ) {
                 print("not found")
             } else {
-                
                 for child in (snapshot.children) {
                     let snap = child as! DataSnapshot //each child is a snapshot
                     let dict = snap.value as! [String: Any] // the value is a dict
                     
+                    let responseKey = snap.key
                     let responseString = dict["response"] as! String
                     let userName = dict["userName"] as! String
                     let createDate = dict["createDate"] as! Double
                     
                     let createDateString = self.convertIntervalToDateString(interval: createDate)
                     
-                    let response = Response(creatorName: userName, response: responseString, createDate: createDateString)
+                    let response = Response(creatorName: userName, response: responseString, createDate: createDateString, key: responseKey)
                     self.responseArray.append(response)
                 }
             }
             self.tableView.reloadData()
         }
-        
     }
     
     func getCommentsOfResponseFromFirebase() {
@@ -221,6 +249,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         }
     }
     
+    
     // MARK: - Button touches
     
     @IBAction func touchedReplyButton(_ sender: Any) {
@@ -228,12 +257,12 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     }
     
     func convertIntervalToDateString(interval:Double) -> String{
-        print(interval)
+        //print(interval)
         let date = Date(timeIntervalSince1970: interval)
-        print(date)
+        //print(date)
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        print(formatter.string(from: date))
+        //print(formatter.string(from: date))
         return formatter.string(from:date)
     }
     
@@ -247,6 +276,31 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     
     @IBAction func replyToResponse(_ sender: Any) {
         performSegue(withIdentifier: "createReplySegue", sender: self)
+    }
+    
+    
+    // MARK: - Comments tableView
+    
+    func showCommentTableView() {
+        commentTableView?.delegate = self
+        commentTableView?.dataSource = self
+        print(commentTableContainerView.frame.origin.y)
+        print(commentTableView.frame.origin.y)
+        //commentTableView.setContentOffset(x, animated: true)
+        UIView.animate(withDuration: 0.5) {
+            self.moveUp(view: self.commentTableContainerView)
+        }
+        self.tableView.isHidden = true
+        
+        //scrollView.setContentOffset(CGPoint.zero, animated: true)
+        
+        //print(commentTableView.frame.origin.y)
+        //print(commentTableContainerView.frame.origin.y)
+        //print("ContainerView height is \(containerView.frame.size.height)")
+    }
+    
+    func moveUp(view: UIView) {
+        view.frame.origin.y = tableView.frame.minY
     }
     
 }
