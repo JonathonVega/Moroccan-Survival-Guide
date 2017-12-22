@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  Reply.swift
 //  Moroccan Survival Guide
 //
 //  Created by Jonathon F Vega on 12/16/17.
@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-class Response {
+class Reply {
     let creatorName: String?
-    let response: String?
+    let reply: String?
     let createDate: String?
     let key: String?
     
-    init(creatorName:String, response:String, createDate:String, key:String) {
+    init(creatorName:String, reply:String, createDate:String, key:String) {
         self.creatorName = creatorName
-        self.response = response
+        self.reply = reply
         self.createDate = createDate
         self.key = key
     }

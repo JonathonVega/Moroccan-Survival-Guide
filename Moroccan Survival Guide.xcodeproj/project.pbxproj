@@ -318,7 +318,7 @@
 		9CCC7B821FE0B6BC009BD7D1 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */; };
 		9CCC7B851FE4A267009BD7D1 /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B841FE4A267009BD7D1 /* ReplyTableViewCell.swift */; };
 		9CCC7B871FE4AB31009BD7D1 /* CreateReplyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B861FE4AB31009BD7D1 /* CreateReplyVC.swift */; };
-		9CCC7B891FE4F615009BD7D1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B881FE4F615009BD7D1 /* Response.swift */; };
+		9CCC7B891FE4F615009BD7D1 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B881FE4F615009BD7D1 /* Reply.swift */; };
 		9CCC7B8B1FE4F6FD009BD7D1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B8A1FE4F6FD009BD7D1 /* Comment.swift */; };
 		9CCC7B8D1FE502B3009BD7D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B8C1FE502B3009BD7D1 /* User.swift */; };
 		9CCC7B8F1FE586EB009BD7D1 /* CultureTipProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B8E1FE586EB009BD7D1 /* CultureTipProvider.swift */; };
@@ -645,7 +645,7 @@
 		9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadVC.swift; sourceTree = "<group>"; };
 		9CCC7B841FE4A267009BD7D1 /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
 		9CCC7B861FE4AB31009BD7D1 /* CreateReplyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReplyVC.swift; sourceTree = "<group>"; };
-		9CCC7B881FE4F615009BD7D1 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		9CCC7B881FE4F615009BD7D1 /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		9CCC7B8A1FE4F6FD009BD7D1 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		9CCC7B8C1FE502B3009BD7D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9CCC7B8E1FE586EB009BD7D1 /* CultureTipProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultureTipProvider.swift; sourceTree = "<group>"; };
@@ -1204,7 +1204,7 @@
 				9CCC7B831FE4A227009BD7D1 /* TableViewCells */,
 				9C201D501D73BF1300C03EDB /* MoroccanGuide.swift */,
 				9CD04AD11FAD241300662BD0 /* ThreadHeading.swift */,
-				9CCC7B881FE4F615009BD7D1 /* Response.swift */,
+				9CCC7B881FE4F615009BD7D1 /* Reply.swift */,
 				9CCC7B8A1FE4F6FD009BD7D1 /* Comment.swift */,
 				9CCC7B8C1FE502B3009BD7D1 /* User.swift */,
 				9CCC7B8E1FE586EB009BD7D1 /* CultureTipProvider.swift */,
@@ -1657,7 +1657,7 @@
 				9CCC7B851FE4A267009BD7D1 /* ReplyTableViewCell.swift in Sources */,
 				9C201D531D74AA1B00C03EDB /* DetailsTableViewCell.swift in Sources */,
 				9C201D4B1D72930200C03EDB /* SectionTableViewController.swift in Sources */,
-				9CCC7B891FE4F615009BD7D1 /* Response.swift in Sources */,
+				9CCC7B891FE4F615009BD7D1 /* Reply.swift in Sources */,
 				9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */,
 				9CCC7B8F1FE586EB009BD7D1 /* CultureTipProvider.swift in Sources */,
 				9C201D511D73BF1300C03EDB /* MoroccanGuide.swift in Sources */,

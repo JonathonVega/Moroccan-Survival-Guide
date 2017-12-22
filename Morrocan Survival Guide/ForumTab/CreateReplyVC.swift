@@ -52,19 +52,19 @@ class CreateReplyVC: UIViewController {
         }
     }
     
-    /*func addCommentToFirebase() {
+    func addCommentToFirebase() {
         if (descriptionTextView.text.isEmpty) {
             // TODO: Add in errors
         } else {
-            let commentRef = self.ref.child("responses").child(responseID).childByAutoId()
+            let commentRef = self.ref.child("threads").child(threadID!).child("responses").child(responseID!).child("comments").childByAutoId()
             let commentRandomKey = commentRef.key
             let userID = Auth.auth().currentUser!.uid
             let date = Date().timeIntervalSince1970
             
-            let data: Dictionary<String, Any> = ["user":userID, "comment": descriptionTextView.text, "createDate":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
-            self.ref.child("responses").child(responseID).child("comments").child(commentRandomKey).setValue(data)
+            let data: Dictionary<String, Any> = ["userID":userID, "userName":user!.name!, "comment": descriptionTextView.text, "createDate":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+            self.ref.child("threads").child(threadID!).child("responses").child(responseID!).child("comments").child(commentRandomKey).setValue(data)
         }
-    }*/
+    }
     
     func getUserInformation() {
         let userID = Auth.auth().currentUser?.uid
@@ -81,12 +81,14 @@ class CreateReplyVC: UIViewController {
     }
     
     
+    // - MARK: touch Buttons
+    
     @IBAction func createReply(_ sender: Any) {
         if(isResponse)!{
             addResponseToFirebase()
             dismiss(animated: true, completion: nil)
         }else {
-            //addCommentToFirebase()
+            addCommentToFirebase()
             dismiss(animated: true, completion: nil)
         }
     }

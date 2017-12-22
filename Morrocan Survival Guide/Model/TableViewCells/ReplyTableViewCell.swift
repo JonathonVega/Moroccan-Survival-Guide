@@ -12,7 +12,7 @@ class ReplyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var createDate: UILabel!
-    @IBOutlet weak var responseLabel: UILabel!
+    @IBOutlet weak var replyLabel: UILabel!
     
     
     override func awakeFromNib() {
