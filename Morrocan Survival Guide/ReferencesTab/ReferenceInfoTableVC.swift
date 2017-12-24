@@ -11,15 +11,12 @@ import UIKit
 class ReferenceInfoTableVC: UITableViewController {
 
     var tableTitle = ""
+    var cultureTipProvider: CultureTipProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        cultureTipProvider = CultureTipProvider()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,23 +28,33 @@ class ReferenceInfoTableVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if tableTitle == "Customs" {
+            return (cultureTipProvider?.tips.count)!
+            
+        }
         return 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.selectionStyle = .none
+        if tableTitle == "Customs" {
+            cell.textLabel?.text = cultureTipProvider?.tips[indexPath.row]
+        }
+        
 
         // Configure the cell...
+        
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

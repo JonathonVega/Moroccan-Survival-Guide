@@ -165,14 +165,12 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
                                 filteredData.append(Thread!)
                             }
                             
-                            
                         } else if ((subject.lowercased().range(of: searchText) != nil) || (description.lowercased().range(of: searchText) != nil)) {
                             if ((subject.lowercased().range(of: searchText) != nil) || (description.lowercased().range(of: searchText) != nil)) {
                                 Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID, responseCount: 0)
                                 filteredData.append(Thread!)
                             }
                         }
-                        
                     }
                 }
                 print("Filtered")
@@ -185,6 +183,7 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     
     
     // MARK: - Search Bar
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         // Hide search bar

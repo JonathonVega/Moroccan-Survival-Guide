@@ -57,25 +57,17 @@ class ReferencesTableVC: UITableViewController {
         
     }
     
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if self.tableView.indexPathForSelectedRow == 0 {
-            if segue.identifier == "toReference" {
-                if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let reference = ReferenceList[indexPath]
-                    let targetController = segue.destination as! SectionTableViewController
-                    
-                }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toReference" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let reference = ReferenceList[indexPath.row]
+                let targetController = segue.destination as! ReferenceInfoTableVC
+                targetController.tableTitle = reference
             }
-        } else {
-            if segue.identifier == "toTerms" {
-                if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let reference = ReferenceList[indexPath]
-                    let targetController = segue.destination as! ReferencesTableVC
-                }
+        } else if segue.identifier == "toTerms" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
             }
         }
-        
-     
-    }*/
+    }
 
 }
