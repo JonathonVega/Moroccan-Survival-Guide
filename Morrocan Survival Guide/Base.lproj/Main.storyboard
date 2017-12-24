@@ -30,7 +30,7 @@
             </objects>
             <point key="canvasLocation" x="-1383" y="-270"/>
         </scene>
-        <!--Forum-->
+        <!--Forum TableVC-->
         <scene sceneID="YR2-qi-AaK">
             <objects>
                 <tableViewController id="7kZ-WK-MYe" customClass="ForumTableVC" customModule="Moroccan_Survival_Guide" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,16 +53,16 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWI-BU-GDT">
-                                            <rect key="frame" x="16" y="41.5" width="343" height="23"/>
+                                            <rect key="frame" x="16" y="41.5" width="343" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-Li-Hxb">
-                                            <rect key="frame" x="16" y="74.5" width="93" height="21"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-Li-Hxb">
+                                            <rect key="frame" x="16" y="71" width="74.5" height="21"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Replies:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN9-Dv-06M">
-                                                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="egm-Yh-SM9"/>
                                                     </constraints>
@@ -70,8 +70,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROO-wP-BM2">
-                                                    <rect key="frame" x="64.5" y="0.0" width="28.5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROO-wP-BM2">
+                                                    <rect key="frame" x="46" y="0.0" width="28.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -83,7 +83,6 @@
                                                 <constraint firstItem="JN9-Dv-06M" firstAttribute="leading" secondItem="hr4-Li-Hxb" secondAttribute="leading" id="cIG-Cw-e8m"/>
                                                 <constraint firstItem="ROO-wP-BM2" firstAttribute="top" secondItem="hr4-Li-Hxb" secondAttribute="top" id="eIs-GR-GkA"/>
                                                 <constraint firstAttribute="trailing" secondItem="ROO-wP-BM2" secondAttribute="trailing" id="jAR-JW-tFe"/>
-                                                <constraint firstItem="ROO-wP-BM2" firstAttribute="leading" secondItem="JN9-Dv-06M" secondAttribute="trailing" constant="7" id="pOm-8R-9Ja"/>
                                                 <constraint firstAttribute="bottom" secondItem="ROO-wP-BM2" secondAttribute="bottom" id="qc3-T9-PZL"/>
                                                 <constraint firstItem="JN9-Dv-06M" firstAttribute="top" secondItem="hr4-Li-Hxb" secondAttribute="top" id="yn8-jr-wHn"/>
                                             </constraints>
@@ -91,19 +90,20 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GYh-Sr-d5v" firstAttribute="top" secondItem="xPL-CX-6dU" secondAttribute="topMargin" id="1LL-x2-vDC"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hr4-Li-Hxb" secondAttribute="trailing" constant="250" id="CJZ-Lo-7yL"/>
                                         <constraint firstItem="xWI-BU-GDT" firstAttribute="top" secondItem="GYh-Sr-d5v" secondAttribute="bottom" constant="10" id="JgV-d0-tS5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hr4-Li-Hxb" secondAttribute="bottom" constant="4" id="JhB-3Z-KrZ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="xWI-BU-GDT" secondAttribute="trailing" id="LNe-zy-1P4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hr4-Li-Hxb" secondAttribute="trailing" constant="268.5" id="UM1-5n-DJ6"/>
                                         <constraint firstItem="GYh-Sr-d5v" firstAttribute="leading" secondItem="xPL-CX-6dU" secondAttribute="leadingMargin" id="VDA-yj-QQ6"/>
-                                        <constraint firstItem="hr4-Li-Hxb" firstAttribute="top" secondItem="xWI-BU-GDT" secondAttribute="bottom" constant="10" id="Zz3-7X-t2W"/>
+                                        <constraint firstItem="hr4-Li-Hxb" firstAttribute="top" secondItem="xWI-BU-GDT" secondAttribute="bottom" constant="10" id="fe6-jM-iCN"/>
                                         <constraint firstItem="xWI-BU-GDT" firstAttribute="leading" secondItem="xPL-CX-6dU" secondAttribute="leadingMargin" id="gam-31-SDA"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hr4-Li-Hxb" secondAttribute="bottom" constant="0.5" id="k7u-KX-zdp"/>
                                         <constraint firstItem="GYh-Sr-d5v" firstAttribute="trailing" secondItem="xPL-CX-6dU" secondAttribute="trailingMargin" id="lHM-cZ-mlF"/>
-                                        <constraint firstItem="hr4-Li-Hxb" firstAttribute="leading" secondItem="xPL-CX-6dU" secondAttribute="leadingMargin" id="wpe-vb-XY3"/>
+                                        <constraint firstItem="hr4-Li-Hxb" firstAttribute="leading" secondItem="xPL-CX-6dU" secondAttribute="leadingMargin" id="ngZ-WD-1b6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="xWI-BU-GDT" id="nww-MC-ZDG"/>
+                                    <outlet property="responseCountLabel" destination="ROO-wP-BM2" id="kWC-3C-rI6"/>
                                     <outlet property="subjectLabel" destination="GYh-Sr-d5v" id="8kD-LN-4bB"/>
                                 </connections>
                             </tableViewCell>
@@ -113,7 +113,7 @@
                             <outlet property="delegate" destination="7kZ-WK-MYe" id="Srn-Ty-bQs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Forum" id="KVP-7S-Oje">
+                    <navigationItem key="navigationItem" id="KVP-7S-Oje">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rgL-GL-bba">
                             <connections>
                                 <segue destination="Vp6-Rj-sij" kind="presentation" identifier="addThread" id="Ist-WL-X8p"/>
@@ -456,7 +456,6 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="lQK-Kt-dQk" secondAttribute="trailing" id="0oF-GF-jeE"/>
                                             <constraint firstAttribute="bottom" secondItem="bbg-sS-cn6" secondAttribute="bottom" id="BsE-xw-gcl"/>

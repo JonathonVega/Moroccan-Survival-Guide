@@ -228,6 +228,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     }
     
     func getResponsesOfThreadFromFirebase() {
+        var responsesCount: Int = 0
         ref.child("threads").child(threadID!).child("responses").observe(.value) { (snapshot) in
             self.responseArray.removeAll()
             if ( snapshot.value is NSNull ) {
@@ -244,12 +245,15 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                     
                     let createDateString = self.convertIntervalToDateString(interval: createDate)
                     
+                    responsesCount += 1
                     let response = Reply(creatorName: userName, reply: responseString, createDate: createDateString, key: responseKey)
                     self.responseArray.append(response)
                 }
             }
             self.tableView.reloadData()
+            self.ref.child("threads").child(self.threadID!).child("responseCount").setValue(responsesCount)
         }
+        
     }
     
     func getCommentsOfResponseFromFirebase() {
