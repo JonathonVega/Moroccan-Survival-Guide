@@ -17,6 +17,8 @@ class ReferenceInfoTableVC: UITableViewController {
         super.viewDidLoad()
 
         cultureTipProvider = CultureTipProvider()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44  
     }
 
     override func didReceiveMemoryWarning() {

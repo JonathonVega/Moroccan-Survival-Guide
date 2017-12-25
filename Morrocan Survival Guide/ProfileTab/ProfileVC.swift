@@ -108,8 +108,8 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     func saveProfileImage(image: UIImage) {
         let userID = Auth.auth().currentUser?.uid
         let imageName = UUID().uuidString
-        let storageRef = storage.reference().child("profileImages").child("\(imageName).jpg")
-        let uploadData = UIImageJPEGRepresentation(image, 0.1)
+        let storageRef = storage.reference().child("profileImages").child("\(imageName).png")
+        let uploadData = UIImagePNGRepresentation(image)
         storageRef.putData(uploadData!, metadata: nil) { (metadata, error) in
             if error != nil {
                 print(error!)

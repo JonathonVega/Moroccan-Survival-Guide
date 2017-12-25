@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -25,6 +26,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     var signInPage = true
     
     var ref: DatabaseReference!
+    var storage: Storage!
     
     let imagePicker = UIImagePickerController()
     
@@ -32,9 +34,11 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         super.viewDidLoad()
         
         ref = Database.database().reference()
+        storage = Storage.storage()
         
         nameLabel.isHidden = true
         nameTextField.isHidden = true
+        profileImageButton.isHidden = true
         
         imagePicker.delegate = self
     }
@@ -90,6 +94,21 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name, "dateCreated":Date().timeIntervalSince1970] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
                         self.ref.child("users").child(user!.uid).setValue(data)
                         
+                        if(self.profileImageButton.imageView?.image != nil) {
+                            let imageName = UUID().uuidString
+                            let storageRef = self.storage.reference().child("profileImages").child("\(imageName).png")
+                            let uploadData = UIImagePNGRepresentation((self.profileImageButton.imageView?.image)!)
+                            storageRef.putData(uploadData!, metadata: nil) { (metadata, error) in
+                                if error != nil {
+                                    print(error!)
+                                    
+                                }
+                                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                                    self.ref.child("users").child(user!.uid).child("profileImage").setValue(profileImageUrl)
+                                }
+                            }
+                        }
+                        
                         print("Is registering")
                         self.navigationController?.popViewController(animated: true)
                         
@@ -107,14 +126,11 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 print("Wrong in some way!!!")
                             }
                         }
-                        
                         print(error!)
-                        
                     }
                 })
             }
         }
-        
     }
     
     func clearTextFields() {
@@ -133,6 +149,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             signInPage = false
             nameLabel.isHidden = false
             nameTextField.isHidden = false
+            profileImageButton.isHidden = false
             signInButton.setTitle("Register", for: .normal)
             helpLabel.text = "Already have an account?"
             registerButton.setTitle("Sign-In Here", for: .normal)
@@ -140,6 +157,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             signInPage = true
             nameLabel.isHidden = true
             nameTextField.isHidden = true
+            profileImageButton.isHidden = true
             signInButton.setTitle("Sign-In", for: .normal)
             helpLabel.text = "Don\'t have an account?"
             registerButton.setTitle("Register Here", for: .normal)
