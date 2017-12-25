@@ -230,7 +230,7 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     func setColors() {
-        navigationController?.navigationBar.barTintColor = UIColor(red:178/255, green:135/255, blue:54/255, alpha:1.0)
+        navigationController?.navigationBar.barTintColor = UIColor(red:229/255, green:167/255, blue:53/255, alpha:1.0)
     }
     
     

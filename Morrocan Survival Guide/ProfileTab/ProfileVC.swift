@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var notSignedInWarningLabel: UILabel!
     @IBOutlet var signInButton: UIBarButtonItem!
@@ -23,6 +23,8 @@ class ProfileVC: UIViewController {
     var ref: DatabaseReference!
     var storage: Storage!
     
+    let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,9 @@ class ProfileVC: UIViewController {
         ref = Database.database().reference()
         storage = Storage.storage()
         checkForCurrentUser()
+        setupGestureRecognizer()
+        
+        imagePicker.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,6 +65,9 @@ class ProfileVC: UIViewController {
         }
     }
     
+    
+    // MARK: - Firebase Calls Methods
+    
     func getProfileImage() {
         let userID = Auth.auth().currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -68,10 +76,16 @@ class ProfileVC: UIViewController {
             let name = value?["name"] as? String ?? ""
             //print(name)
             self.nameLabel.text = name
-            if let image = value?["profileImage"] as? String {
+            if let imageURL = value?["profileImage"] as? String {
                 // TODO: Fill out later when working with Firebase Storage
-                print("Nothing Should be coming out")
-                print(image)
+                let spaceRef = self.storage.reference(forURL: imageURL)
+                spaceRef.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        self.profileImage.image = UIImage(data: data!)
+                    }
+                })
             } else {
                 print("Oh no, no picture")
                 //let defaultProfileImageRef = Storage.storage(url: "gs://nuspace-a5b5b.appspot.com/DefaultUserImage.png")
@@ -91,6 +105,26 @@ class ProfileVC: UIViewController {
         })
     }
     
+    func saveProfileImage(image: UIImage) {
+        let userID = Auth.auth().currentUser?.uid
+        let imageName = UUID().uuidString
+        let storageRef = storage.reference().child("profileImages").child("\(imageName).jpg")
+        let uploadData = UIImageJPEGRepresentation(image, 0.1)
+        storageRef.putData(uploadData!, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print(error!)
+                
+            }
+            if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                self.ref.child("users").child(userID!).child("profileImage").setValue(profileImageUrl)
+            }
+            self.getProfileImage()
+        }
+    }
+    
+    
+    // MARK: - Button Touches
+    
     @IBAction func questionsAskedListButton(_ sender: UIButton) {
     }
     
@@ -107,4 +141,40 @@ class ProfileVC: UIViewController {
             notSignedInWarningLabel.isHidden = false
         }
     }
+    
+    
+    // MARK: - Gesture Recognizer Methods
+    
+    func setupGestureRecognizer() {
+        profileImage.isUserInteractionEnabled = true
+        let profileImageTap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTap))
+        profileImageTap.delegate = self as? UIGestureRecognizerDelegate
+        profileImage.addGestureRecognizer(profileImageTap)
+    }
+    
+    @objc func handleProfileImageTap(gestureRecognizer:UIGestureRecognizer) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profileImage.contentMode = .scaleAspectFit
+            saveProfileImage(image: pickedImage)
+            profileImage.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

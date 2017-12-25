@@ -1003,14 +1003,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgZ-QU-ZsX">
-                                <rect key="frame" x="136" y="371" width="103" height="30"/>
+                                <rect key="frame" x="156" y="419" width="63" height="30"/>
                                 <state key="normal" title="Sign-In"/>
                                 <connections>
                                     <action selector="signInButtonTapped:" destination="aIL-S6-E59" eventType="touchUpInside" id="lf0-7q-asH"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-Qv-QCd">
-                                <rect key="frame" x="16" y="197" width="343" height="126"/>
+                                <rect key="frame" x="16" y="247" width="343" height="126"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="Cf4-rz-0Rv">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -1083,16 +1083,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wqd-X9-CYD">
-                                <rect key="frame" x="16" y="443" width="343" height="50.5"/>
+                                <rect key="frame" x="96" y="494" width="183" height="50.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46s-hd-m3m">
-                                        <rect key="frame" x="82" y="0.0" width="179" height="20.5"/>
+                                        <rect key="frame" x="2" y="0.0" width="179" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9j-dP-Zhh">
-                                        <rect key="frame" x="124.5" y="20.5" width="94" height="30"/>
+                                        <rect key="frame" x="44.5" y="20.5" width="94" height="30"/>
                                         <state key="normal" title="Register Here"/>
                                         <connections>
                                             <action selector="changeSignInPage:" destination="aIL-S6-E59" eventType="touchUpInside" id="AN8-Ox-jp6"/>
@@ -1100,19 +1100,35 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KY-Sw-VNP">
+                                <rect key="frame" x="137" y="90" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GMU-AP-W6X"/>
+                                    <constraint firstAttribute="width" constant="100" id="MNN-7S-z8T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Add profile image"/>
+                                <connections>
+                                    <action selector="touchOnProfileImage:" destination="aIL-S6-E59" eventType="touchUpInside" id="zxn-tq-zyf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wqd-X9-CYD" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" id="2UA-ps-D3I"/>
-                            <constraint firstItem="V7k-Qv-QCd" firstAttribute="top" secondItem="5z5-4W-4YD" secondAttribute="bottom" constant="133" id="57B-B0-fh8"/>
-                            <constraint firstItem="lex-i9-EJc" firstAttribute="top" secondItem="Wqd-X9-CYD" secondAttribute="bottom" constant="124.5" id="5Kb-jK-aDh"/>
-                            <constraint firstItem="vgZ-QU-ZsX" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" constant="120" id="Esa-vo-Nsj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V7k-Qv-QCd" secondAttribute="trailing" id="Jkh-fx-F8Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Wqd-X9-CYD" secondAttribute="trailing" id="PVP-yk-N0R"/>
-                            <constraint firstItem="Wqd-X9-CYD" firstAttribute="top" secondItem="vgZ-QU-ZsX" secondAttribute="bottom" constant="42" id="SJz-Wf-kSx"/>
-                            <constraint firstItem="V7k-Qv-QCd" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" id="c0U-gH-JgI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vgZ-QU-ZsX" secondAttribute="trailing" constant="120" id="hHU-LR-Urn"/>
-                            <constraint firstItem="vgZ-QU-ZsX" firstAttribute="top" secondItem="V7k-Qv-QCd" secondAttribute="bottom" constant="48" id="mhH-wK-10J"/>
+                            <constraint firstItem="Wqd-X9-CYD" firstAttribute="top" secondItem="vgZ-QU-ZsX" secondAttribute="bottom" constant="45" id="0On-k5-MHX"/>
+                            <constraint firstItem="V7k-Qv-QCd" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" id="8YS-Qz-fIF"/>
+                            <constraint firstItem="vgZ-QU-ZsX" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" constant="140" id="Lxb-Jx-IhY"/>
+                            <constraint firstItem="lex-i9-EJc" firstAttribute="top" secondItem="Wqd-X9-CYD" secondAttribute="bottom" constant="73.5" id="Ohk-ao-8zC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vgZ-QU-ZsX" secondAttribute="trailing" constant="140" id="Qgb-MX-2TY"/>
+                            <constraint firstItem="V7k-Qv-QCd" firstAttribute="top" secondItem="6KY-Sw-VNP" secondAttribute="bottom" constant="57" id="T9D-pF-teA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wqd-X9-CYD" secondAttribute="trailing" constant="80" id="frq-Rg-Qcp"/>
+                            <constraint firstItem="vgZ-QU-ZsX" firstAttribute="top" secondItem="V7k-Qv-QCd" secondAttribute="bottom" constant="46" id="gVF-Qo-8dX"/>
+                            <constraint firstItem="6KY-Sw-VNP" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" constant="121" id="iO1-Da-BEL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V7k-Qv-QCd" secondAttribute="trailing" id="iap-z9-ULe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6KY-Sw-VNP" secondAttribute="trailing" constant="122" id="jZA-Un-oe1"/>
+                            <constraint firstItem="6KY-Sw-VNP" firstAttribute="top" secondItem="5z5-4W-4YD" secondAttribute="bottom" constant="26" id="qyA-Fw-8Ti"/>
+                            <constraint firstItem="Wqd-X9-CYD" firstAttribute="leading" secondItem="nNY-VY-XWX" secondAttribute="leadingMargin" constant="80" id="zJW-1Q-Chr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1121,13 +1137,14 @@
                         <outlet property="nameLabel" destination="jkF-Je-SRK" id="ik1-K5-x5U"/>
                         <outlet property="nameTextField" destination="nBf-53-c4t" id="oY9-re-wnS"/>
                         <outlet property="passwordTextField" destination="KLY-4T-hxT" id="re0-e5-UlD"/>
+                        <outlet property="profileImageButton" destination="6KY-Sw-VNP" id="aBh-c0-Id6"/>
                         <outlet property="registerButton" destination="p9j-dP-Zhh" id="gq8-Uq-H2D"/>
                         <outlet property="signInButton" destination="vgZ-QU-ZsX" id="Egv-uR-22Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dy1-rk-3xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="-488"/>
+            <point key="canvasLocation" x="2296.8000000000002" y="-488.00599700149928"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="RKe-HV-uQQ">

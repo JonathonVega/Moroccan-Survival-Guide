@@ -10,8 +10,9 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
@@ -25,6 +26,8 @@ class SignInVC: UIViewController {
     
     var ref: DatabaseReference!
     
+    let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,12 +36,16 @@ class SignInVC: UIViewController {
         nameLabel.isHidden = true
         nameTextField.isHidden = true
         
+        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // MARK: - Firebase Calls
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
         // Signing In
@@ -115,6 +122,7 @@ class SignInVC: UIViewController {
         passwordTextField.text = ""
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -138,5 +146,26 @@ class SignInVC: UIViewController {
         }
     }
 
-
+    @IBAction func touchOnProfileImage(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // MARK: - Image Picker
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profileImageButton.imageView?.contentMode = .scaleAspectFill
+            profileImageButton.imageView?.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
 }
