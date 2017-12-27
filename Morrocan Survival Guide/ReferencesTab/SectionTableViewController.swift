@@ -12,8 +12,7 @@ class SectionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor(red:11/255, green:193/255, blue:76/255, alpha:1.0)
-        navigationController?.navigationBar.tintColor = UIColor.white
+
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         
     }

@@ -27,12 +27,15 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        setColors()
         ref = Database.database().reference()
         storage = Storage.storage()
         checkForCurrentUser()
         setupGestureRecognizer()
+        profileImage.layer.borderWidth = 1.0
+        profileImage.layer.borderColor = UIColor.gray.cgColor
         
         imagePicker.delegate = self
     }
@@ -131,7 +134,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBAction func logOut(_ sender: UIButton) {
         try! Auth.auth().signOut()
         if Auth.auth().currentUser?.uid != nil {
-            
         } else {
             self.navigationItem.rightBarButtonItem = self.signInButton
             profileImage.isHidden = true
@@ -175,6 +177,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setColors() {
+        navigationController?.navigationBar.barTintColor = UIColor(red:229/255, green:167/255, blue:53/255, alpha:1.0)
+        navigationController?.navigationBar.tintColor = UIColor(red: 73/255, green: 119/255, blue: 210/255, alpha: 1.0)
     }
     
 }

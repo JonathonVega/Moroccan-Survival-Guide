@@ -39,6 +39,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         nameLabel.isHidden = true
         nameTextField.isHidden = true
         profileImageButton.isHidden = true
+        profileImageButton.layer.borderWidth = 1.0
+        profileImageButton.layer.borderColor = UIColor.black.cgColor
         
         imagePicker.delegate = self
     }
