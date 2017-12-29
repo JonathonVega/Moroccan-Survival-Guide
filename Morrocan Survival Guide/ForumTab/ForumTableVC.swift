@@ -197,12 +197,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // Stop doing the search stuff
-        // and clear the text in the search bar
-        //searchBar.text = ""
-        // Hide the cancel button
-        //searchBar.showsCancelButton = false
-        // You could also change the position, frame etc of the searchBar
         self.searchBar.endEditing(true)
     }
     
