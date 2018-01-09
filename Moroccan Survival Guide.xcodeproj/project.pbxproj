@@ -309,6 +309,7 @@
 		9C24B3C41DB7FA9B001391F7 /* Minin nta?.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2F01DB7FA9A001391F7 /* Minin nta?.m4a */; };
 		9C24B3C51DB7FA9B001391F7 /* Wa9tash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9C24B2F11DB7FA9A001391F7 /* Wa9tash.m4a */; };
 		9C2A23CB1FF43E05005EEC68 /* MyThreadsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2A23CA1FF43E05005EEC68 /* MyThreadsTableVC.swift */; };
+		9C2A23CD200426CD005EEC68 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2A23CC200426CD005EEC68 /* CommentsVC.swift */; };
 		9C32A9CA1F63A63800DE716B /* ReferencesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */; };
 		9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */; };
 		9C32A9CE1F671F0A00DE716B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */; };
@@ -637,6 +638,7 @@
 		9C24B2F01DB7FA9A001391F7 /* Minin nta?.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Minin nta?.m4a"; sourceTree = "<group>"; };
 		9C24B2F11DB7FA9A001391F7 /* Wa9tash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wa9tash.m4a; sourceTree = "<group>"; };
 		9C2A23CA1FF43E05005EEC68 /* MyThreadsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyThreadsTableVC.swift; sourceTree = "<group>"; };
+		9C2A23CC200426CD005EEC68 /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		9C32A9C91F63A63800DE716B /* ReferencesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesTableVC.swift; sourceTree = "<group>"; };
 		9C32A9CB1F65D08C00DE716B /* ReferenceInfoTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceInfoTableVC.swift; sourceTree = "<group>"; };
 		9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1194,8 +1196,9 @@
 			isa = PBXGroup;
 			children = (
 				9CD04ACC1FAD0C4800662BD0 /* ForumTableVC.swift */,
-				9CCC7B7F1FE08C47009BD7D1 /* CreateThreadVC.swift */,
 				9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */,
+				9C2A23CC200426CD005EEC68 /* CommentsVC.swift */,
+				9CCC7B7F1FE08C47009BD7D1 /* CreateThreadVC.swift */,
 				9CCC7B861FE4AB31009BD7D1 /* CreateReplyVC.swift */,
 			);
 			path = ForumTab;
@@ -1657,6 +1660,7 @@
 			files = (
 				9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */,
 				9C32A9CC1F65D08C00DE716B /* ReferenceInfoTableVC.swift in Sources */,
+				9C2A23CD200426CD005EEC68 /* CommentsVC.swift in Sources */,
 				9CCC7B851FE4A267009BD7D1 /* ReplyTableViewCell.swift in Sources */,
 				9C201D531D74AA1B00C03EDB /* DetailsTableViewCell.swift in Sources */,
 				9C201D4B1D72930200C03EDB /* SectionTableViewController.swift in Sources */,

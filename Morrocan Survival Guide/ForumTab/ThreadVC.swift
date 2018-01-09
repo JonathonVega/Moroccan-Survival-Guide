@@ -12,7 +12,7 @@ import FirebaseDatabase
 class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var threadID: String?
-    var responseID: String?
+    var response: Reply?
 
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -25,29 +25,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var responseHeaderView: UIView!
-    @IBOutlet weak var commentTableContainerView: UIView!
-    @IBOutlet weak var commentTableView: UITableView!
-    //var commentTableView: UITableView?
-    
-    
-    // MARK: - commentTableView ResponseView (CTRV)
-    
-    @IBOutlet weak var CTRVUserImage: UIImageView!
-    @IBOutlet weak var CTRVResponseLabel: UILabel!
-    @IBOutlet weak var CTRVUserNameLabel: UILabel!
-    @IBOutlet weak var CTRVCreateDateLabel: UILabel!
-    
-//    // MARK: - commentTableView (CT)
-//
-//    @IBOutlet weak var CTUserImage: UIImageView!
-//    @IBOutlet weak var CTCommentLabel: UILabel!
-//    @IBOutlet weak var CTUserNameLabel: UILabel!
-//    @IBOutlet weak var CTCreateDateLabel: UILabel!
-    
-    
     var responseArray = [Reply]()
-    var commentArray = [Reply]()
     
     let screenHeight = UIScreen.main.bounds.height//UIScreen.main.Screen().bounds.height
     let scrollViewContentHeight = 900 as CGFloat
@@ -66,10 +44,6 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         scrollView.bounces = false
         tableView.bounces = false
         tableView.isScrollEnabled = false
-        commentTableContainerView.isHidden = true
-        commentTableView.isScrollEnabled = false
-        commentTableView.isHidden = true
-        commentTableView.isUserInteractionEnabled = true
         
         ref = Database.database().reference()
         
@@ -77,21 +51,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        /////commentTableContainerView.isHidden = false
-        /////commentTableView.isHidden = false
-        getResponsesOfThreadFromFirebase()
-        print(commentTableContainerView.frame.origin)
-        print(commentTableContainerView.frame.size.height)
-        print(commentTableView.frame.size.height)
-        
         self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
-        self.commentTableContainerView.frame.origin.y = self.threadHeadingView.frame.maxY + 8
-        ///commentTableView.isHidden = false
-        
-        
-        
-        /*self.commentTableContainerView.frame.size.height = commentTableView.contentSize.height
-        self.commentTableView.frame.size.height = self.commentTableView.contentSize.height*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,74 +77,38 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int?
-        if(tableView == self.tableView) {
-            count = responseArray.count
-        } else if(tableView == self.commentTableView) {
-            count = commentArray.count
-            //count = 0
-        }
+        count = responseArray.count
         return count!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (tableView == self.tableView){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "response", for: indexPath) as! ReplyTableViewCell
-            
-            let response = responseArray[indexPath.row]
-            cell.userNameLabel.text = response.creatorName
-            cell.replyLabel.text = response.reply
-            cell.createDate.text = response.createDate
-            
-            commentTableContainerView.frame.origin = CGPoint(x: 0, y: containerView.frame.maxY)
-            //commentTableContainerView.frame.size.height = /*tableView.frame.minY +*/ commentTableView.contentSize.height
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "comment", for: indexPath) as! ReplyTableViewCell
-            cell.selectionStyle = .none
-            
-            let comment = commentArray[indexPath.row]
-            cell.userNameLabel.text = comment.creatorName
-            cell.replyLabel.text = comment.reply
-            cell.createDate.text = ("- \(comment.createDate!)")
-            
-            /*self.scrollView.contentSize.height = self.threadHeadingView.frame.maxY + 8 + self.commentTableView.contentSize.height
-            self.commentTableContainerView.frame.size.height = self.commentTableView.contentSize.height
-            self.commentTableView.frame.size.height = self.commentTableView.contentSize.height
-            print(" commentatableview height \(commentTableView.frame.size.height)")
-            print("commenttablecontainerview height \(commentTableContainerView.frame.size.height)")
-            self.commentTableView.frame.size.height = self.commentTableView.contentSize.height*/
-            
-            return cell
-        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "response", for: indexPath) as! ReplyTableViewCell
+        
+        let response = responseArray[indexPath.row]
+        cell.userNameLabel.text = response.creatorName
+        cell.replyLabel.text = response.reply
+        cell.createDate.text = response.createDate
+        
+        //commentTableContainerView.frame.size.height = /*tableView.frame.minY +*/ commentTableView.contentSize.height
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(tableView == self.tableView) {
-            // Create responseTableView
-            commentTableContainerView.isHidden = false
-            commentTableView.isHidden = false
-            let selectedCell = tableView.cellForRow(at: indexPath) as! ReplyTableViewCell
-            print(selectedCell)
-            CTRVResponseLabel.text = selectedCell.replyLabel.text
-            CTRVUserNameLabel.text = selectedCell.userNameLabel.text
-            CTRVCreateDateLabel.text = selectedCell.createDate.text
-            
-            self.responseID = responseArray[indexPath.row].key
-            getCommentsOfResponseFromFirebase()
-            
-            // closure
-            showCommentTableView{
-                //self.commentTableView.frame.size.height = commentTableView.contentSize.height
-                print("Should be after")
-            }
-            
-            ////responseHeaderView.frame.size.height = 60 + (tableView.cellForRow(at: indexPath)?.frame.size.height)!
-            
-            tableView.deselectRow(at: indexPath, animated: true)
-            touchedResponsePosition = scrollView.contentOffset//tableView.cellForRow(at: indexPath)?.frame.origin
-            //print(tableView.cellForRow(at: indexPath)?.frame.origin.y)
-        }
+        //let selectedCell = tableView.cellForRow(at: indexPath) as! ReplyTableViewCell
+        
+        self.response = responseArray[indexPath.row]
+        
+        ////responseHeaderView.frame.size.height = 60 + (tableView.cellForRow(at: indexPath)?.frame.size.height)!
+        
+        performSegue(withIdentifier: "toCommentsSegue", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        touchedResponsePosition = scrollView.contentOffset//tableView.cellForRow(at: indexPath)?.frame.origin
+        //print(tableView.cellForRow(at: indexPath)?.frame.origin.y)
+        
+        
     }
     
     
@@ -254,39 +178,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
             self.tableView.reloadData()
             self.ref.child("threads").child(self.threadID!).child("responseCount").setValue(responsesCount)
         }
-        
     }
-    
-    func getCommentsOfResponseFromFirebase() {
-        ref.child("threads").child(threadID!).child("responses").child(responseID!).child("comments").observe(.value) { (snapshot) in
-            self.commentArray.removeAll()
-            if ( snapshot.value is NSNull ) {
-                print("Comment not found")
-            } else {
-                for child in (snapshot.children) {
-                    let snap = child as! DataSnapshot
-                    let dict = snap.value as! [String: Any]
-                    
-                    
-                    
-                    let commentKey = snap.key
-                    let commentString = dict["comment"] as! String
-                    let userName = dict["userName"] as! String
-                    let createDate = dict["createDate"] as! Double
-                    
-                    let createDateString = self.convertIntervalToDateString(interval: createDate)
-                    
-                    let comment = Reply(creatorName: userName, reply: commentString, createDate: createDateString, key: commentKey)
-                    self.commentArray.append(comment)
-                }
-            }
-            self.commentTableView.reloadData()
-            print(self.commentTableContainerView.frame.minY)
-            print("its here")
-            
-        }
-    }
-    
     
     // MARK: - Button touches
     
@@ -313,70 +205,17 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         } else if segue.identifier == "createCommentSegue" {
             let targetController = segue.destination as! CreateReplyVC
             targetController.threadID = self.threadID
-            targetController.responseID = self.responseID
+            targetController.responseID = self.response?.key
             targetController.isResponse = false
+        } else if segue.identifier == "toCommentsSegue" {
+            let targetController = segue.destination as! CommentsVC
+            targetController.threadID = self.threadID
+            targetController.response = self.response
         }
     }
     
     @IBAction func replyToResponse(_ sender: Any) {
         performSegue(withIdentifier: "createCommentSegue", sender: self)
     }
-    
-    @IBAction func exitCommentTable(_ sender: Any) {
-        self.commentTableContainerView.isHidden = true
-        self.commentTableView.isHidden = true
-        self.tableView.isHidden = false
-        
-        self.tableView.frame.size.height = self.tableView.contentSize.height
-        scrollView.contentSize.height = self.tableView.frame.minY + self.tableView.contentSize.height
-        //commentTableView.frame.size.height = commentTableView.contentSize.height
-        
-        UIView.animate(withDuration: 0.5) {
-            self.moveDown(view: self.commentTableContainerView)
-        }
-        scrollView.setContentOffset(touchedResponsePosition!, animated: true)
-    }
-    
-    
-    // MARK: - Comments tableView
-    
-    func showCommentTableView(completionHandler: () -> Void) {
-        commentTableView?.delegate = self
-        commentTableView?.dataSource = self
-        
-        //commentTableView.setContentOffset(x, animated: true)
-        UIView.animate(withDuration: 0.5, animations: {
-            self.moveUp(view: self.commentTableContainerView)
-            self.scrollView.setContentOffset(CGPoint.zero, animated: false)
-        }) { (true) in
-            self.commentTableView.frame.size.height = self.commentTableView.contentSize.height
-            self.scrollView.contentSize.height = self.threadHeadingView.frame.maxY + 8 + self.commentTableView.contentSize.height
-        }
-        
-        /*UIView.animate(withDuration: 0.5) {
-            self.moveUp(view: self.commentTableContainerView)
-        }*/
-        self.tableView.isHidden = true
-        
-        //scrollView.contentSize.height = self.tableView.frame.minY + commentTableView.contentSize.height
-        ///commentTableView.frame.size.height = commentTableView.contentSize.height
-        
-        //print(commentTableView.frame.origin.y)
-        //print(commentTableContainerView.frame.origin.y)
-        //print("ContainerView height is \(containerView.frame.size.height)")
-        print("Should be before")
-        completionHandler()
-        
-    }
-    
-    func moveUp(view: UIView) {
-        view.frame.origin.y = tableView.frame.minY
-    }
-    
-    func moveDown(view: UIView) {
-        view.frame.origin.y = tableView.frame.maxY
-    }
-    
-    
     
 }
