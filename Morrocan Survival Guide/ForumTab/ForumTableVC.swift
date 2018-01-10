@@ -17,7 +17,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 440, height: 40))
     
     var ThreadsArray = [ThreadHeading]()
-    //var filteredData = [ThreadHeading]()
     
     var ref: DatabaseReference!
     
@@ -39,6 +38,7 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         
         getRecentDataFromFirebase()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,16 +81,7 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "segueToThread", sender: self)
         
-        //let currentCell = tableView.cellForRow(at: indexPath) as! ThreadTableViewCell
         
-    }
-    
-    func checkForCurrentUser() {
-        if Auth.auth().currentUser != nil {
-            self.navigationItem.rightBarButtonItem = nil
-        } else {
-            self.navigationItem.rightBarButtonItem = self.createThreadBarButton
-        }
     }
     
     
@@ -122,8 +113,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
                     } else {
                         Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID, responseCount: 0)
                     }
-
-                    //let Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID, responseCount: responseCount)
                     
                     self.ThreadsArray.append(Thread!)
                 }
@@ -209,6 +198,18 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         self.searchBar.endEditing(true)
     }
     
+    @IBAction func addNewThread(_ sender: Any) {
+        
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "createThreadSegue", sender: self)
+        } else {
+            let alert = UIAlertController(title: "Not signed in", message: "You must be signed in to reply and add new threads.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
     
     // MARK: - Other methods
     
@@ -219,6 +220,8 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
                 let targetController = segue.destination as! ThreadVC
                 targetController.threadID = currentCell.threadID
             }
+            
+        } else if segue.identifier == "createThreadSegue" {
             
         }
     }

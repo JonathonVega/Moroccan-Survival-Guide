@@ -90,7 +90,7 @@ class MyThreadsTableVC: UITableViewController {
     }
     
     func getUserThreadsArray(userThreadsIDArray: [String]) {
-        self.ref.child("threads").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("threads").observe(.value) { (snapshot) in
             var userThreadsArray = [ThreadHeading]()
             for child in (snapshot.children) {
                 let snap = child as! DataSnapshot
@@ -120,7 +120,39 @@ class MyThreadsTableVC: UITableViewController {
             self.threadsArray = userThreadsArray
             self.threadsArray.reverse()
             self.tableView.reloadData()
-        })
+        }
+        
+        /*self.ref.child("threads").observeSingleEvent(of: .value, with: { (snapshot) in
+            var userThreadsArray = [ThreadHeading]()
+            for child in (snapshot.children) {
+                let snap = child as! DataSnapshot
+                let threadID = snap.key
+                if(userThreadsIDArray.contains(threadID)) {
+                    let dict = snap.value as! [String: Any]
+                    
+                    let subject = dict["subject"] as! String
+                    let description = dict["description"] as! String
+                    let creator = dict["creator"] as! String
+                    let Thread: ThreadHeading?
+                    
+                    if dict["responseCount"] != nil {
+                        let responseCount = dict["responseCount"] as! Int
+                        print(responseCount)
+                        Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID, responseCount: responseCount)
+                    } else {
+                        Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID, responseCount: 0)
+                    }
+                    
+                    //let Thread = ThreadHeading(subject: subject, description: description, creator: creator, threadID: threadID, responseCount: responseCount)
+                    
+                    userThreadsArray.append(Thread!)
+                }
+                
+            }
+            self.threadsArray = userThreadsArray
+            self.threadsArray.reverse()
+            self.tableView.reloadData()
+        })*/
         
     }
     

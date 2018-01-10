@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,6 +19,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateCreatedLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var replyToThreadButton: UIButton!
     
     @IBOutlet weak var threadHeadingView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -27,16 +29,11 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     
     var responseArray = [Reply]()
     
-    let screenHeight = UIScreen.main.bounds.height//UIScreen.main.Screen().bounds.height
-    let scrollViewContentHeight = 900 as CGFloat
-    var touchedResponsePosition: CGPoint?
-    
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: 200)
         scrollView.delegate = self
         tableView.delegate = self
@@ -52,6 +49,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     
     override func viewDidAppear(_ animated: Bool) {
         self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
+        checkForCurrentUser()
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,23 +88,16 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         cell.replyLabel.text = response.reply
         cell.createDate.text = response.createDate
         
-        //commentTableContainerView.frame.size.height = /*tableView.frame.minY +*/ commentTableView.contentSize.height
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let selectedCell = tableView.cellForRow(at: indexPath) as! ReplyTableViewCell
         
         self.response = responseArray[indexPath.row]
-        
-        ////responseHeaderView.frame.size.height = 60 + (tableView.cellForRow(at: indexPath)?.frame.size.height)!
         
         performSegue(withIdentifier: "toCommentsSegue", sender: self)
         
         tableView.deselectRow(at: indexPath, animated: true)
-        touchedResponsePosition = scrollView.contentOffset//tableView.cellForRow(at: indexPath)?.frame.origin
-        //print(tableView.cellForRow(at: indexPath)?.frame.origin.y)
         
         
     }
@@ -167,11 +158,12 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                     let responseString = dict["response"] as! String
                     let userName = dict["userName"] as! String
                     let createDate = dict["createDate"] as! Double
+                    let creatorKey = dict["userID"] as! String
                     
                     let createDateString = self.convertIntervalToDateString(interval: createDate)
                     
                     responsesCount += 1
-                    let response = Reply(creatorName: userName, reply: responseString, createDate: createDateString, key: responseKey)
+                    let response = Reply(creatorKey: creatorKey, creatorName: userName, reply: responseString, createDate: createDateString, key: responseKey)
                     self.responseArray.append(response)
                 }
             }
@@ -184,16 +176,20 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     
     @IBAction func touchedReplyButton(_ sender: Any) {
         performSegue(withIdentifier: "createResponseSegue", sender: self)
-        
+    }
+    
+    func checkForCurrentUser() {
+        if Auth.auth().currentUser != nil {
+            self.replyToThreadButton.isHidden = false
+        } else {
+            self.replyToThreadButton.isHidden = true
+        }
     }
     
     func convertIntervalToDateString(interval:Double) -> String{
-        //print(interval)
         let date = Date(timeIntervalSince1970: interval)
-        //print(date)
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        //print(formatter.string(from: date))
         return formatter.string(from:date)
     }
     
@@ -214,8 +210,5 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         }
     }
     
-    @IBAction func replyToResponse(_ sender: Any) {
-        performSegue(withIdentifier: "createCommentSegue", sender: self)
-    }
     
 }

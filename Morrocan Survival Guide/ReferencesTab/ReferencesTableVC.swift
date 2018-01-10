@@ -10,7 +10,7 @@ import UIKit
 
 class ReferencesTableVC: UITableViewController {
 
-    let ReferenceList = ["Terminology", "Customs", "Laws", "Emergency Contacts"]
+    let ReferenceList = ["Terminology", "Customs"] // Had "Laws" and "Emergency Contacts" included initially
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +61,7 @@ class ReferencesTableVC: UITableViewController {
                 targetController.tableTitle = reference
             }
         } else if segue.identifier == "toTerms" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                print("ToTerms")
-            }
+            
         }
     }
     

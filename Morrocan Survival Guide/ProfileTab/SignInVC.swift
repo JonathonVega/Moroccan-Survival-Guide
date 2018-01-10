@@ -103,19 +103,26 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                             storageRef.putData(uploadData!, metadata: nil) { (metadata, error) in
                                 if error != nil {
                                     print(error!)
+                                } else {
+                                    // Initial setup for email verification
                                     
+                                    /*Auth.auth().currentUser!.sendEmailVerification(completion: { (error) in
+                                    })
+                                    let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)*/
                                 }
+                                
                                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                                     self.ref.child("users").child(user!.uid).child("profileImage").setValue(profileImageUrl)
                                 }
                             }
                         }
-                        
                         print("Is registering")
+                        
                         self.navigationController?.popViewController(animated: true)
                         
                     } else {
-                        
                         if let errCode = AuthErrorCode(rawValue: (error! as NSError).code){
                             
                             // TODO: Need to fix errors through UI accordingly
@@ -130,6 +137,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         }
                         print(error!)
                     }
+                    
+                    
                 })
             }
         }

@@ -1819,7 +1819,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jvega.Morrocan-Survival-Guide";
 				PRODUCT_NAME = "Moroccan Survival Guide";
 				PROVISIONING_PROFILE = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1836,7 +1836,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jvega.Morrocan-Survival-Guide";
 				PRODUCT_NAME = "Moroccan Survival Guide";
 				PROVISIONING_PROFILE = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

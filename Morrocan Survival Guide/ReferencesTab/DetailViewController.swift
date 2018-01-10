@@ -159,8 +159,8 @@ class DetailViewController: UIViewController {
     
     func getSoundString(arWord: String) -> String {
         var resourceName: String = ""
-        if arWord.characters.contains("/") {
-            for i in arWord.characters {
+        if arWord.contains("/") {
+            for i in arWord {
                 if i == "/" {
                     resourceName += ":"
                 } else {

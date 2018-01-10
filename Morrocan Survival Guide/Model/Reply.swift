@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 class Reply {
+    let creatorKey: String?
     let creatorName: String?
     let reply: String?
     let createDate: String?
     let key: String?
     
-    init(creatorName:String, reply:String, createDate:String, key:String) {
+    init(creatorKey: String, creatorName:String, reply:String, createDate:String, key:String) {
+        self.creatorKey = creatorKey
         self.creatorName = creatorName
         self.reply = reply
         self.createDate = createDate

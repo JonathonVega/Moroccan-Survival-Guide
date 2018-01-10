@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class ThreadTableViewCell: UITableViewCell {
     
@@ -14,6 +16,8 @@ class ThreadTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var responseCountLabel: UILabel!
     var threadID: String?
+    
+    var ref: DatabaseReference!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +29,25 @@ class ThreadTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func trashThread(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete Thread", message: "Are you sure you want to delete this thread?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
+            self.removeThreadFromFirebase()
+            print("Its deleted")
+        }))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Firebase Call Methods
+    
+    func removeThreadFromFirebase() {
+        ref = Database.database().reference()
+        ref.child("threads").child(threadID!).removeValue()
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("users").child(userID!).child("threads").child(threadID!).removeValue()
+    }
+    
 }

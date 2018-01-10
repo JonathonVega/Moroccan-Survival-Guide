@@ -23,8 +23,10 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     @IBOutlet weak var responseCreator: UILabel!
     @IBOutlet weak var responseCreateDate: UILabel!
     @IBOutlet weak var responseLabel: UILabel!
+    @IBOutlet weak var replyToResponseButton: UIButton!
     
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var responseTrashButton: UIButton!
     
     var commentArray = [Reply]()
     
@@ -46,12 +48,16 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         fillResponseData()
         
         getCommentsOfResponseFromFirebase()
+        
+        if isCurrentUserEqualTo(replyUserKey: (response?.creatorKey)!) {
+            responseTrashButton.isHidden = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.containerViewHeight.constant = commentTableView.frame.minY + commentTableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
-        print("here")
-        print(self.containerView.frame.size.height)
+        checkForCurrentUser()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,8 +76,14 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         cell.userNameLabel.text = comment.creatorName
         cell.replyLabel.text = comment.reply
         cell.createDate.text = comment.createDate
+        cell.threadID = self.threadID
+        cell.responseID = self.response?.key
+        cell.commentID = comment.key
         
-        print("ANY!!!")
+        if isCurrentUserEqualTo(replyUserKey: comment.creatorKey!) {
+            cell.commentTrashButton.isHidden = false
+        }
+        
         return cell
     }
     
@@ -94,19 +106,56 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
                     let commentString = dict["comment"] as! String
                     let userName = dict["userName"] as! String
                     let createDate = dict["createDate"] as! Double
+                    let creatorKey = dict["userID"] as! String
                     
                     let createDateString = self.convertIntervalToDateString(interval: createDate)
                     
-                    let comment = Reply(creatorName: userName, reply: commentString, createDate: createDateString, key: commentKey)
+                    let comment = Reply(creatorKey: creatorKey, creatorName: userName, reply: commentString, createDate: createDateString, key: commentKey)
                     self.commentArray.append(comment)
                 }
             }
+            self.commentArray.reverse()
             self.commentTableView.reloadData()
-            print("its here")
-            
         }
     }
     
+    func removeResponseFromFirebase() {
+        ref.child("threads").child(threadID!).child("responses").child((response?.key)!).removeValue()
+    }
+    
+    
+    // MARK: - Button Methods
+    
+    @IBAction func replyToResponse(_ sender: Any) {
+        performSegue(withIdentifier: "createCommentSegue", sender: self)
+    }
+    
+    @IBAction func removeResponse(_ sender: Any) {
+        removeResponseFromFirebase()
+    }
+    
+    
+    // MARK: - Other Methods
+    
+    func checkForCurrentUser() {
+        if Auth.auth().currentUser != nil {
+            self.replyToResponseButton.isHidden = false
+        } else {
+            self.replyToResponseButton.isHidden = true
+        }
+    }
+    
+    func isCurrentUserEqualTo(replyUserKey: String) -> Bool {
+        if Auth.auth().currentUser != nil {
+            if Auth.auth().currentUser?.uid == replyUserKey {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
     
     func fillResponseData() {
         responseCreator.text = response?.creatorName
@@ -115,17 +164,10 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     func convertIntervalToDateString(interval:Double) -> String{
-        //print(interval)
         let date = Date(timeIntervalSince1970: interval)
-        //print(date)
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        //print(formatter.string(from: date))
         return formatter.string(from:date)
-    }
-    
-    @IBAction func replyToResponse(_ sender: Any) {
-        performSegue(withIdentifier: "createCommentSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,5 +178,7 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
             targetController.isResponse = false
         }
     }
+    
+    
     
 }

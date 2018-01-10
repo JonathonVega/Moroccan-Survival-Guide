@@ -34,10 +34,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         storage = Storage.storage()
         checkForCurrentUser()
         setupGestureRecognizer()
-        profileImage.layer.borderWidth = 1.0
-        profileImage.layer.borderColor = UIColor.gray.cgColor
+        //profileImage.layer.borderWidth = 1.0
+        //profileImage.layer.borderColor = UIColor.gray.cgColor
         
         imagePicker.delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
