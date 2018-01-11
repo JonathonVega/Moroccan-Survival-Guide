@@ -41,12 +41,11 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         scrollView.bounces = false
         commentTableView.bounces = false
         commentTableView.isScrollEnabled = false
-        scrollView.isScrollEnabled = true
+        //scrollView.isScrollEnabled = true
         
         ref = Database.database().reference()
         
         fillResponseData()
-        
         getCommentsOfResponseFromFirebase()
         
         if isCurrentUserEqualTo(replyUserKey: (response?.creatorKey)!) {
@@ -65,6 +64,10 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentArray.count
     }
@@ -79,6 +82,7 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         cell.threadID = self.threadID
         cell.responseID = self.response?.key
         cell.commentID = comment.key
+        cell.selectionStyle = .none
         
         if isCurrentUserEqualTo(replyUserKey: comment.creatorKey!) {
             cell.commentTrashButton.isHidden = false
@@ -131,7 +135,14 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     @IBAction func removeResponse(_ sender: Any) {
-        removeResponseFromFirebase()
+        let alert = UIAlertController(title: "Delete Response", message: "Are you sure you want to delete this response?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
+            self.removeResponseFromFirebase()
+            print("Its deleted")
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     

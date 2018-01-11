@@ -23,6 +23,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var warningLabel: UILabel!
+    
     var signInPage = true
     
     var ref: DatabaseReference!
@@ -36,11 +38,13 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         ref = Database.database().reference()
         storage = Storage.storage()
         
+        warningLabel.isHidden = true
         nameLabel.isHidden = true
         nameTextField.isHidden = true
         profileImageButton.isHidden = true
         profileImageButton.layer.borderWidth = 1.0
         profileImageButton.layer.borderColor = UIColor.black.cgColor
+        emailTextField.keyboardType = .emailAddress
         
         imagePicker.delegate = self
     }
@@ -56,7 +60,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBAction func signInButtonTapped(_ sender: UIButton) {
         // Signing In
         if signInPage == true {
-            if let email=emailTextField.text, let password=passwordTextField.text {
+            if let email=emailTextField.text, !email.isEmpty, let password=passwordTextField.text, !password.isEmpty {
                 Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         self.clearTextFields()
@@ -70,14 +74,24 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                             // TODO: Need to fix errors through UI accordingly
                             switch errCode {
                             case .invalidEmail:
+                                self.warningLabel.text = "* Email is invalid!"
+                                self.warningLabel.isHidden = false
                                 print("Invalid email")
                             case .wrongPassword:
+                                self.warningLabel.text = "* Password is wrong!"
+                                self.warningLabel.isHidden = false
                                 print("Password is wrong")
                             case .userDisabled:
+                                self.warningLabel.text = "* User account is disabled!"
+                                self.warningLabel.isHidden = false
                                 print("User account is disabled")
                             case .userNotFound:
+                                self.warningLabel.text = "* User account cannot be found!"
+                                self.warningLabel.isHidden = false
                                 print("User account cannot be found")
                             default:
+                                self.warningLabel.text = "* All fields must be filled!"
+                                self.warningLabel.isHidden = false
                                 print("Wrong in some way!!!")
                             }
                         }
@@ -86,10 +100,13 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         
                     }
                 })
+            } else {
+                self.warningLabel.text = "* All fields must be filled!"
+                self.warningLabel.isHidden = false
             }
         // Registering a new account
         } else {
-            if let email=emailTextField.text, let password=passwordTextField.text, let name=nameTextField.text  {
+            if let email=emailTextField.text, !email.isEmpty, let password=passwordTextField.text, !password.isEmpty, let name=nameTextField.text, !name.isEmpty {
                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                     if user != nil {
                         
@@ -128,18 +145,25 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                             // TODO: Need to fix errors through UI accordingly
                             switch errCode {
                             case .invalidEmail:
+                                self.warningLabel.text = "* Email is invalid!"
+                                self.warningLabel.isHidden = false
                                 print("Invalid email")
                             case .emailAlreadyInUse:
+                                self.warningLabel.text = "* Email is already in use!"
+                                self.warningLabel.isHidden = false
                                 print("Email already in use")
                             default:
+                                self.warningLabel.text = "* All fields must be filled!"
+                                self.warningLabel.isHidden = false
                                 print("Wrong in some way!!!")
                             }
                         }
                         print(error!)
                     }
-                    
-                    
                 })
+            } else {
+                self.warningLabel.text = "* All fields must be filled!"
+                self.warningLabel.isHidden = false
             }
         }
     }
@@ -161,6 +185,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             nameLabel.isHidden = false
             nameTextField.isHidden = false
             profileImageButton.isHidden = false
+            warningLabel.isHidden = true
             signInButton.setTitle("Register", for: .normal)
             helpLabel.text = "Already have an account?"
             registerButton.setTitle("Sign-In Here", for: .normal)
@@ -169,6 +194,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             nameLabel.isHidden = true
             nameTextField.isHidden = true
             profileImageButton.isHidden = true
+            warningLabel.isHidden = true
             signInButton.setTitle("Sign-In", for: .normal)
             helpLabel.text = "Don\'t have an account?"
             registerButton.setTitle("Register Here", for: .normal)

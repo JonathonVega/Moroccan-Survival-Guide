@@ -39,6 +39,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         imagePicker.delegate = self
         
+        //self.view.backgroundColor = UIColor.lightGray
     }
     
     override func viewDidAppear(_ animated: Bool) {
