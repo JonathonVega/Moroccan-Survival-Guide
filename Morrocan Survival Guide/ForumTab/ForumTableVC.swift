@@ -9,9 +9,10 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FBAudienceNetwork
 
-class ForumTableVC: UITableViewController, UISearchBarDelegate {
-
+class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelegate, FBNativeAdsManagerDelegate {
+    
     @IBOutlet weak var createThreadBarButton: UIBarButtonItem!
     
     var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 440, height: 40))
@@ -19,6 +20,16 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     var ThreadsArray = [ThreadHeading]()
     
     var ref: DatabaseReference!
+    
+    
+    // MARK: - FB Ads Variables
+    
+    let adRowStep = 5
+    var adsManager: FBNativeAdsManager!
+    var adsCellProvider: FBNativeAdTableViewCellProvider!
+    
+    
+    // MARK: - Default Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +47,10 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         
         ref = Database.database().reference()
         
+        adsManager = FBNativeAdsManager(placementID: "709414042582846_709420665915517", forNumAdsRequested: 3)
+        adsManager.delegate = self
+        adsManager.loadAds()
+        
         getRecentDataFromFirebase()
     }
     
@@ -45,37 +60,74 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return ThreadsArray.count
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if adsCellProvider != nil {
+            return Int(adsCellProvider.adjustCount(UInt(ThreadsArray.count), forStride: UInt(adRowStep)))
+        } else {
+            return 1
+        }
+        //return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView()
+        footer.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+        return footer
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Thread", for: indexPath) as! ThreadTableViewCell
         
-        let Thread = ThreadsArray[indexPath.row]
-        cell.subjectLabel.text = Thread.subject
-        cell.subjectLabel.adjustsFontSizeToFitWidth = false
-        cell.subjectLabel.numberOfLines = 0
+        if adsCellProvider != nil && adsCellProvider.isAdCell(at: indexPath, forStride: UInt(adRowStep)) {
+            // Put ad code here
+            print("Is it here by chance?")
+            let ad = adsManager.nextNativeAd
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "ad", for: indexPath) as! AdTableCell
+            cell.adBodyLabel.text = ad?.body
+            cell.adTitleLabel.text = ad?.title
+            cell.adCallToActionButton.setTitle(ad?.callToAction, for: .normal)
+            if let pic = ad?.coverImage {
+                cell.adIconImageView.image = downloadImage(url: pic.url)  //(urlString: pic.url.absoluteString)
+            }
+            ad?.registerView(forInteraction: cell, with: self)
+            
+            return cell
+        } else {
+            // Return a normal cell
+            // Use tableData[indexPath.row - Int(indexPath.row / adRowStep)] to get the row this would have normally been without the ad
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Thread", for: indexPath) as! ThreadTableViewCell
+            
+            //let Thread = ThreadsArray[indexPath.section]
+            let Thread = ThreadsArray[indexPath.section - Int(indexPath.section / adRowStep)]
+            cell.subjectLabel.text = Thread.subject
+            cell.subjectLabel.adjustsFontSizeToFitWidth = false
+            cell.subjectLabel.numberOfLines = 0
+            
+            cell.descriptionLabel.text = Thread.description
+            cell.descriptionLabel.adjustsFontSizeToFitWidth = false
+            cell.descriptionLabel.numberOfLines = 4
+            
+            cell.responseCountLabel.text = String(describing: Thread.responseCount!)
+            cell.responseCountLabel.adjustsFontSizeToFitWidth = true
+            
+            cell.threadID = Thread.threadID
+            
+            return cell
+        }
         
-        cell.descriptionLabel.text = Thread.description
-        cell.descriptionLabel.adjustsFontSizeToFitWidth = false
-        cell.descriptionLabel.numberOfLines = 4
         
-        cell.responseCountLabel.text = String(describing: Thread.responseCount!)
-        cell.responseCountLabel.adjustsFontSizeToFitWidth = true
-
-        cell.threadID = Thread.threadID
-
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -171,6 +223,21 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     
+    // MARK: - FB Ads Methods
+    
+    func nativeAdsLoaded() {
+        adsCellProvider = FBNativeAdTableViewCellProvider(manager: adsManager, for: FBNativeAdViewType.genericHeight300)
+        adsCellProvider.delegate = self
+        if self.tableView != nil {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func nativeAdsFailedToLoadWithError(_ error: Error) {
+        print(error)
+    }
+    
+    
     // MARK: - Search Bar
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -198,6 +265,9 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         self.searchBar.endEditing(true)
     }
     
+    
+    // MARK: - UIButton Actions
+    
     @IBAction func addNewThread(_ sender: Any) {
         
         if Auth.auth().currentUser != nil {
@@ -207,8 +277,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     // MARK: - Other methods
@@ -224,6 +292,25 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         } else if segue.identifier == "createThreadSegue" {
             
         }
+    }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func downloadImage(url: URL) -> UIImage {
+        print("Download Started")
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                return UIImage(data: data)
+            }
+        }
+        return UIImage()
     }
     
     func setColors() {
