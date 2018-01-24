@@ -9,9 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-import FBAudienceNetwork
+import Flurry_iOS_SDK
 
-class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelegate, FBNativeAdsManagerDelegate {
+class ForumTableVC: UITableViewController, UISearchBarDelegate, FlurryAdNativeDelegate {
     
     @IBOutlet weak var createThreadBarButton: UIBarButtonItem!
     
@@ -22,11 +22,34 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelega
     var ref: DatabaseReference!
     
     
-    // MARK: - FB Ads Variables
+    // MARK: - Flurry Ad Variables
     
-    let adRowStep = 5
-    var adsManager: FBNativeAdsManager!
-    var adsCellProvider: FBNativeAdTableViewCellProvider!
+    var pendingAdList: [FlurryAdNative] = []
+    var nativeAdList: [FlurryAdNative] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    //let nativeAd = FlurryAdNative(space: "ADSPACE")
+    var nativeAdsWanted = 3
+    
+    //how many posts we want on startup and how many we want to load when the user gets to the end of the feed
+    let initialPostsWanted = 9
+    let additionalPostsToGet = 6
+    
+    //how many times we want to retry fetching ads and a count that makes sure we don't go over this
+    let adFetchRetryMaximum = 10
+    var adFetchRetryCount = 0
+    
+    //this keeps track of what post index we are at so that we dont pull the same posts from Tumblr
+    var postIndex = 0
+    
+    //this string will be updated to a location when the user clicks a post cell and then passed to the map view controller
+    var locationToPass = ""
+    
+    // this bool will be true when we are not currently waiting on posts and false if we are
+    var shouldGetPosts = true
     
     
     // MARK: - Default Methods
@@ -47,9 +70,10 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelega
         
         ref = Database.database().reference()
         
-        adsManager = FBNativeAdsManager(placementID: "709414042582846_709420665915517", forNumAdsRequested: 3)
-        adsManager.delegate = self
-        adsManager.loadAds()
+        /*nativeAd?.adDelegate = self
+        nativeAd?.viewControllerForPresentation = self
+        nativeAd?.fetchAd()*/
+        setupAds()
         
         getRecentDataFromFirebase()
     }
@@ -65,16 +89,11 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelega
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return ThreadsArray.count
+        return ThreadsArray.count + nativeAdList.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if adsCellProvider != nil {
-            return Int(adsCellProvider.adjustCount(UInt(ThreadsArray.count), forStride: UInt(adRowStep)))
-        } else {
-            return 1
-        }
-        //return 1
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -89,28 +108,52 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelega
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if adsCellProvider != nil && adsCellProvider.isAdCell(at: indexPath, forStride: UInt(adRowStep)) {
-            // Put ad code here
-            print("Is it here by chance?")
-            let ad = adsManager.nextNativeAd
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "ad", for: indexPath) as! AdTableCell
-            cell.adBodyLabel.text = ad?.body
-            cell.adTitleLabel.text = ad?.title
-            cell.adCallToActionButton.setTitle(ad?.callToAction, for: .normal)
-            if let pic = ad?.coverImage {
-                cell.adIconImageView.image = downloadImage(url: pic.url)  //(urlString: pic.url.absoluteString)
-            }
-            ad?.registerView(forInteraction: cell, with: self)
+        if indexPath.section % 5 == 0 && nativeAdList.count > indexPath.section / 5 {
+            let cellIndex = indexPath.section/5
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "adCell") as! AdTableCell
             
+            cell.layer.cornerRadius = 10
+            cell.layer.masksToBounds = true
+            
+            cell.nativeAd = nativeAdList[cellIndex]
+            
+            self.nativeAdList[cellIndex].trackingView = cell
+            
+            //if let assets = nativeAdList[cellIndex].assetList {
+            if let assets = cell.nativeAd.assetList {
+                for asset in assets {
+                    switch((asset as! FlurryAdNativeAsset).name) {
+                    case "headline":
+                        cell.adTitleLabel.text = (asset as! FlurryAdNativeAsset).value
+                    case "summary":
+                        cell.adBodyLabel.text = (asset as! FlurryAdNativeAsset).value
+                    case "secHqImage":
+                        if let url = URL(string: (asset as! FlurryAdNativeAsset).value) {
+                            if let imageData = NSData(contentsOf: url) {
+                                let image = UIImage(data: imageData as Data)
+                                cell.adIconImageView.image = image
+                            }
+                        }
+                    case "source":
+                        //cell.
+                        print("cool")
+                    case "secHqBrandingLogo":
+                        if let url = URL(string: (asset as! FlurryAdNativeAsset).value) {
+                            if let imageData = NSData(contentsOf: url) {
+                                print(imageData)
+                            }
+                        }
+                    default:()
+                    }
+                }
+            }
+            print("adCell returned")
             return cell
         } else {
-            // Return a normal cell
-            // Use tableData[indexPath.row - Int(indexPath.row / adRowStep)] to get the row this would have normally been without the ad
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "Thread", for: indexPath) as! ThreadTableViewCell
             
             //let Thread = ThreadsArray[indexPath.section]
-            let Thread = ThreadsArray[indexPath.section - Int(indexPath.section / adRowStep)]
+            let Thread = ThreadsArray[indexPath.section]
             cell.subjectLabel.text = Thread.subject
             cell.subjectLabel.adjustsFontSizeToFitWidth = false
             cell.subjectLabel.numberOfLines = 0
@@ -126,7 +169,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelega
             
             return cell
         }
-        
         
     }
     
@@ -223,18 +265,61 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate, FBNativeAdDelega
     }
     
     
-    // MARK: - FB Ads Methods
+    // MARK: - Flurry Ad Methods
     
-    func nativeAdsLoaded() {
-        adsCellProvider = FBNativeAdTableViewCellProvider(manager: adsManager, for: FBNativeAdViewType.genericHeight300)
-        adsCellProvider.delegate = self
-        if self.tableView != nil {
-            self.tableView.reloadData()
+    @objc func setupAds() {
+        var newAdsList : [FlurryAdNative] = []
+        
+        //only get new ads if we want at least one
+        if nativeAdsWanted >= 1 {
+            for _ in 1...nativeAdsWanted {
+                let nativeAd = FlurryAdNative(space: "streamy")
+                
+                //            // uncomment to make these ads test ads (should enable 100% fill)
+                //            let adTargeting = FlurryAdTargeting()
+                //            adTargeting.testAdsEnabled = true
+                //            nativeAd.targeting = adTargeting
+                
+                //setting the ad delegate a view controller
+                nativeAd?.adDelegate  = self
+                nativeAd?.viewControllerForPresentation = self
+                
+                //fetching the ad from Flurry and then addding it to our list of new ads
+                nativeAd?.fetchAd()
+                newAdsList.append(nativeAd!)
+            }
+        }
+        
+        //updating our ad list to be our new ad list
+        pendingAdList = newAdsList
+    }
+    
+    func adNativeDidFetchAd(_ nativeAd: FlurryAdNative!) {
+        NSLog("Native Ad for Space \(nativeAd.space) Received Ad with \(nativeAd.assetList.count) assets")
+        nativeAdsWanted = nativeAdsWanted - 1
+        
+        //every time an ad is fetched this checks to see if there are any ready ads
+        for ad in pendingAdList {
+            if ad.ready {
+                if let i = pendingAdList.index(of: ad) {
+                    pendingAdList.remove(at: i)
+                    nativeAdList.append(ad)
+                } else {
+                    print ("index in pending list does not exist")
+                }
+            }
         }
     }
     
-    func nativeAdsFailedToLoadWithError(_ error: Error) {
-        print(error)
+    func adNative(_ nativeAd: FlurryAdNative!, adError: FlurryAdError, errorDescription: Error!) {
+        NSLog("Native Ad for Space \(nativeAd.space) Received Error \(adError), with description: \(errorDescription)")
+        
+        if adFetchRetryCount < adFetchRetryMaximum {
+            let selector: Selector = #selector(setupAds)
+            _ = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: selector, userInfo: nil, repeats: false)
+        } else { print (("AD FETCH FAILED"))
+            
+        }
     }
     
     

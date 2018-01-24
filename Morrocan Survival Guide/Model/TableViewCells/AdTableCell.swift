@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Flurry_iOS_SDK
 
 class AdTableCell: UITableViewCell {
     
@@ -15,6 +16,8 @@ class AdTableCell: UITableViewCell {
     @IBOutlet weak var adTitleLabel: UILabel!
     @IBOutlet weak var adBodyLabel: UILabel!
     @IBOutlet weak var adCallToActionButton: UIButton!
+    
+    var nativeAd: FlurryAdNative!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +28,10 @@ class AdTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        nativeAd.removeTrackingView()
     }
 
 }
