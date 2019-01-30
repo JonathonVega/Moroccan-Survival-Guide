@@ -25,6 +25,7 @@ class CreateReplyVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        descriptionTextView.layer.cornerRadius = 10
         ref = Database.database().reference()
         getUserInformation()
     }
@@ -45,7 +46,7 @@ class CreateReplyVC: UIViewController {
             
             
             
-            let data: Dictionary<String, Any> = ["userID":userID, "userName":user!.name!, "response": descriptionTextView.text, "createDate":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+            let data: Dictionary<String, Any> = ["creatorID":userID, "creatorName":user!.name!, "response": descriptionTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
             self.ref.child("responses").child(responseRandomKey).setValue(data)
             
             self.ref.child("threads").child(threadID!).child("responses").child(responseRandomKey).setValue(data)
@@ -61,7 +62,7 @@ class CreateReplyVC: UIViewController {
             let userID = Auth.auth().currentUser!.uid
             let date = Date().timeIntervalSince1970
             
-            let data: Dictionary<String, Any> = ["userID":userID, "userName":user!.name!, "comment": descriptionTextView.text, "createDate":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+            let data: Dictionary<String, Any> = ["creatorID":userID, "creator":user!.name!, "comment": descriptionTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
             self.ref.child("threads").child(threadID!).child("responses").child(responseID!).child("comments").child(commentRandomKey).setValue(data)
         }
     }

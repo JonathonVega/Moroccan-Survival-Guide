@@ -12,9 +12,10 @@ import FirebaseDatabase
 
 class ThreadTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var subjectLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var responseCountLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     var threadID: String?
     
     var ref: DatabaseReference!
@@ -35,7 +36,6 @@ class ThreadTableViewCell: UITableViewCell {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
             self.removeThreadFromFirebase()
-            print("Its deleted")
         }))
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }

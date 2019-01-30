@@ -15,11 +15,11 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     var threadID: String?
     var response: Reply?
 
-    @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateCreatedLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var replyToThreadButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var threadHeadingView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -41,6 +41,10 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         scrollView.bounces = false
         tableView.bounces = false
         tableView.isScrollEnabled = false
+        tableView.isHidden = false //Was hidden
+        
+        replyToThreadButton.isHidden = true
+        //checkForCurrentUser()
         
         ref = Database.database().reference()
         
@@ -84,9 +88,9 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "response", for: indexPath) as! ReplyTableViewCell
         
         let response = responseArray[indexPath.row]
-        cell.userNameLabel.text = response.creatorName
+        cell.userNameLabel.text = response.creator
         cell.replyLabel.text = response.reply
-        cell.createDate.text = response.createDate
+        cell.createDate.text = response.dateCreated
         
         return cell
     }
@@ -118,17 +122,13 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                 
                 let dict = snapshot.value as! [String: Any] // the value is a dict
                 
-                let subject = dict["subject"] as! String
-                let description = dict["description"] as! String
-                let creator = dict["creator"] as! String
+                let post = dict["post"] as! String
+                let creatorID = dict["creatorID"] as! String
                 let dateCreated = dict["dateCreated"] as! Double // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
-                
-                self.subjectLabel.text = subject
-                self.descriptionLabel.text = description
+                self.postLabel.text = post
                 self.dateCreatedLabel.text = self.convertIntervalToDateString(interval: dateCreated)
                 
-                
-                self.ref.child("users").child(creator).observeSingleEvent(of: .value, with: { (snap) in
+                self.ref.child("users").child(creatorID).observeSingleEvent(of: .value, with: { (snap) in
                     if (snap.value is NSNull) {
                         print("not found")
                     } else {
@@ -140,30 +140,35 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                     }
                 })
             }
+            
         })
     }
     
     func getResponsesOfThreadFromFirebase() {
-        var responsesCount: Int = 0
         ref.child("threads").child(threadID!).child("responses").observe(.value) { (snapshot) in
+            var responsesCount: Int = 0
             self.responseArray.removeAll()
             if ( snapshot.value is NSNull ) {
                 print("Response not found")
+                if (self.responseArray.isEmpty){
+                    self.tableView.isHidden = true
+                }
             } else {
+                self.tableView.isHidden = false
                 for child in (snapshot.children) {
                     let snap = child as! DataSnapshot //each child is a snapshot
                     let dict = snap.value as! [String: Any] // the value is a dict
                     
                     let responseKey = snap.key
                     let responseString = dict["response"] as! String
-                    let userName = dict["userName"] as! String
-                    let createDate = dict["createDate"] as! Double
-                    let creatorKey = dict["userID"] as! String
+                    let userName = dict["creatorName"] as! String
+                    let dateCreated = dict["dateCreated"] as! Double
+                    let creatorKey = dict["creatorID"] as! String
                     
-                    let createDateString = self.convertIntervalToDateString(interval: createDate)
+                    let dateCreatedString = self.convertIntervalToDateString(interval: dateCreated)
                     
                     responsesCount += 1
-                    let response = Reply(creatorKey: creatorKey, creatorName: userName, reply: responseString, createDate: createDateString, key: responseKey)
+                    let response = Reply(creatorID: creatorKey, creator: userName, reply: responseString, dateCreated: dateCreatedString, key: responseKey)
                     self.responseArray.append(response)
                 }
             }
@@ -172,7 +177,44 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         }
     }
     
+    func checkIfFavorited(){
+        if(Auth.auth().currentUser?.uid != nil){
+            let userID = Auth.auth().currentUser?.uid
+            //ref.child("threads").child(threadID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.ref.child("users").child(userID!).child("favorites").observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChild(self.threadID!){
+                    self.favoriteButton.setImage(UIImage(named: "star-orange"), for: .normal)
+                }else {
+                    self.favoriteButton.setImage(UIImage(named: "star-gray"), for: .normal)
+                }
+            })
+        }
+    }
+    
+    func favoriteThreadToFirebase() {
+        let userID = Auth.auth().currentUser?.uid
+        let date = Date().timeIntervalSince1970
+        self.ref.child("users").child(userID!).child("favorites").child(threadID!).child("date").setValue(date)
+        favoriteButton.setImage(UIImage(named: "star-orange"), for: .normal)
+    }
+    
+    func unfavoriteThreadFromFirebase() {
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("users").child(userID!).child("favorites").child(threadID!).removeValue()
+        favoriteButton.setImage(UIImage(named: "star-gray"), for: .normal)
+    }
+    
+    
+    
     // MARK: - Button touches
+    
+    @IBAction func touchedFavoriteButton(_ sender: Any) {
+        if(favoriteButton.currentImage == UIImage(named: "star-gray")){
+            favoriteThreadToFirebase()
+        }else if(favoriteButton.currentImage == UIImage(named: "star-orange")){
+            unfavoriteThreadFromFirebase()
+        }
+    }
     
     @IBAction func touchedReplyButton(_ sender: Any) {
         performSegue(withIdentifier: "createResponseSegue", sender: self)
@@ -181,8 +223,11 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     func checkForCurrentUser() {
         if Auth.auth().currentUser != nil {
             self.replyToThreadButton.isHidden = false
+            self.favoriteButton.isHidden = false
+            checkIfFavorited()
         } else {
             self.replyToThreadButton.isHidden = true
+            self.favoriteButton.isHidden = true
         }
     }
     
@@ -209,6 +254,4 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
             targetController.response = self.response
         }
     }
-    
-    
 }

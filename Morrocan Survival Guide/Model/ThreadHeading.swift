@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 class ThreadHeading {
-    var subject: String?
-    var description: String?
+    var post: String?
     var creator: String?
+    var creatorID: String?
     var threadID: String?
     var responseCount: Int?
     
-    init(subject:String, description:String, creator:String, threadID:String, responseCount:Int) {
-        self.subject = subject
-        self.description = description
+    init(post:String, creator:String, creatorID:String, threadID:String, responseCount:Int) {
+        self.post = post
         self.creator = creator
+        self.creatorID = creatorID
         self.threadID = threadID
         self.responseCount = responseCount
     }

@@ -35,12 +35,10 @@ class ReplyTableViewCell: UITableViewCell {
     }
     
     @IBAction func removeComment(_ sender: Any) {
-        print("This button was clicked")
         let alert = UIAlertController(title: "Delete Comment", message: "Are you sure you want to delete this comment?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
             self.removeCommentFromFirebase()
-            print("Its deleted")
         }))
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }

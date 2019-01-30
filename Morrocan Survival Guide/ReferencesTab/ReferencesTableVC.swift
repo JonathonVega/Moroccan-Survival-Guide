@@ -10,7 +10,7 @@ import UIKit
 
 class ReferencesTableVC: UITableViewController {
 
-    let ReferenceList = ["Terminology", "Customs"] // Had "Laws" and "Emergency Contacts" included initially
+    let ReferenceList = ["Terminology", "Customs", "Commodities", "Nationalities"] // Had "Laws" and "Emergency Contacts" included initially
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +66,8 @@ class ReferencesTableVC: UITableViewController {
     }
     
     func setColors() {
-        navigationController?.navigationBar.barTintColor = UIColor(red:229/255, green:167/255, blue:53/255, alpha:1.0)
-        navigationController?.navigationBar.tintColor = UIColor(red: 73/255, green: 119/255, blue: 210/255, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = UIColor(red:15/255, green:166/255, blue:185/255, alpha:1.0)
+        navigationController?.navigationBar.tintColor = UIColor(red: 212/255, green:140/255, blue:90/255, alpha: 1.0)
     }
 
 }

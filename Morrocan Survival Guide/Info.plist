@@ -22,6 +22,8 @@
 	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMainNibFile</key>
+	<string>iOS</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Adds a profile image for the user</string>
 	<key>UILaunchStoryboardName</key>

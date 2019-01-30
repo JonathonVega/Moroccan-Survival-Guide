@@ -41,12 +41,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         warningLabel.isHidden = true
         nameLabel.isHidden = true
         nameTextField.isHidden = true
-        profileImageButton.isHidden = true
-        profileImageButton.layer.borderWidth = 1.0
-        profileImageButton.layer.borderColor = UIColor.black.cgColor
         emailTextField.keyboardType = .emailAddress
         
-        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +61,6 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     if user != nil {
                         self.clearTextFields()
                         self.navigationController?.popViewController(animated: true)
-                        print(user!.uid)
                     }
                     else {
                         
@@ -113,30 +108,6 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name, "dateCreated":Date().timeIntervalSince1970] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
                         self.ref.child("users").child(user!.uid).setValue(data)
                         
-                        if(self.profileImageButton.imageView?.image != nil) {
-                            let imageName = UUID().uuidString
-                            let storageRef = self.storage.reference().child("profileImages").child("\(imageName).png")
-                            let uploadData = UIImagePNGRepresentation((self.profileImageButton.imageView?.image)!)
-                            storageRef.putData(uploadData!, metadata: nil) { (metadata, error) in
-                                if error != nil {
-                                    print(error!)
-                                } else {
-                                    // Initial setup for email verification
-                                    
-                                    /*Auth.auth().currentUser!.sendEmailVerification(completion: { (error) in
-                                    })
-                                    let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                                    self.present(alert, animated: true, completion: nil)*/
-                                }
-                                
-                                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                                    self.ref.child("users").child(user!.uid).child("profileImage").setValue(profileImageUrl)
-                                }
-                            }
-                        }
-                        print("Is registering")
-                        
                         self.navigationController?.popViewController(animated: true)
                         
                     } else {
@@ -147,18 +118,17 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                             case .invalidEmail:
                                 self.warningLabel.text = "* Email is invalid!"
                                 self.warningLabel.isHidden = false
-                                print("Invalid email")
+                                print("Email is invalid")
                             case .emailAlreadyInUse:
                                 self.warningLabel.text = "* Email is already in use!"
                                 self.warningLabel.isHidden = false
-                                print("Email already in use")
+                                print("Email is already in use")
                             default:
                                 self.warningLabel.text = "* All fields must be filled!"
                                 self.warningLabel.isHidden = false
-                                print("Wrong in some way!!!")
+                                print("All fields must be filled")
                             }
                         }
-                        print(error!)
                     }
                 })
             } else {
@@ -184,7 +154,6 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             signInPage = false
             nameLabel.isHidden = false
             nameTextField.isHidden = false
-            profileImageButton.isHidden = false
             warningLabel.isHidden = true
             signInButton.setTitle("Register", for: .normal)
             helpLabel.text = "Already have an account?"
@@ -193,34 +162,11 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             signInPage = true
             nameLabel.isHidden = true
             nameTextField.isHidden = true
-            profileImageButton.isHidden = true
             warningLabel.isHidden = true
             signInButton.setTitle("Sign-In", for: .normal)
             helpLabel.text = "Don\'t have an account?"
             registerButton.setTitle("Register Here", for: .normal)
         }
-    }
-
-    @IBAction func touchOnProfileImage(_ sender: Any) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    // MARK: - Image Picker
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            profileImageButton.imageView?.contentMode = .scaleAspectFill
-            profileImageButton.imageView?.image = pickedImage
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-        
     }
     
 }

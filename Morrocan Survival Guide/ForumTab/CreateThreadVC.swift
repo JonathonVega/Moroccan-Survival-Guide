@@ -13,9 +13,9 @@ import FirebaseStorage
 
 class CreateThreadVC: UIViewController {
 
-    @IBOutlet weak var subjectLabel: UITextField!
-    @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var postTextView: UITextView!
+    
+    var creatorName: String = ""
     
     var ref: DatabaseReference!
     
@@ -23,8 +23,9 @@ class CreateThreadVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        postTextView.layer.cornerRadius = 10
         ref = Database.database().reference()
-        
+        getUserName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +36,7 @@ class CreateThreadVC: UIViewController {
     // MARK: - Firebase Methods
     
     func addThreadToFirebase() {
-        if (subjectLabel.text?.isEmpty)!, descriptionTextView.text.isEmpty {
+        if postTextView.text.isEmpty {
             // TODO: Add in errors
         } else {
             let threadRef = self.ref.child("threads").childByAutoId()
@@ -43,18 +44,28 @@ class CreateThreadVC: UIViewController {
             let userID = Auth.auth().currentUser!.uid
             let date = Date().timeIntervalSince1970
             
+                
             self.ref.child("users").child(userID).child("threads").child(threadRandomKey).setValue(date)
             
             
-            let data: Dictionary<String, Any> = ["creator":userID, "subject": subjectLabel.text!, "description": descriptionTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
+            let data: Dictionary<String, Any> = ["creator": creatorName, "creatorID":userID, "post": postTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
             self.ref.child("threads").child(threadRandomKey).setValue(data)
             
             
         }
     }
     
-
-    @IBAction func addImage(_ sender: Any) {
+    func getUserName(){
+        let userID = Auth.auth().currentUser!.uid
+        ref.child("users").child(userID).child("name").observeSingleEvent(of: .value) { (snapshot) in
+            if ( snapshot.value is NSNull ) {
+                print("Response not found")
+            } else {
+                if let creator = snapshot.value as? String {
+                    self.creatorName = creator
+                }
+            }
+        }
     }
     
     @IBAction func createThread(_ sender: Any) {

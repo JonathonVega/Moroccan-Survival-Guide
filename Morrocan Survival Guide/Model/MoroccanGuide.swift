@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Topics: CustomStringConvertible {
+enum Topics: CustomStringConvertible, CaseIterable {
     case greetings
     case family
     case house

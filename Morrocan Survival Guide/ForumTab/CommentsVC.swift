@@ -43,12 +43,15 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         commentTableView.isScrollEnabled = false
         //scrollView.isScrollEnabled = true
         
+        replyToResponseButton.isHidden = true
+        checkForCurrentUser()
+        
         ref = Database.database().reference()
         
         fillResponseData()
         getCommentsOfResponseFromFirebase()
         
-        if isCurrentUserEqualTo(replyUserKey: (response?.creatorKey)!) {
+        if isCurrentUserEqualTo(replyUserKey: (response?.creatorID)!) {
             responseTrashButton.isHidden = false
         }
     }
@@ -64,6 +67,8 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - TableView Delegate and DataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -76,21 +81,33 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "comment", for: indexPath) as! ReplyTableViewCell
         
         let comment = commentArray[indexPath.row]
-        cell.userNameLabel.text = comment.creatorName
+        cell.userNameLabel.text = comment.creator
         cell.replyLabel.text = comment.reply
-        cell.createDate.text = comment.createDate
+        cell.createDate.text = comment.dateCreated
         cell.threadID = self.threadID
         cell.responseID = self.response?.key
         cell.commentID = comment.key
         cell.selectionStyle = .none
         
-        if isCurrentUserEqualTo(replyUserKey: comment.creatorKey!) {
+        if isCurrentUserEqualTo(replyUserKey: comment.creatorID!) {
             cell.commentTrashButton.isHidden = false
         }
         
         return cell
     }
     
+    /*
+    func tableView(_ tableView: commentTableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.response = responseArray[indexPath.row]
+        
+        performSegue(withIdentifier: "toCommentsSegue", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+    }
+    */
     
     // MARK: - Firebase Call Methods
     
@@ -106,16 +123,16 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
                     
                     
                     
-                    let commentKey = snap.key
-                    let commentString = dict["comment"] as! String
-                    let userName = dict["userName"] as! String
-                    let createDate = dict["createDate"] as! Double
-                    let creatorKey = dict["userID"] as! String
+                    let commentID = snap.key
+                    let comment = dict["comment"] as! String
+                    let creator = dict["creatorName"] as! String
+                    let dateCreated = dict["dateCreated"] as! Double
+                    let creatorID = dict["creatorID"] as! String
                     
-                    let createDateString = self.convertIntervalToDateString(interval: createDate)
+                    let date = self.convertIntervalToDateString(interval: dateCreated)
                     
-                    let comment = Reply(creatorKey: creatorKey, creatorName: userName, reply: commentString, createDate: createDateString, key: commentKey)
-                    self.commentArray.append(comment)
+                    let commentObj = Reply(creatorID: creatorID, creator: creator, reply: comment, dateCreated: date, key: commentID)
+                    self.commentArray.append(commentObj)
                 }
             }
             self.commentArray.reverse()
@@ -125,6 +142,9 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     func removeResponseFromFirebase() {
         ref.child("threads").child(threadID!).child("responses").child((response?.key)!).removeValue()
+        navigationController?.popViewController(animated: true)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -139,7 +159,6 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
             self.removeResponseFromFirebase()
-            print("Its deleted")
         }))
         self.present(alert, animated: true, completion: nil)
         
@@ -169,8 +188,8 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     }
     
     func fillResponseData() {
-        responseCreator.text = response?.creatorName
-        responseCreateDate.text = response?.createDate
+        responseCreator.text = response?.creator
+        responseCreateDate.text = response?.dateCreated
         responseLabel.text = response?.reply
     }
     

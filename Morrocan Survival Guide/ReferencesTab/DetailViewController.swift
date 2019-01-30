@@ -153,6 +153,12 @@ class DetailViewController: UIViewController {
             guard let player = player else { return }
             
             player.prepareToPlay()
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            }
+            catch {
+                // report for an error
+            }
             player.play()
         } catch let error as NSError {
             print(error.description)

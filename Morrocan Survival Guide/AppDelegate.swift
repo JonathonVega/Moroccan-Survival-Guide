@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Flurry_iOS_SDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,10 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        Flurry.startSession("XDZ4G5MTKBNKJW68FK6F", with: FlurrySessionBuilder
-            .init()
-            .withCrashReporting(true)
-            .withLogLevel(FlurryLogLevelAll))
         
         return true
     }
