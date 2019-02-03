@@ -52,7 +52,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("The view is showing")
         handleDataPagination()
     }
     
@@ -175,8 +174,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
                         
                     }
                     self.startKey = children.key
-                    print(self.startKey)
-                    print("Ok")
                     self.threadsArray.reverse()
                     self.tableView.reloadData()
                 }

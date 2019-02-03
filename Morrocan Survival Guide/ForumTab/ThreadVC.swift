@@ -34,7 +34,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: 200)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: 250)
         scrollView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -176,6 +176,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
             self.responseArray.reverse()
             self.tableView.reloadData()
             self.ref.child("threads").child(self.threadID!).child("responseCount").setValue(responsesCount)
+            //self.containerViewHeight.constant = self.tableView.frame.minY + self.tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
         }
     }
     
@@ -211,8 +212,6 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     func addFavoriteCountToThread(){
         self.ref.child("threads").child(threadID!).child("favoritesCount").observeSingleEvent(of: .value, with: { (snapshot) in
             if var favoriteCount = snapshot.value as? Int{
-                print("Trying to add a count")
-                print(favoriteCount)
                 favoriteCount += 1
                 self.ref.child("threads").child(self.threadID!).child("favoritesCount").setValue(favoriteCount)
             }else {
@@ -225,8 +224,6 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         self.ref.child("threads").child(threadID!).child("favoritesCount").observeSingleEvent(of: .value, with: { (snapshot) in
             if var favoriteCount = snapshot.value as? Int{
                 if favoriteCount >= 1 {
-                    print("Trying to minus a count")
-                    print(favoriteCount)
                     favoriteCount -= 1
                 }
                 self.ref.child("threads").child(self.threadID!).child("favoritesCount").setValue(favoriteCount)
