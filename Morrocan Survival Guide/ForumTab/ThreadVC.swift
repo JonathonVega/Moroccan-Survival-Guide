@@ -47,13 +47,14 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         //checkForCurrentUser()
         
         ref = Database.database().reference()
-        
         getThreadDataFromFirebase()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.containerViewHeight.constant = tableView.frame.minY + tableView.contentSize.height // Adjusts height so eventsTable can be scrolled down
         checkForCurrentUser()
+        getResponsesOfThreadFromFirebase()
     }
 
     override func didReceiveMemoryWarning() {
@@ -172,6 +173,7 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
                     self.responseArray.append(response)
                 }
             }
+            self.responseArray.reverse()
             self.tableView.reloadData()
             self.ref.child("threads").child(self.threadID!).child("responseCount").setValue(responsesCount)
         }
@@ -196,12 +198,42 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
         let date = Date().timeIntervalSince1970
         self.ref.child("users").child(userID!).child("favorites").child(threadID!).child("date").setValue(date)
         favoriteButton.setImage(UIImage(named: "star-orange"), for: .normal)
+        addFavoriteCountToThread()
     }
     
     func unfavoriteThreadFromFirebase() {
         let userID = Auth.auth().currentUser?.uid
         ref.child("users").child(userID!).child("favorites").child(threadID!).removeValue()
         favoriteButton.setImage(UIImage(named: "star-gray"), for: .normal)
+        minusFavoriteCountToThread()
+    }
+    
+    func addFavoriteCountToThread(){
+        self.ref.child("threads").child(threadID!).child("favoritesCount").observeSingleEvent(of: .value, with: { (snapshot) in
+            if var favoriteCount = snapshot.value as? Int{
+                print("Trying to add a count")
+                print(favoriteCount)
+                favoriteCount += 1
+                self.ref.child("threads").child(self.threadID!).child("favoritesCount").setValue(favoriteCount)
+            }else {
+                self.ref.child("threads").child(self.threadID!).child("favoritesCount").setValue(1)
+            }
+        })
+    }
+    
+    func minusFavoriteCountToThread(){
+        self.ref.child("threads").child(threadID!).child("favoritesCount").observeSingleEvent(of: .value, with: { (snapshot) in
+            if var favoriteCount = snapshot.value as? Int{
+                if favoriteCount >= 1 {
+                    print("Trying to minus a count")
+                    print(favoriteCount)
+                    favoriteCount -= 1
+                }
+                self.ref.child("threads").child(self.threadID!).child("favoritesCount").setValue(favoriteCount)
+            }else {
+                print("No Response")
+            }
+        })
     }
     
     
@@ -223,10 +255,12 @@ class ThreadVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UIT
     func checkForCurrentUser() {
         if Auth.auth().currentUser != nil {
             self.replyToThreadButton.isHidden = false
+            self.replyToThreadButton.isEnabled = true
             self.favoriteButton.isHidden = false
             checkIfFavorited()
         } else {
-            self.replyToThreadButton.isHidden = true
+            self.replyToThreadButton.isHidden = false
+            self.replyToThreadButton.isEnabled = false
             self.favoriteButton.isHidden = true
         }
     }

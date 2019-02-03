@@ -17,9 +17,15 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     
     var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 440, height: 40))
     
-    var ThreadsArray = [ThreadHeading]()
+    var threadsArray = [ThreadHeading]()
     
     var ref: DatabaseReference!
+    
+    var numberOfPosts: Int = 20
+    
+    var startKey: String!
+    
+    var allowPagination = true
     
     
     // MARK: - Default Methods
@@ -40,7 +46,14 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         
         ref = Database.database().reference()
         
-        getRecentDataFromFirebase()
+        //getRecentDataFromFirebase()
+        
+        //handleDataPagination()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("The view is showing")
+        handleDataPagination()
     }
     
 
@@ -53,9 +66,17 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     
     // MARK: - Table view data source
     
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let currentOffset = scrollView.contentOffset.y
+        let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if maxOffset - currentOffset <= 40{
+            handleDataPagination()
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return ThreadsArray.count
+        return threadsArray.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,10 +94,9 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Thread", for: indexPath) as! ThreadTableViewCell
         
-        let Thread = ThreadsArray[indexPath.section]
+        let Thread = threadsArray[indexPath.section]
         
         cell.postLabel.text = Thread.post
         cell.postLabel.adjustsFontSizeToFitWidth = false
@@ -89,7 +109,6 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         cell.threadID = Thread.threadID
         
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -101,12 +120,11 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     // MARK: - Firebase Calls
     
     func getRecentDataFromFirebase() {
-        ref.child("threads").observe(.value) { (snapshot) in
-            self.ThreadsArray.removeAll()
+        ref.child("threads").observeSingleEvent(of: .value) { (snapshot) in
+            self.threadsArray.removeAll()
             if ( snapshot.value is NSNull ) {
                 print("not found")
             } else {
-                
                 for child in (snapshot.children) {
                     
                     let snap = child as! DataSnapshot //each child is a snapshot
@@ -121,28 +139,89 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
                     if dict["responseCount"] != nil {
                         let responseCount = dict["responseCount"] as! Int
                         Thread = ThreadHeading(post: post, creator: creator, creatorID:creatorID, threadID: threadID, responseCount: responseCount)
-                        self.ThreadsArray.append(Thread!)
+                        self.threadsArray.append(Thread!)
                     } else if dict["responseCount"] == nil && dict["post"] != nil{
                         Thread = ThreadHeading(post: post, creator: creator, creatorID:creatorID, threadID: threadID, responseCount: 0)
-                        self.ThreadsArray.append(Thread!)
+                        self.threadsArray.append(Thread!)
                     }
-                    
-                    
                 }
             }
-            self.ThreadsArray.reverse()
+            self.threadsArray.reverse()
             self.tableView.reloadData()
-            
+        }
+    }
+    
+    func handleDataPagination() {
+        let threadRef = Database.database().reference(withPath:"threads").queryOrderedByKey()
+        
+        if startKey == nil && allowPagination == true{
+            threadRef.queryLimited(toLast:10).observeSingleEvent(of: .value, with: {snapshot in
+                guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
+                
+                if snapshot.childrenCount > 0 {
+                    for child in snapshot.children.allObjects as! [DataSnapshot] {
+                        guard let dictionary = child.value as? [String:Any] else{return}
+                        
+                        let threadID = child.key
+                        let post = dictionary["post"] as! String
+                        let creator = dictionary["creator"] as! String
+                        let creatorID = dictionary["creatorID"] as! String
+                        if dictionary["responseCount"] != nil {
+                            let responseCount = dictionary["responseCount"] as! Int
+                            self.threadsArray.append(ThreadHeading(post: post, creator: creator, creatorID: creatorID, threadID: threadID, responseCount: responseCount))
+                        } else if dictionary["responseCount"] == nil && dictionary["post"] != nil{
+                            self.threadsArray.append(ThreadHeading(post: post, creator: creator, creatorID: creatorID, threadID: threadID, responseCount: 0))
+                        }
+                        
+                    }
+                    self.startKey = children.key
+                    print(self.startKey)
+                    print("Ok")
+                    self.threadsArray.reverse()
+                    self.tableView.reloadData()
+                }
+            })
+        } else {
+            if(!allowPagination){
+                return
+            }
+            threadRef.queryEnding(atValue:self.startKey).queryLimited(toLast: 11).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let children = snapshot.children.allObjects.first as? DataSnapshot else {return}
+                let arrayEnd = self.threadsArray.count
+                if snapshot.childrenCount > 0 {
+                    for child in snapshot.children.allObjects as! [DataSnapshot] {
+                        if child.key != self.startKey{
+                            
+                            guard let dictionary = child.value as? [String:Any] else {return}
+                            
+                            let threadID = child.key
+                            let post = dictionary["post"] as! String
+                            let creator = dictionary["creator"] as! String
+                            let creatorID = dictionary["creatorID"] as! String
+                            
+                            if dictionary["responseCount"] != nil {
+                                let responseCount = dictionary["responseCount"] as! Int
+                                self.threadsArray.insert(ThreadHeading(post: post, creator: creator, creatorID: creatorID, threadID: threadID, responseCount: responseCount), at: arrayEnd)
+                            } else if dictionary["responseCount"] == nil && dictionary["post"] != nil{
+                                self.threadsArray.insert(ThreadHeading(post: post, creator: creator, creatorID: creatorID, threadID: threadID, responseCount: 0), at: arrayEnd)
+                            }
+                        }
+                    }
+                    self.startKey = children.key
+                }
+                self.tableView.reloadData()
+            })
         }
     }
     
     func getFilteredThreads(searchText: String) {
         var filteredData = [ThreadHeading]()
         if searchText == "" {
-            getRecentDataFromFirebase()
+            //getRecentDataFromFirebase()
+            handleDataPagination()
             
         } else {
-            ref.child("threads").observeSingleEvent(of: .value) { (snapshot) in
+            ref.child("threads").queryLimited(toLast: 31).observeSingleEvent(of: .value) { (snapshot) in
                 if ( snapshot.value is NSNull ) {
                     print("not found")
                 } else {
@@ -174,14 +253,11 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
                         }
                     }
                 }
-                self.ThreadsArray = filteredData
+                self.threadsArray = filteredData
+                self.threadsArray.reverse()
                 self.tableView.reloadData()
             }
         }
-    }
-    
-    func getUserName(){
-        
     }
     
     
@@ -189,20 +265,22 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     // MARK: - Search Bar
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-
         // Hide search bar
         self.searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
         
         // Filter through data
         let searchText = searchBar.text?.lowercased()
+        allowPagination = false
         getFilteredThreads(searchText: searchText!)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
-        getRecentDataFromFirebase()
+        //getRecentDataFromFirebase()
+        allowPagination = true
+        self.startKey = nil
+        handleDataPagination()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -223,6 +301,8 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
         
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "createThreadSegue", sender: self)
+            self.startKey = nil
+            self.threadsArray.removeAll()
         } else {
             let alert = UIAlertController(title: "Not signed in", message: "You must be signed in to reply and add new threads.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -256,7 +336,7 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     
     func setColors() {
         navigationController?.navigationBar.barTintColor = UIColor(red:15/255, green:166/255, blue:185/255, alpha:1.0)
-        navigationController?.navigationBar.tintColor = UIColor(red: 212/255, green:140/255, blue:90/255, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = UIColor(red: 49/255, green:12/255, blue:117/255, alpha: 1.0)
     }
     
     // 73 119 210

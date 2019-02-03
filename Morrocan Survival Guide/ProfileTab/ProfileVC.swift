@@ -170,7 +170,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func getUserThreadsArray(userThreadsIDArray: [String]) {
-        self.ref.child("threads").observe(.value) { (snapshot) in
+        self.ref.child("threads").observeSingleEvent(of: .value) { (snapshot) in
             var userThreadsArray = [ThreadHeading]()
             for child in (snapshot.children) {
                 let snap = child as! DataSnapshot
@@ -215,7 +215,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func getUserFavoritesArray(userThreadsIDArray: [String]) {
-        self.ref.child("threads").observe(.value) { (snapshot) in
+        self.ref.child("threads").observeSingleEvent(of: .value) { (snapshot) in
             var favoritesArray = [ThreadHeading]()
             for child in (snapshot.children) {
                 let snap = child as! DataSnapshot
@@ -318,7 +318,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         segmentedControl.setTitleTextAttributes([
             NSAttributedStringKey.font : UIFont(name: "DINCondensed-Bold", size: 18)!,
-            NSAttributedStringKey.foregroundColor: UIColor.orange
+            NSAttributedStringKey.foregroundColor: UIColor(red: 49/255, green:12/255, blue:117/255, alpha: 1.0)
             ], for: .selected)
         
 //        let buttonBar = UIView()
@@ -347,7 +347,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     func setColors() {
         navigationController?.navigationBar.barTintColor = UIColor(red:15/255, green:166/255, blue:185/255, alpha:1.0)
-        navigationController?.navigationBar.tintColor = UIColor(red: 212/255, green:140/255, blue:90/255, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = UIColor(red: 49/255, green:12/255, blue:117/255, alpha: 1.0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
