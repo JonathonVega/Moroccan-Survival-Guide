@@ -245,7 +245,7 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOB-c3-6mJ">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOB-c3-6mJ">
                                                                     <rect key="frame" x="31" y="77" width="104" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <nil key="textColor"/>
@@ -266,6 +266,7 @@
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="createDate" destination="ILs-cj-pyD" id="LWD-cE-0l6"/>
+                                                            <outlet property="numberOfCommentsLabel" destination="QOB-c3-6mJ" id="OuB-6k-Xm8"/>
                                                             <outlet property="replyLabel" destination="hKI-rZ-3bh" id="Wpx-0O-5mY"/>
                                                             <outlet property="userNameLabel" destination="F21-w7-gIn" id="jRX-fK-R8J"/>
                                                         </connections>
@@ -1368,7 +1369,7 @@
         <image name="star-gray" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CaD-c5-EuG"/>
+        <segue reference="diN-Dg-vKU"/>
         <segue reference="F5r-uM-zTy"/>
     </inferredMetricsTieBreakers>
 </document>

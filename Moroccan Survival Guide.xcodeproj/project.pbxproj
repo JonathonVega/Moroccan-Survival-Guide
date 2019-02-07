@@ -315,8 +315,8 @@
 		9C32A9CE1F671F0A00DE716B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C32A9CD1F671F0A00DE716B /* GoogleService-Info.plist */; };
 		9C32A9D01F6761B500DE716B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9CF1F6761B500DE716B /* ProfileVC.swift */; };
 		9C32A9D41F6763B900DE716B /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32A9D31F6763B900DE716B /* SignInVC.swift */; };
-		9C46D1DD2176ECBE004C95AF /* Pods_Moroccan_Survival_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8F6A745018E8ADFAFE59A0 /* Pods_Moroccan_Survival_Guide.framework */; };
 		9C8A90FC1D7DEE2F009E8CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A90FB1D7DEE2F009E8CA4 /* DetailViewController.swift */; };
+		9CA040C72207BFEC00E9715D /* Pods_Moroccan_Survival_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8F6A745018E8ADFAFE59A0 /* Pods_Moroccan_Survival_Guide.framework */; };
 		9CCC7B801FE08C47009BD7D1 /* CreateThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B7F1FE08C47009BD7D1 /* CreateThreadVC.swift */; };
 		9CCC7B821FE0B6BC009BD7D1 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B811FE0B6BC009BD7D1 /* ThreadVC.swift */; };
 		9CCC7B851FE4A267009BD7D1 /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC7B841FE4A267009BD7D1 /* ReplyTableViewCell.swift */; };
@@ -663,7 +663,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C46D1DD2176ECBE004C95AF /* Pods_Moroccan_Survival_Guide.framework in Frameworks */,
+				9CA040C72207BFEC00E9715D /* Pods_Moroccan_Survival_Guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1602,7 +1602,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moroccan Survival Guide/Pods-Moroccan Survival Guide-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -1611,7 +1611,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

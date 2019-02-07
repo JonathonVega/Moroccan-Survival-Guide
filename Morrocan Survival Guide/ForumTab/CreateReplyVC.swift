@@ -47,9 +47,9 @@ class CreateReplyVC: UIViewController {
             
             
             let data: Dictionary<String, Any> = ["creatorID":userID, "creatorName":user!.name!, "response": descriptionTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
-            self.ref.child("responses").child(responseRandomKey).setValue(data)
+            self.ref.child("responses").child(responseRandomKey!).setValue(data)
             
-            self.ref.child("threads").child(threadID!).child("responses").child(responseRandomKey).setValue(data)
+            self.ref.child("threads").child(threadID!).child("responses").child(responseRandomKey!).setValue(data)
         }
     }
     
@@ -63,7 +63,7 @@ class CreateReplyVC: UIViewController {
             let date = Date().timeIntervalSince1970
             
             let data: Dictionary<String, Any> = ["creatorID":userID, "creator":user!.name!, "comment": descriptionTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
-            self.ref.child("threads").child(threadID!).child("responses").child(responseID!).child("comments").child(commentRandomKey).setValue(data)
+            self.ref.child("threads").child(threadID!).child("responses").child(responseID!).child("comments").child(commentRandomKey!).setValue(data)
         }
     }
     

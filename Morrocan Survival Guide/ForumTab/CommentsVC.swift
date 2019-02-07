@@ -113,6 +113,7 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
     
     func getCommentsOfResponseFromFirebase() {
         ref.child("threads").child(threadID!).child("responses").child((response?.key)!).child("comments").observe(.value) { (snapshot) in
+            var commentsCount: Int = 0
             self.commentArray.removeAll()
             if ( snapshot.value is NSNull ) {
                 print("Comment not found")
@@ -125,18 +126,20 @@ class CommentsVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, U
                     
                     let commentID = snap.key
                     let comment = dict["comment"] as! String
-                    let creator = dict["creatorName"] as! String
+                    let creator = dict["creator"] as! String
                     let dateCreated = dict["dateCreated"] as! Double
                     let creatorID = dict["creatorID"] as! String
                     
                     let date = self.convertIntervalToDateString(interval: dateCreated)
                     
+                    commentsCount += 1
                     let commentObj = Reply(creatorID: creatorID, creator: creator, reply: comment, dateCreated: date, key: commentID)
                     self.commentArray.append(commentObj)
                 }
             }
             self.commentArray.reverse()
             self.commentTableView.reloadData()
+            self.ref.child("threads").child(self.threadID!).child("responses").child((self.response?.key)!).child("commentsCount").setValue(commentsCount)
         }
     }
     

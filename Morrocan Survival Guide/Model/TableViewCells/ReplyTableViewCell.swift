@@ -15,6 +15,7 @@ class ReplyTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var createDate: UILabel!
     @IBOutlet weak var replyLabel: UILabel!
+    @IBOutlet weak var numberOfCommentsLabel: UILabel!
     var threadID: String?
     var responseID: String?
     var commentID: String?

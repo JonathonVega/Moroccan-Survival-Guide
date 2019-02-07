@@ -45,11 +45,11 @@ class CreateThreadVC: UIViewController {
             let date = Date().timeIntervalSince1970
             
                 
-            self.ref.child("users").child(userID).child("threads").child(threadRandomKey).setValue(date)
+            self.ref.child("users").child(userID).child("threads").child(threadRandomKey!).setValue(date)
             
             
             let data: Dictionary<String, Any> = ["creator": creatorName, "creatorID":userID, "post": postTextView.text, "dateCreated":date] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
-            self.ref.child("threads").child(threadRandomKey).setValue(data)
+            self.ref.child("threads").child(threadRandomKey!).setValue(data)
             
             
         }

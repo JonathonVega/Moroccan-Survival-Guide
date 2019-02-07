@@ -102,11 +102,11 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         // Registering a new account
         } else {
             if let email=emailTextField.text, !email.isEmpty, let password=passwordTextField.text, !password.isEmpty, let name=nameTextField.text, !name.isEmpty {
-                Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                    if user != nil {
+                Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
+                    if authResult != nil {
                         
                         let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name, "dateCreated":Date().timeIntervalSince1970] // Call date using "var date = NSDate(timeIntervalSince1970: interval)"
-                        self.ref.child("users").child(user!.uid).setValue(data)
+                        self.ref.child("users").child(authResult!.user.uid).setValue(data)
                         
                         self.navigationController?.popViewController(animated: true)
                         

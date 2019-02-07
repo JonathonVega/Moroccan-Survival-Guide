@@ -95,17 +95,17 @@ class ForumTableVC: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Thread", for: indexPath) as! ThreadTableViewCell
         
-        let Thread = threadsArray[indexPath.section]
+        let thread = threadsArray[indexPath.section]
         
-        cell.postLabel.text = Thread.post
+        cell.postLabel.text = thread.post
         cell.postLabel.adjustsFontSizeToFitWidth = false
         cell.postLabel.numberOfLines = 4
         
-        cell.userNameLabel.text = Thread.creator
-        cell.responseCountLabel.text = String(describing: Thread.responseCount!)
+        cell.userNameLabel.text = thread.creator
+        cell.responseCountLabel.text = String(describing: thread.responseCount!)
         cell.responseCountLabel.adjustsFontSizeToFitWidth = true
         
-        cell.threadID = Thread.threadID
+        cell.threadID = thread.threadID
         
         return cell
     }
