@@ -22,6 +22,8 @@
 	<string>8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>GADIsAdManagerApp</key>
+	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Adds a profile image for the user</string>
 	<key>UILaunchStoryboardName</key>
